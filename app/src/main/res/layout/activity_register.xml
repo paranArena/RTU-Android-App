@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".RegisterActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="28dp">
+
+        <TextView
+            android:id="@+id/mailText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/darkGray"
+            android:textSize="12dp"
+            android:text="아주대학교 이메일">
+        </TextView>
+
+        <EditText
+            android:id="@+id/mailEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mailText"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/fixedMail"></EditText>
+
+        <TextView
+            android:id="@+id/fixedMail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/ajou_mail"
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            android:layout_below="@id/mailText"
+            android:layout_toLeftOf="@id/mailButton">
+
+        </TextView>
+
+        <ImageButton
+            android:id="@+id/mailButton"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mailText"
+            android:src="@drawable/ic_check_button"
+            android:background="@color/white"
+            android:layout_alignParentRight="true">
+
+        </ImageButton>
+
+        <TextView
+            android:id="@+id/passwordText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/darkGray"
+            android:textSize="12dp"
+            android:text="Password"
+            android:layout_below="@id/mailEditText"
+            android:layout_marginTop="25dp">
+        </TextView>
+
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/passwordText"
+            android:inputType="textPassword"></EditText>
+
+        <TextView
+            android:id="@+id/passwordCheckText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/darkGray"
+            android:textSize="12dp"
+            android:text="Password 확인"
+            android:layout_below="@id/passwordEditText"
+            android:layout_marginTop="25dp">
+        </TextView>
+
+        <EditText
+            android:id="@+id/passwordCheckEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/passwordCheckText"
+            android:inputType="textPassword"></EditText>
+
+        <TextView
+            android:id="@+id/nameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/darkGray"
+            android:textSize="12dp"
+            android:text="이름"
+            android:layout_below="@id/passwordCheckEditText"
+            android:layout_marginTop="25dp">
+        </TextView>
+
+        <EditText
+            android:id="@+id/nameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nameText">
+        </EditText>
+
+        <TextView
+            android:id="@+id/majorText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/darkGray"
+            android:textSize="12dp"
+            android:text="학과"
+            android:layout_below="@id/nameEditText"
+            android:layout_marginTop="25dp">
+        </TextView>
+
+        <EditText
+            android:id="@+id/majorEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/majorText">
+        </EditText>
+
+        <TextView
+            android:id="@+id/idText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/darkGray"
+            android:textSize="12dp"
+            android:text="학번"
+            android:layout_below="@id/majorEditText"
+            android:layout_marginTop="25dp">
+        </TextView>
+
+        <EditText
+            android:id="@+id/idEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/idText"
+            android:inputType="number">
+        </EditText>
+
+        <TextView
+            android:id="@+id/numberText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/darkGray"
+            android:text="휴대전화 번호"
+            android:textSize="12dp"
+            android:layout_below="@id/idEditText"
+            android:layout_marginTop="25dp">
+        </TextView>
+
+        <EditText
+            android:id="@+id/numberEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/numberText"
+            android:hint="'-'제외"
+            android:inputType="number">
+        </EditText>
+
+        <ImageButton
+            android:id="@+id/nextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_login_button"
+            android:layout_below="@id/numberEditText"
+            android:layout_marginTop="30dp"
+            android:background="@color/white"
+            android:layout_centerHorizontal="true">
+
+        </ImageButton>
+
+    </RelativeLayout>
+
+</layout>
