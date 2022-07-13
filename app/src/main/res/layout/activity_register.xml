@@ -30,18 +30,18 @@
             android:id="@+id/fixedMail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/ajou_mail"
-            android:textSize="16dp"
-            android:textColor="@color/black"
             android:layout_below="@id/mailText"
-            android:layout_toLeftOf="@id/mailButton">
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@id/mailButton"
+            android:text="@string/ajou_mail"
+            android:textColor="@color/black"
+            android:textSize="16dp">
 
         </TextView>
 
         <ImageButton
             android:id="@+id/mailButton"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
