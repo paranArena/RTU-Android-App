@@ -3,24 +3,89 @@ package com.rtu
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.ImageButton
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.rtu.databinding.ActivityMainBinding
-import com.rtu.viewmodel.MainViewModel
+import com.rtu.model.LoginRequest
+import com.rtu.model.LoginResponse
+import com.rtu.retrofit.RetrofitBuilder
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    //private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    //private val viewModel: MainViewModel by lazy{MainViewModel()}
+    private var _binding: ActivityMainBinding?=null
+
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        val binding: ViewDataBinding? = DataBindingUtil.setContentView(
-            this, R.layout.activity_main)
+        _binding= ActivityMainBinding.inflate(layoutInflater)
 
-        //val intent = Intent(this, RegisterActivity::class.java)
-        //startActivity(intent)
+        val view=binding.root
+        setContentView(view)
 
+        //binding.loginButton.isEnabled=false
+
+        binding.register.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.loginButton.setOnClickListener {
+
+            val id=binding.email.text.toString()
+            val pw=binding.password.text.toString()
+
+            val loginData=LoginRequest(email=id, password = pw)
+
+            login(loginData)
+        }
+    }
+
+    private fun success(){
+        binding.wrongMessage.visibility= View.INVISIBLE
+        val intent = Intent(this, MainPageActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun failed(){
+        binding.wrongMessage.visibility= View.VISIBLE
+    }
+
+    private fun login(loginRequest: LoginRequest){
+        RetrofitBuilder.api.loginPostRequest(loginRequest).enqueue(object :
+            Callback<LoginResponse> {
+            override fun onResponse(
+                call: Call<LoginResponse>,
+                response: Response<LoginResponse>
+            ) {
+                if(response.isSuccessful) {
+                    Log.d("test", response.body().toString())
+
+                    var data = response.body()!!
+
+                    if(data.statusCode==200){
+                        success() //로그인 성공
+                    }
+                }
+                else {
+                    Log.d("fail", response.body().toString())
+                    failed() //로그인 실패
+                }
+            }
+
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                Log.d("test", "실패$t")
+            }
+
+        })
     }
 }
