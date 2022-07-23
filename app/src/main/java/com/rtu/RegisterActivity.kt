@@ -2,6 +2,7 @@ package com.rtu
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextWatcher
 import android.view.MenuItem
 import com.rtu.databinding.ActivityRegisterBinding
 
@@ -34,6 +35,21 @@ class RegisterActivity : AppCompatActivity() {
 
         val view=binding.root
         setContentView(view)
+
+        /*binding.passwordCheckEditText.addOnEditTextAttachedListener {
+            val previous=binding.passwordEditText.toString()
+
+            if(previous!=binding.passwordCheckEditText.toString()){
+                binding.passwordCheckEditText.error="비밀번호가 일치하지 않습니다."
+            }
+            else{
+                binding.passwordCheckEditText.helperText="비밀번호가 일치합니다."
+            }
+        }*/
+
+        binding.nextButton.setOnClickListener {
+
+        }
 
     }
 }

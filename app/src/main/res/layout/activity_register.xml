@@ -89,10 +89,24 @@
 
         <EditText
             android:id="@+id/passwordEditText"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/passwordText"
-            android:inputType="textPassword"></EditText>
+            android:inputType="textPassword"
+            android:layout_below="@id/passwordText">
+        </EditText>
+
+        <ImageButton
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_view_button"
+            android:layout_alignRight="@id/passwordEditText"
+            android:layout_alignBottom="@id/passwordEditText"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
+            android:text="Button"/>
+
 
         <TextView
             android:id="@+id/passwordCheckText"
@@ -107,10 +121,24 @@
 
         <EditText
             android:id="@+id/passwordCheckEditText"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/passwordCheckText"
-            android:inputType="textPassword"></EditText>
+            android:inputType="textPassword"
+            android:layout_below="@id/passwordCheckText">
+        </EditText>
+
+        <ImageButton
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_view_button"
+            android:layout_alignRight="@id/passwordCheckEditText"
+            android:layout_alignBottom="@id/passwordCheckEditText"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
+            android:text="Button"/>
+
 
         <TextView
             android:id="@+id/nameText"
@@ -191,11 +219,11 @@
             android:id="@+id/nextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_login_button"
             android:layout_below="@id/numberEditText"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
             android:background="@color/white"
-            android:layout_centerHorizontal="true">
+            android:src="@drawable/ic_arrow">
 
         </ImageButton>
 
