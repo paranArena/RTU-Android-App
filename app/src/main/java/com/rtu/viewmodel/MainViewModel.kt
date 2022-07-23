@@ -1,19 +1,33 @@
 package com.rtu.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import android.os.Bundle
+import android.util.Log
+import android.view.View
+import androidx.lifecycle.*
+import com.rtu.R
+import com.rtu.component.LoginComponent
+import com.rtu.component.LoginResponse
 import com.rtu.repository.MainRepository
+import com.rtu.repository.SingleLiveEvent
+import kotlinx.coroutines.launch
 
-class MainViewModel(): ViewModel(){
-    private val mainRepository = MainRepository()
+class MainViewModel(private val repository: MainRepository): ViewModel(){
+    private val _loginResponse=MutableLiveData<LoginResponse>()
+    val loginResponse: LiveData<LoginResponse> = _loginResponse
 
-    // 데이터를 캡슐화하여 외부(뷰)에서 접근할 수 없도록하고
-    // 외부 접근 프로퍼티는 immutable 타입으로 제한해 변경할 수 없도록 한다.
-    private val _data = MutableLiveData<String>("")
-    val data: LiveData<String> = _data
+    fun postLoginRequest(postLoginRequest: LoginComponent){
+        viewModelScope.launch {
+            val response=repository.loginPostRequest(postLoginRequest)
 
-    fun getData(){
-        _data.value = mainRepository.getData()
+            if(response.isSuccessful){
+                _loginResponse.postValue(response.body())
+            }
+            else{
+                Log.d("failed",response.body().toString())
+                return@launch
+            }
+        }
     }
+
 }
