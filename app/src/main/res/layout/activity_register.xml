@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/darkGray"
-            android:textSize="12dp"
+            android:textSize="10dp"
             android:text="아주대학교 이메일">
         </TextView>
 
@@ -81,10 +81,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/darkGray"
-            android:textSize="12dp"
+            android:textSize="10dp"
             android:text="Password"
             android:layout_below="@id/mailEditText"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="20dp">
         </TextView>
 
         <EditText
@@ -99,10 +99,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/darkGray"
-            android:textSize="12dp"
+            android:textSize="10dp"
             android:text="Password 확인"
             android:layout_below="@id/passwordEditText"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="20dp">
         </TextView>
 
         <EditText
@@ -117,10 +117,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/darkGray"
-            android:textSize="12dp"
+            android:textSize="10dp"
             android:text="이름"
             android:layout_below="@id/passwordCheckEditText"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="20dp">
         </TextView>
 
         <EditText
@@ -135,10 +135,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/darkGray"
-            android:textSize="12dp"
+            android:textSize="10dp"
             android:text="학과"
             android:layout_below="@id/nameEditText"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="20dp">
         </TextView>
 
         <EditText
@@ -153,10 +153,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/darkGray"
-            android:textSize="12dp"
+            android:textSize="10dp"
             android:text="학번"
             android:layout_below="@id/majorEditText"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="20dp">
         </TextView>
 
         <EditText
@@ -173,9 +173,9 @@
             android:layout_height="wrap_content"
             android:textColor="@color/darkGray"
             android:text="휴대전화 번호"
-            android:textSize="12dp"
+            android:textSize="10dp"
             android:layout_below="@id/idEditText"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="20dp">
         </TextView>
 
         <EditText
@@ -193,7 +193,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_login_button"
             android:layout_below="@id/numberEditText"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="25dp"
             android:background="@color/white"
             android:layout_centerHorizontal="true">
 
