@@ -1,10 +1,20 @@
 package com.rtu
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextWatcher
+import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import com.rtu.databinding.ActivityRegisterBinding
+import com.rtu.model.LoginResponse
+import com.rtu.model.RegisterRequest
+import com.rtu.model.RegisterResponse
+import com.rtu.retrofit.RetrofitBuilder
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -31,25 +41,68 @@ class RegisterActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setTitle("회원가입")
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
 
         val view=binding.root
         setContentView(view)
 
-        /*binding.passwordCheckEditText.addOnEditTextAttachedListener {
-            val previous=binding.passwordEditText.toString()
-
-            if(previous!=binding.passwordCheckEditText.toString()){
-                binding.passwordCheckEditText.error="비밀번호가 일치하지 않습니다."
-            }
-            else{
-                binding.passwordCheckEditText.helperText="비밀번호가 일치합니다."
-            }
-        }*/
 
         binding.nextButton.setOnClickListener {
+            val email=buildString{
+                append(binding.mailEditText.text.toString())
+                append("@ajou.ac.kr")
+            }
+            val password=binding.passwordEditText.text.toString()
+            val name=binding.nameEditText.text.toString()
+            val major=binding.majorEditText.text.toString()
+            val phoneNumber=binding.numberEditText.text.toString()
+            val id=binding.idEditText.text.toString()
+
+
+            val registerData= RegisterRequest(
+                email=email, password=password, name=name, major=major,
+                phoneNumber = phoneNumber, studentId = id
+            )
+
+            signUp(registerData)
 
         }
+    }
 
+    private fun success(){
+        finish()
+    }
+
+    private fun failed(){
+
+    }
+
+    private fun signUp(registerRequest: RegisterRequest){
+        RetrofitBuilder.api.registerPostRequest(registerRequest).enqueue(object :
+            Callback<RegisterResponse> {
+            override fun onResponse(
+                call: Call<RegisterResponse>,
+                response: Response<RegisterResponse>
+            ) {
+                if(response.isSuccessful) {
+                    Log.d("test", response.body().toString())
+
+                    var data = response.body()!!
+
+                    if(data.statusCode==200){
+                        success() //회원가입 성공
+                    }
+                }
+                else {
+                    Log.d("fail", response.body().toString())
+                    failed() //회원가입 실패
+                }
+            }
+
+            override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                Log.d("test", "실패$t")
+            }
+
+        })
     }
 }
