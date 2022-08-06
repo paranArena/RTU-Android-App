@@ -1,13 +1,11 @@
 package com.rtu.tab
 
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import androidx.fragment.app.findFragment
 import com.google.android.material.tabs.TabLayout
 import com.rtu.R
 import com.rtu.databinding.FragmentGroupBinding

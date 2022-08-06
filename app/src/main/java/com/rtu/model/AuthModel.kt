@@ -12,7 +12,7 @@ data class LoginResponse(
 )
 
 data class DataList(
-    val tokens: String
+    val token: String
 )
 
 data class RegisterRequest(

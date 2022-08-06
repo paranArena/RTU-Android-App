@@ -12,7 +12,7 @@ import com.rtu.tab.MypageFragment
 import com.rtu.tab.RentFragment
 
 class MainPageActivity : AppCompatActivity() {
-    private val frame: ConstraintLayout by lazy { // activity_main의 화면 부분
+    private val frame: ConstraintLayout by lazy {
         findViewById(R.id.body_container)
     }
     private val bottomNagivationView: BottomNavigationView by lazy { // 하단 네비게이션 바

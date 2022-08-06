@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".grouptap.AddGroup" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:outlineAmbientShadowColor="@color/white"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="그룹 등록"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="bold">
+
+        </TextView>
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/groupImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/change">
+            </ImageView>
+
+            <TextView
+                android:id="@+id/groupNameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="20dp"
+                android:textSize="16dp"
+                android:layout_below="@id/groupImage"
+                android:text="그룹 이름"
+                android:layout_marginTop="20dp">
+            </TextView>
+
+            <EditText
+                android:id="@+id/groupNameEditText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_below="@id/groupNameText">
+            </EditText>
+
+            <TextView
+                android:id="@+id/tagText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="20dp"
+                android:textSize="16dp"
+                android:text="태그"
+                android:layout_below="@id/groupNameEditText"
+                android:layout_marginTop="20dp">
+            </TextView>
+
+            <EditText
+                android:id="@+id/tagEditText"
+                android:hint="#렌탈 #서비스는 #REN2U"
+                android:layout_marginHorizontal="20dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tagText">
+            </EditText>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tagEditText"
+                android:layout_marginHorizontal="20dp"
+                android:text="#과 띄어쓰기를 포함해 영어는 최대 36글자, 한글은 24글자까지 가능합니다."
+                android:textSize="9dp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/introText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="20dp"
+                android:textSize="16dp"
+                android:layout_below="@id/tagEditText"
+                android:layout_marginTop="20dp"
+                android:text="소개글">
+            </TextView>
+
+            <EditText
+                android:id="@+id/introEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_below="@id/introText"></EditText>
+
+            <TextView
+                android:id="@+id/memberText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="20dp"
+                android:textSize="16dp"
+                android:layout_below="@id/introEditText"
+                android:layout_marginTop="20dp"
+                android:text="멤버">
+            </TextView>
+
+            <EditText
+                android:id="@+id/memberEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/memberText"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toLeftOf="@+id/registerButton"></EditText>
+
+
+            <ImageButton
+                android:id="@+id/registerButton"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/memberText"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/ic_register_button"
+
+                android:background="@color/white"
+                android:layout_alignParentRight="true">
+
+            </ImageButton>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</LinearLayout>

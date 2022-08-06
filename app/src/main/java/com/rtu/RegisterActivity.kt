@@ -1,14 +1,11 @@
 package com.rtu
 
-import android.content.Intent
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextWatcher
 import android.util.Log
 import android.view.MenuItem
-import android.view.View
 import com.rtu.databinding.ActivityRegisterBinding
-import com.rtu.model.LoginResponse
 import com.rtu.model.RegisterRequest
 import com.rtu.model.RegisterResponse
 import com.rtu.retrofit.RetrofitBuilder
