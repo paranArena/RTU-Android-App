@@ -7,10 +7,10 @@
     <item android:id="@+id/nav_group"
         android:title="그룹"
         android:icon="@drawable/ic_group" />
-    <item android:id="@+id/nav_mypage"
-        android:title="마이페이지"
-        android:icon="@drawable/ic_my_page" />
     <item android:id="@+id/nav_rent"
         android:title="대여"
         android:icon="@drawable/ic_rent" />
+    <item android:id="@+id/nav_mypage"
+        android:title="마이페이지"
+        android:icon="@drawable/ic_my_page" />
 </menu>

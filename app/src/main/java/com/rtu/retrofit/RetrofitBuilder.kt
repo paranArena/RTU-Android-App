@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitBuilder {
     var api: API
-    private const val BASE_URL="https://rtu-rent-server-uwdjr.run.goorm.io"
+    private const val BASE_URL="http://ec2-13-125-234-225.ap-northeast-2.compute.amazonaws.com:8080"
 
     init {
         val gson= GsonBuilder()

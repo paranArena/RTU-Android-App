@@ -8,20 +8,20 @@
 
     <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_marginLeft="10dp"
         android:background="@drawable/solid_button"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="70dp"
+        android:layout_marginRight="60dp"
         app:defaultQueryHint="I'll Ren 2 U!">
     </androidx.appcompat.widget.SearchView>
 
     <ImageButton
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_gravity="end"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="15dp"
         android:src="@drawable/ic_bell"
         android:background="@color/white">
 
@@ -31,10 +31,12 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
         android:background="@color/white"
-        app:tabIndicatorAnimationMode="elastic"
+        app:tabIndicatorAnimationMode="fade"
         app:tabMode="fixed"
+        app:tabRippleColor="@android:color/transparent"
+        app:tabIndicatorColor="@color/white"
         app:tabPaddingTop="15dp">
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"

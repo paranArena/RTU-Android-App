@@ -110,9 +110,21 @@
             <EditText
                 android:id="@+id/introEditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
+                android:layout_below="@id/introText"
+                android:paddingHorizontal="20dp"
                 android:layout_marginHorizontal="20dp"
-                android:layout_below="@id/introText"></EditText>
+                android:background="@drawable/round_button"></EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/introEditText"
+                android:layout_marginHorizontal="20dp"
+                android:text="띄어쓰기를 포함해 영어는 최대 150글자, 한글은 130글자까지 가능합니다."
+                android:textSize="9dp">
+
+            </TextView>
 
             <TextView
                 android:id="@+id/memberText"

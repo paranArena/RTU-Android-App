@@ -24,6 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
+        android:layout_marginTop="5dp"
         android:text="그룹이름"
         android:textColor="@color/black"
         android:textSize="12dp"
@@ -38,8 +39,9 @@
         android:layout_marginStart="80dp"
         android:textSize="10dp"
         android:text="#tag #태그"
+        android:layout_marginTop="25dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_name" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/view"

@@ -1,4 +1,6 @@
 package com.rtu.model
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
 data class LoginRequest(
     val email: String,
@@ -6,14 +8,13 @@ data class LoginRequest(
 )
 
 data class LoginResponse(
-    val statusCode: Int,
-    val responseMessage: String,
-    val data: DataList
+    val token: String?
 )
 
-data class DataList(
-    val token: String
-)
+@Parcelize
+data class Authority(
+    val authorityName: String
+): Parcelable
 
 data class RegisterRequest(
     val email: String,
@@ -37,7 +38,18 @@ data class RegisterData(
     val phoneNumber: String,
     val studentId: String,
     val major: String,
-    val authorities: String?,
-    val clubList: String?,
-    val authorityDtoSet: String?
+    val activated: Boolean,
+    val clubList: List<Club>,
+    val rentals: List<Rental>,
+    val authorityDtoSet: List<Authority>
 )
+
+@Parcelize
+data class Club(
+    val item: String
+): Parcelable
+
+@Parcelize
+data class Rental(
+    val item: String
+): Parcelable

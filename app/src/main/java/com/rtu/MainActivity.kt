@@ -1,5 +1,6 @@
 package com.rtu
 
+import android.app.Application
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.view.View
 import com.rtu.databinding.ActivityMainBinding
 import com.rtu.model.LoginRequest
 import com.rtu.model.LoginResponse
+import com.rtu.retrofit.PreferenceUtil
 import com.rtu.retrofit.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
@@ -68,7 +70,9 @@ class MainActivity : AppCompatActivity() {
 
                     var data = response.body()!!
 
-                    if(data.statusCode==200){
+                    if(data.token!=null){
+                        val token=data.token
+                        GlobalApplication.prefs.setString("tokens", token!!)
                         success() //로그인 성공
                     }
                 }
@@ -83,5 +87,15 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    class GlobalApplication : Application() {
+        companion object{
+            lateinit var prefs : PreferenceUtil
+        }
+        override fun onCreate() {
+            prefs= PreferenceUtil(applicationContext)
+            super.onCreate()
+        }
     }
 }
