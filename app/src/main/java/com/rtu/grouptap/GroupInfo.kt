@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import com.bumptech.glide.Glide
 import com.rtu.R
 import com.rtu.adapter.MyNoticeViewAdapter
 import com.rtu.databinding.ActivityGroupInfoBinding
 import com.rtu.model.ClubDetail
 import com.rtu.retrofit.RetrofitBuilder
+import kotlinx.android.synthetic.main.activity_add_group.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -68,6 +70,9 @@ class GroupInfo : AppCompatActivity() {
                     val noticeList=data.data.memberList
 
                     binding.toolbarTitle.text=title
+
+                    Glide.with(this@GroupInfo).load(thumbnailPath).
+                    placeholder(R.drawable.ic_launcher_foreground).into(binding.groupImage)
 
                     binding.introText.text = introduction
                     if(data.data.notifications!= null) {

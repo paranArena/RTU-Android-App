@@ -1,60 +1,92 @@
 package com.rtu.tab
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import androidx.appcompat.widget.SearchView
+import com.google.android.material.tabs.TabLayout
+import com.rtu.MainPageActivity
 import com.rtu.R
+import com.rtu.databinding.FragmentRentBinding
+import com.rtu.grouptap.GroupListFragment
+import com.rtu.grouptap.NoticeFragment
+import com.rtu.grouptap.SearchGroup
+import com.rtu.renttab.RentList
+import com.rtu.renttab.RentProducts
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [RentFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class RentFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+
+    private var _binding: FragmentRentBinding? = null
+
+    private val binding get() = _binding!!
+
+    private lateinit var tabLayout: TabLayout
+    private lateinit var frameLayout: FrameLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_rent, container, false)
-    }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RentFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RentFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        _binding = FragmentRentBinding.inflate(inflater, container, false)
+
+        frameLayout = binding.groupList
+
+        replaceFragment(GroupListFragment())
+
+        //binding.searchView.isSubmitButtonEnabled=true
+
+        binding.searchView.setOnClickListener {
+            val intent = Intent(activity, SearchGroup::class.java)
+            startActivity(intent)
+        }
+
+        binding.searchView.setOnSearchClickListener {
+            val intent = Intent(activity, SearchGroup::class.java)
+            startActivity(intent)
+        }
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+
+                // 검색 버튼 누를 때 호출
+
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                return true
+            }
+        })
+
+        tabLayout = binding.tabLayout
+
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when (tab!!.position) {
+                    0 -> replaceFragment(RentProducts())
+                    1 -> replaceFragment(RentList())
                 }
             }
+        })
+
+        return binding.root
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        parentFragmentManager.beginTransaction().replace(R.id.group_list, fragment)
+            .addToBackStack(null).commit()
     }
 }

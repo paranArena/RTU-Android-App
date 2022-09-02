@@ -39,8 +39,8 @@ data class RegisterData(
     val studentId: String,
     val major: String,
     val activated: Boolean,
-    val clubList: List<Club>,
-    val rentals: List<Rental>,
+    val clubList: List<Club>?,
+    val rentals: List<Rental>?,
     val authorityDtoSet: List<Authority>
 )
 

@@ -58,3 +58,10 @@ data class ClubData(
     val notifications: List<NoticeDetailModel>,
     val products: ArrayList<String>
 ): Parcelable
+
+
+data class CreateClubResponse(
+    val statusCode: Int,
+    val responseMessage: String,
+    val data: ClubSearchDetail
+)

@@ -23,7 +23,16 @@
             android:layout_gravity="center"
             android:textColor="@color/black"
             android:textStyle="bold">
+        </TextView>
 
+        <TextView
+            android:id="@+id/completeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="완료"
+            android:layout_gravity="right"
+            android:layout_marginRight="15dp"
+            android:textColor="@color/black">
         </TextView>
     </androidx.appcompat.widget.Toolbar>
 
@@ -42,8 +51,7 @@
                 android:id="@+id/groupImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/change">
-            </ImageView>
+                android:src="@drawable/change"></ImageView>
 
             <TextView
                 android:id="@+id/groupNameText"
@@ -61,9 +69,8 @@
                 android:id="@+id/groupNameEditText"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_below="@id/groupNameText">
-            </EditText>
+                android:layout_below="@id/groupNameText"
+                android:layout_marginHorizontal="20dp"></EditText>
 
             <TextView
                 android:id="@+id/tagText"

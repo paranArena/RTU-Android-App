@@ -26,6 +26,17 @@
             android:textStyle="bold">
 
         </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar_option"
+            android:text="관리자"
+            android:layout_gravity="right"
+            android:layout_marginRight="15dp"
+            android:textColor="@color/black">
+
+        </TextView>
     </androidx.appcompat.widget.Toolbar>
 
 
@@ -43,8 +54,7 @@
                 android:id="@+id/groupImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/change">
-            </ImageView>
+                android:src="@drawable/change"></ImageView>
 
             <TextView
                 android:id="@+id/groupTagText"

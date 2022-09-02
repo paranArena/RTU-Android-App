@@ -54,6 +54,8 @@
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@+id/fixedMail"></EditText>
 
+
+
         <TextView
             android:id="@+id/fixedMail"
             android:layout_width="wrap_content"
@@ -69,47 +71,65 @@
 
         <ImageButton
             android:id="@+id/mailButton"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/mailText"
-            android:src="@drawable/ic_check_button"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:background="@color/white"
-            android:layout_alignParentRight="true">
+            android:src="@drawable/ic_check_button">
 
         </ImageButton>
+
+        <TextView
+            android:id="@+id/mailHelp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:textSize="8dp"
+            android:text="이메일을 바르게 입력해 주세요"
+            android:layout_below="@id/mailEditText">
+        </TextView>
 
         <TextView
             android:id="@+id/passwordText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/darkGray"
-            android:textSize="10dp"
-            android:text="Password"
             android:layout_below="@id/mailEditText"
-            android:layout_marginTop="20dp">
-        </TextView>
+            android:layout_marginTop="20dp"
+            android:text="Password"
+            android:textColor="@color/darkGray"
+            android:textSize="10dp"></TextView>
 
         <EditText
             android:id="@+id/passwordEditText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:layout_below="@id/passwordText">
-        </EditText>
+            android:layout_below="@id/passwordText"
+            android:inputType="textPassword"></EditText>
 
         <ImageButton
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/ic_view_button"
             android:layout_alignRight="@id/passwordEditText"
             android:layout_alignBottom="@id/passwordEditText"
-            android:layout_marginBottom="20dp"
+            android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
-            android:text="Button"/>
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/ic_view_button"
+            android:text="Button" />
+
+        <TextView
+            android:id="@+id/passwordHelp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:textSize="8dp"
+            android:text="password는 8자 이상이여야 합니다."
+            android:layout_below="@id/passwordEditText">
+        </TextView>
 
 
         <TextView
@@ -127,9 +147,18 @@
             android:id="@+id/passwordCheckEditText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:layout_below="@id/passwordCheckText">
-        </EditText>
+            android:layout_below="@id/passwordCheckText"
+            android:inputType="textPassword"></EditText>
+
+        <TextView
+            android:id="@+id/passwordCheckHelp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:textSize="8dp"
+            android:text="password가 일치하지 않습니다."
+            android:layout_below="@id/passwordCheckEditText">
+        </TextView>
 
         <ImageButton
             android:id="@+id/button2"
@@ -163,6 +192,16 @@
         </EditText>
 
         <TextView
+            android:id="@+id/nameHelp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:textSize="8dp"
+            android:text="이름을 2글자 이상 입력해 주세요"
+            android:layout_below="@id/nameEditText">
+        </TextView>
+
+        <TextView
             android:id="@+id/majorText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -179,6 +218,16 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/majorText">
         </EditText>
+
+        <TextView
+            android:id="@+id/majorHelp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:textSize="8dp"
+            android:text="학과를 바르게 입력해 주세요"
+            android:layout_below="@id/majorEditText">
+        </TextView>
 
         <TextView
             android:id="@+id/idText"
@@ -199,6 +248,16 @@
             android:inputType="number"></EditText>
 
         <TextView
+            android:id="@+id/idHelp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:textSize="8dp"
+            android:text="학번을 바르게 입력해 주세요"
+            android:layout_below="@id/idEditText">
+        </TextView>
+
+        <TextView
             android:id="@+id/numberText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -217,6 +276,16 @@
             android:hint="'-'제외"
             android:inputType="number">
         </EditText>
+
+        <TextView
+            android:id="@+id/numberHelp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:textSize="8dp"
+            android:text="휴대전화 번호를 바르게 입력해 주세요"
+            android:layout_below="@id/numberEditText">
+        </TextView>
 
         <ImageButton
             android:id="@+id/nextButton"

@@ -1,11 +1,10 @@
 package com.rtu.retrofit
 
 import com.rtu.model.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface API {
     @POST("/authenticate") // Call<InitializeResponse> 데이터를 받을 data class
@@ -17,6 +16,20 @@ interface API {
     fun registerPostRequest(
         @Body initializeRequest: RegisterRequest
     ): Call<RegisterResponse>
+
+    @Multipart
+    @POST("/clubs")
+    fun createClubRequest(
+        @Part ("name") name: RequestBody,
+        @Part ("introduction") introduction: RequestBody,
+        @Part thumbnail: MultipartBody.Part?,
+        @Part ("hashtags")  hashtag: RequestBody
+    ): Call<CreateClubResponse>
+
+    @GET("/members/{email}/exists")
+    fun checkEmailRequest(
+        @Path("email") email:String
+    ): Call<Boolean>
 
     @GET("/clubs/search/all")
     fun groupSearchRequest(
