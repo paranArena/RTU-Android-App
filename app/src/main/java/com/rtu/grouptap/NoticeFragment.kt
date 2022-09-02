@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.rtu.adapter.GroupViewAdapter
+import com.rtu.adapter.MyGroupViewAdapter
 import com.rtu.databinding.FragmentNoticeBinding
 import com.rtu.model.GroupModel
 
@@ -15,7 +15,7 @@ class NoticeFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    lateinit var groupViewAdapter: GroupViewAdapter
+    lateinit var groupViewAdapter: MyGroupViewAdapter
     val data = mutableListOf<GroupModel>()
 
     override fun onCreateView(
@@ -31,7 +31,7 @@ class NoticeFragment : Fragment() {
 
     private fun initRecycler(){
 
-        groupViewAdapter = GroupViewAdapter(data)
+        /*groupViewAdapter = GroupViewAdapter(data)
         binding.rvList.adapter = groupViewAdapter
 
 
@@ -45,7 +45,7 @@ class NoticeFragment : Fragment() {
             groupViewAdapter.groupList = data
             groupViewAdapter.notifyDataSetChanged()
 
-        }
+        }*/
 
     }
 }

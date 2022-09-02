@@ -1,7 +1,9 @@
 package com.rtu
 
 import android.app.Application
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,7 +11,6 @@ import android.view.View
 import com.rtu.databinding.ActivityMainBinding
 import com.rtu.model.LoginRequest
 import com.rtu.model.LoginResponse
-import com.rtu.retrofit.PreferenceUtil
 import com.rtu.retrofit.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
@@ -72,7 +73,7 @@ class MainActivity : AppCompatActivity() {
 
                     if(data.token!=null){
                         val token=data.token
-                        GlobalApplication.prefs.setString("tokens", token!!)
+                        GlobalApplication.prefs.setString("token", token!!)
                         success() //로그인 성공
                     }
                 }
@@ -96,6 +97,22 @@ class MainActivity : AppCompatActivity() {
         override fun onCreate() {
             prefs= PreferenceUtil(applicationContext)
             super.onCreate()
+        }
+    }
+
+    class PreferenceUtil(context: Context)
+    {
+        private val prefs: SharedPreferences =
+            context.getSharedPreferences("tokens", Context.MODE_PRIVATE)
+
+        fun getString(key: String, defValue: String): String
+        {
+            return prefs.getString(key, defValue).toString()
+        }
+
+        fun setString(key: String, str: String)
+        {
+            prefs.edit().putString(key, str).apply()
         }
     }
 }

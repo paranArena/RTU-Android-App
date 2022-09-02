@@ -9,27 +9,30 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.rtu.R
 import com.rtu.model.ClubSearchDetail
+import com.rtu.model.NoticeDetailModel
 
-class GroupViewAdapter internal constructor(var groupList: List<ClubSearchDetail>)
-    : RecyclerView.Adapter<GroupViewAdapter.ListViewHolder>() {
+class MyNoticeViewAdapter internal constructor(var noticeList: List<NoticeDetailModel>)
+    : RecyclerView.Adapter<MyNoticeViewAdapter.ListViewHolder>() {
 
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(_list: ClubSearchDetail) {
+        fun bind(_list: NoticeDetailModel) {
             val imageView: ImageView = itemView.findViewById<ImageView>(R.id.iv_image)
-            if(_list.thumbnailPath!=null) {
+            /*if(_list.thumbnailPath!=null) {
                 val newUrl=_list.thumbnailPath
                 Glide.with(itemView).load(newUrl).placeholder(R.drawable.ic_launcher_foreground)
                     .override(60, 60).into(imageView)
-            }
+            }*/
             itemView.findViewById<ImageView>(R.id.iv_image).clipToOutline=true
 
-            itemView.findViewById<TextView>(R.id.iv_name).text = _list.name
+            itemView.findViewById<TextView>(R.id.iv_name).text = _list.title
             //itemView.findViewById<TextView>(R.id.iv_category).text = _list.category
-            itemView.findViewById<TextView>(R.id.iv_tag).text = _list.introduction
+            val createdAt=_list.createdAt.substring(0 until 10).replace("-",". ")
+
+            itemView.findViewById<TextView>(R.id.iv_date).text = createdAt
         }
     }
-    override fun getItemCount(): Int = groupList.size
+    override fun getItemCount(): Int = noticeList.size
 
     override fun getItemViewType(position: Int): Int {
         return position
@@ -39,13 +42,13 @@ class GroupViewAdapter internal constructor(var groupList: List<ClubSearchDetail
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         return ListViewHolder(
             // 새로운 뷰를 생성해 뷰홀더에 인자로 넣어준다.
-            LayoutInflater.from(parent.context).inflate(R.layout.group_list, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.my_notice_list, parent, false)
         )
     }
 
     // 반환된 ViewHolder에 데이터를 연결한다.
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.bind(groupList[position])
+        holder.bind(noticeList[position])
 
         /*val layoutParams = holder.itemView.layoutParams
         layoutParams.height = 600

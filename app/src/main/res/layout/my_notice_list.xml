@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/iv_tag"
+        android:id="@+id/iv_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -43,17 +43,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/join_button"
+    <TextView
+        android:id="@+id/iv_date"
+        android:text="2022. 09. 02"
+        android:textSize="9dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="15dp"
-        android:src="@drawable/ic_join_request"
-        android:background="@color/white">
-    </ImageButton>
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp">
+    </TextView>
 
     <View
         android:id="@+id/view"

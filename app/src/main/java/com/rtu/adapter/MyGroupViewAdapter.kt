@@ -10,8 +10,8 @@ import com.bumptech.glide.Glide
 import com.rtu.R
 import com.rtu.model.ClubSearchDetail
 
-class GroupViewAdapter internal constructor(var groupList: List<ClubSearchDetail>)
-    : RecyclerView.Adapter<GroupViewAdapter.ListViewHolder>() {
+class MyGroupViewAdapter internal constructor(var groupList: List<ClubSearchDetail>)
+    : RecyclerView.Adapter<MyGroupViewAdapter.ListViewHolder>() {
 
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -39,16 +39,31 @@ class GroupViewAdapter internal constructor(var groupList: List<ClubSearchDetail
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         return ListViewHolder(
             // 새로운 뷰를 생성해 뷰홀더에 인자로 넣어준다.
-            LayoutInflater.from(parent.context).inflate(R.layout.group_list, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.my_group_list, parent, false)
         )
     }
 
     // 반환된 ViewHolder에 데이터를 연결한다.
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.bind(groupList[position])
+        holder.itemView.setOnClickListener{
+            itemClickListner.onClick(it,position)
+        }
+
 
         /*val layoutParams = holder.itemView.layoutParams
         layoutParams.height = 600
         holder.itemView.requestLayout()*/
     }
+
+    interface ItemClickListener{
+        fun onClick(view: View,position: Int)
+    }
+    //를릭 리스너
+    private lateinit var itemClickListner: ItemClickListener
+
+    fun setItemClickListener(itemClickListener: ItemClickListener) {
+        this.itemClickListner = itemClickListener
+    }
+
 }

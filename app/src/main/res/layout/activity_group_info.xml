@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".grouptap.GroupInfo" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:outlineAmbientShadowColor="@color/white"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar_title"
+            android:text="그룹 이름"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="bold">
+
+        </TextView>
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/groupImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/change">
+            </ImageView>
+
+            <TextView
+                android:id="@+id/groupTagText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/darkGray"
+                android:layout_marginHorizontal="20dp"
+                android:textSize="12dp"
+                android:layout_below="@id/groupImage"
+                android:text="#해시태그 #해시태그"></TextView>
+
+            <TextView
+                android:id="@+id/groupNameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/groupImage"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                android:text="소개글"
+                android:textColor="@color/darkGray"
+                android:textSize="16dp"></TextView>
+
+            <TextView
+                android:id="@+id/introText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/groupNameText"
+                android:layout_marginHorizontal="20dp"
+                android:text="클럽을 소개하는 글"
+                android:textColor="@color/black"></TextView>
+
+            <TextView
+                android:id="@+id/noticeText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/introText"
+                android:layout_marginHorizontal="20dp"
+                android:text="공지사항"
+                android:textColor="@color/darkGray"
+                android:textSize="16dp"></TextView>
+
+            <!--<androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/notices1"
+                android:layout_width="match_parent"
+                android:layout_below="@id/tagText"
+                android:layout_height="100dp"
+                android:padding="10dp"
+                android:layout_marginHorizontal="10dp">
+
+
+                <ImageView
+                    android:id="@+id/iv_image1"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/change"
+                    android:background="@drawable/round_button"/>
+
+                <TextView
+                    android:id="@+id/iv_name1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginTop="5dp"
+                    android:text="그룹이름"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/iv_image1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/iv_group1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:textSize="10dp"
+                    android:text="#tag #태그"
+                    android:layout_marginTop="25dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/iv_date1"
+                    android:text="2022. 09. 02"
+                    android:textSize="9dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="15dp">
+                </TextView>
+
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:layout_editor_absoluteX="20dp" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/notices2"
+                android:layout_width="match_parent"
+                android:layout_below="@id/notices1"
+                android:layout_height="100dp"
+                android:padding="10dp"
+                android:layout_marginHorizontal="10dp">
+
+
+                <ImageView
+                    android:id="@+id/iv_image2"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/change"
+                    android:background="@drawable/round_button"/>
+
+                <TextView
+                    android:id="@+id/iv_name2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginTop="5dp"
+                    android:text="그룹이름"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/iv_image2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/iv_group2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:textSize="10dp"
+                    android:text="#tag #태그"
+                    android:layout_marginTop="25dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/iv_date2"
+                    android:text="2022. 09. 02"
+                    android:textSize="9dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="15dp">
+                </TextView>
+
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:layout_editor_absoluteX="20dp" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/notices3"
+                android:layout_width="match_parent"
+                android:layout_below="@id/notices2"
+                android:layout_height="100dp"
+                android:padding="10dp"
+                android:layout_marginHorizontal="10dp">
+
+
+                <ImageView
+                    android:id="@+id/iv_image3"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/change"
+                    android:background="@drawable/round_button"/>
+
+                <TextView
+                    android:id="@+id/iv_name3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginTop="5dp"
+                    android:text="그룹이름"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/iv_image3"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/iv_group3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:textSize="10dp"
+                    android:text="#tag #태그"
+                    android:layout_marginTop="25dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/iv_date3"
+                    android:text="2022. 09. 02"
+                    android:textSize="9dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="15dp">
+                </TextView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_list"
+                android:layout_below="@id/noticeText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/my_notice_list"/>
+
+
+            <TextView
+                android:id="@+id/rentalText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/darkGray"
+                android:layout_marginHorizontal="20dp"
+                android:textSize="16dp"
+                android:layout_below="@id/rv_list"
+                android:layout_marginTop="20dp"
+                android:text="대여물품">
+            </TextView>
+
+            <EditText
+                android:id="@+id/introEditText"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@id/rentalText"
+                android:paddingHorizontal="20dp"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/round_button"></EditText>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</LinearLayout>
