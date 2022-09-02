@@ -26,6 +26,15 @@ interface API {
         @Part ("hashtags")  hashtag: RequestBody
     ): Call<CreateClubResponse>
 
+    @Multipart
+    @POST("/clubs/{id}/notifications")
+    fun createNoticeRequest(
+        @Part ("title") name: RequestBody,
+        @Part ("content") introduction: RequestBody,
+        @Part image: MultipartBody.Part?,
+        @Path("id") id:Int
+    ): Call<CreateNoticeResponse>
+
     @GET("/members/{email}/exists")
     fun checkEmailRequest(
         @Path("email") email:String
@@ -47,6 +56,17 @@ interface API {
     fun getGroupDetail(
         @Path("id") id:Int
     ): Call<ClubDetail>
+
+    @GET("clubs/{id}/notifications/search/all")
+    fun getClubNotice(
+        @Path("id") id: Int
+    ): Call<MyNotice>
+
+    @GET("/clubs/{club_id}/notifications/{notice_id}")
+    fun getNoticeDetail(
+        @Path("club_id") club_id: Int,
+        @Path("notice_id") notice_id: Int
+    ): Call<NoticeInfoModel>
 
     //Todo 모든 공지사항 GET
 

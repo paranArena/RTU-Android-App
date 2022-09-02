@@ -19,6 +19,15 @@
         android:theme="@style/Theme.Rtu"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".management.AddNotice"
+            android:exported="false" />
+        <activity
+            android:name=".grouptap.NoticeInfo"
+            android:exported="false" />
+        <activity
+            android:name=".management.ManageNotice"
+            android:exported="false" />
+        <activity
             android:name=".management.ManageActivity"
             android:exported="false" />
         <activity

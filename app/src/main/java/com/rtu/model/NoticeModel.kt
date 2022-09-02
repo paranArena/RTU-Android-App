@@ -9,6 +9,22 @@ data class MyNotice(
     val data: List<NoticeModel>
 )
 
+data class CreateNoticeResponse(
+    val statusCode: Int,
+    val responseMessage: String,
+    val data: NoticeResponse
+)
+
+@Parcelize
+data class NoticeResponse(
+    val id: Int,
+    val title: String,
+    val content: String,
+    val imagePath: String,
+    val createdAt: String,
+    val updatedAt: String
+): Parcelable
+
 @Parcelize
 data class NoticeModel(
     val id: Int,
@@ -16,6 +32,12 @@ data class NoticeModel(
     val createdAt: String,
     val updatedAt: String
 ): Parcelable
+
+data class NoticeInfoModel(
+    val statusCode: Int,
+    val responseMessage: String,
+    val data: NoticeDetailModel
+)
 
 @Parcelize
 data class NoticeDetailModel(

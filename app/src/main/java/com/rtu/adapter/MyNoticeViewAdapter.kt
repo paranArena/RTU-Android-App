@@ -10,13 +10,14 @@ import com.bumptech.glide.Glide
 import com.rtu.R
 import com.rtu.model.ClubSearchDetail
 import com.rtu.model.NoticeDetailModel
+import com.rtu.model.NoticeModel
 
-class MyNoticeViewAdapter internal constructor(var noticeList: List<NoticeDetailModel>)
+class MyNoticeViewAdapter internal constructor(var noticeList: List<NoticeModel>)
     : RecyclerView.Adapter<MyNoticeViewAdapter.ListViewHolder>() {
 
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(_list: NoticeDetailModel) {
+        fun bind(_list: NoticeModel) {
             val imageView: ImageView = itemView.findViewById<ImageView>(R.id.iv_image)
             /*if(_list.thumbnailPath!=null) {
                 val newUrl=_list.thumbnailPath
@@ -53,5 +54,15 @@ class MyNoticeViewAdapter internal constructor(var noticeList: List<NoticeDetail
         /*val layoutParams = holder.itemView.layoutParams
         layoutParams.height = 600
         holder.itemView.requestLayout()*/
+    }
+
+    interface ItemClickListener{
+        fun onClick(view: View,position: Int)
+    }
+    //를릭 리스너
+    private lateinit var itemClickListner: ItemClickListener
+
+    fun setItemClickListener(itemClickListener: ItemClickListener) {
+        this.itemClickListner = itemClickListener
     }
 }
