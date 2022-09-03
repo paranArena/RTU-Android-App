@@ -3,18 +3,18 @@ package com.rtu.management
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.FrameLayout
+
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
 import com.rtu.R
-import com.rtu.databinding.ActivityManageMemberBinding
+import com.rtu.databinding.ActivityManageProductBinding
+import com.rtu.grouptap.GroupListFragment
 import com.rtu.grouptap.NoticeFragment
-import kotlinx.android.synthetic.main.activity_manage_member.*
+import com.rtu.management.product.ManageRentFragment
 
-class ManageMember : AppCompatActivity() {
-
+class ManageProduct : AppCompatActivity() {
     private lateinit var tabLayout: TabLayout
-    private var _binding: ActivityManageMemberBinding?=null
+    private var _binding: ActivityManageProductBinding? = null
 
     private val binding get() = _binding!!
 
@@ -23,7 +23,7 @@ class ManageMember : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId){
+        return when (item.itemId) {
             android.R.id.home -> {
                 finish()
                 true
@@ -31,18 +31,20 @@ class ManageMember : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage_notice)
 
-        _binding= ActivityManageMemberBinding.inflate(layoutInflater)
+        _binding = ActivityManageProductBinding.inflate(layoutInflater)
 
         setSupportActionBar(binding.toolbar)
+        replaceFragment(ManageRentFragment())
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
-        val id=getExtra()
+        val id = getExtra()
 
         tabLayout = binding.tabLayout
 
@@ -55,17 +57,18 @@ class ManageMember : AppCompatActivity() {
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab!!.position) {
-                    0 -> replaceFragment(MemberListFragment())
+                    0 -> replaceFragment(ManageRentFragment())
                     1 -> replaceFragment(NoticeFragment())
                 }
             }
         })
 
 
-        val view=binding.root
+        val view = binding.root
         setContentView(view)
     }
+
     fun replaceFragment(fragment: Fragment) {
-            supportFragmentManager.beginTransaction().replace(R.id.frame, fragment).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.frame, fragment).commit()
     }
 }

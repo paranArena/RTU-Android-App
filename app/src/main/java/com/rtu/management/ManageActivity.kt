@@ -54,6 +54,14 @@ class ManageActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.products.setOnClickListener {
+            val intent = Intent(this, ManageProduct::class.java)
+            intent.apply {
+                this.putExtra("id",id) // 데이터 넣기
+            }
+            startActivity(intent)
+        }
+
         val view=binding.root
         setContentView(view)
     }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".management.ManageMember">
+    tools:context=".management.ManageProduct">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/toolbar_title"
-            android:text="멤버 관리"
+            android:text="대여/물품 관리"
             android:layout_gravity="center"
             android:textColor="@color/black"
             android:textStyle="bold">
@@ -40,13 +40,13 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="등록된 멤버">
+            android:text="대여 관리">
         </com.google.android.material.tabs.TabItem>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="가입 신청"/>
+            android:text="물품 관리"/>
     </com.google.android.material.tabs.TabLayout>
 
     <FrameLayout
