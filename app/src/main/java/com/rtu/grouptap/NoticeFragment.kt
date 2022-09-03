@@ -1,21 +1,30 @@
 package com.rtu.grouptap
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.rtu.adapter.MyGroupViewAdapter
+import com.rtu.adapter.MyNoticeViewAdapter
 import com.rtu.databinding.FragmentNoticeBinding
 import com.rtu.model.GroupModel
+import com.rtu.model.MyNotice
+import com.rtu.model.NoticeModel
+import com.rtu.retrofit.RetrofitBuilder
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class NoticeFragment : Fragment() {
 
+    val data_ = mutableListOf<NoticeModel>()
     private var _binding: FragmentNoticeBinding?=null
 
     private val binding get() = _binding!!
 
-    lateinit var groupViewAdapter: MyGroupViewAdapter
     val data = mutableListOf<GroupModel>()
 
     override fun onCreateView(
@@ -24,28 +33,60 @@ class NoticeFragment : Fragment() {
     ): View? {
         _binding = FragmentNoticeBinding.inflate(inflater, container, false)
 
-        initRecycler()
+        getAllNotice()
 
         return binding.root
     }
 
-    private fun initRecycler(){
+    private fun getAllNotice(){
+        RetrofitBuilder.api.getClubNotice(id).enqueue(object :
+            Callback<MyNotice> {
+            override fun onResponse(
 
-        /*groupViewAdapter = GroupViewAdapter(data)
-        binding.rvList.adapter = groupViewAdapter
+                call: Call<MyNotice>,
+                response: Response<MyNotice>
+            ) {
+                if (response.isSuccessful) {
+                    data_.clear()
+                    //Log.d("test", response.body().toString())
+                    var data = response.body()!! // GsonConverter를 사용해 데이터매핑
+                    Log.d("test", data.toString())
 
+                    for (item in data.data) {
+                        data_.add(item)
+                    }
 
-        data.apply {
-            add(GroupModel(name = "그룹이름", introduction = "#태그 #태그"))
-            add(GroupModel(name = "그룹이름", introduction = "#태그 #태그"))
-            add(GroupModel(name = "그룹이름", introduction = "#태그 #태그"))
-            add(GroupModel(name = "그룹이름", introduction = "#태그 #태그"))
-            add(GroupModel(name = "그룹이름", introduction = "#태그 #태그"))
+                    binding.rvList.adapter= MyNoticeViewAdapter(data_).apply{
+                        setItemClickListener(
+                            object : MyNoticeViewAdapter.ItemClickListener {
+                                override fun onClick(view: View, position: Int) {
+                                    val clubId=noticeList[position].clubId
+                                    val noticeId=noticeList[position].id
 
-            groupViewAdapter.groupList = data
-            groupViewAdapter.notifyDataSetChanged()
+                                    //setFragmentResult("requestKey", bundleOf("projid" to projid))
 
-        }*/
+                                    val intent = Intent(activity,
+                                        NoticeInfo::class.java)
 
+                                    intent.apply {
+                                        this.putExtra("club_id",clubId)
+                                        this.putExtra("notice_id",noticeId)// 데이터 넣기
+                                    }
+                                    startActivity(intent)
+                                    onStop()
+                                    //replaceFragment(GoodsInfoFragment())
+                                }
+                            })
+                    }
+                    //Toast.makeText(this@GoodsInfo, "업로드 성공!", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<MyNotice>, t: Throwable) {
+                Log.d("test", "실패$t")
+                //Toast.makeText(this@GoodsInfo, "업로드 실패 ..", Toast.LENGTH_SHORT).show()
+            }
+
+        })
     }
 }

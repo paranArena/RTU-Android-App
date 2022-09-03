@@ -28,7 +28,9 @@ data class NoticeResponse(
 @Parcelize
 data class NoticeModel(
     val id: Int,
+    val clubId: Int?,
     val title: String,
+    val imagePath: String,
     val createdAt: String,
     val updatedAt: String
 ): Parcelable

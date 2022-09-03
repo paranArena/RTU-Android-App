@@ -60,14 +60,16 @@ class ManageNotice : AppCompatActivity() {
             }
 
             startActivity(intent)
+            onStop()
         }
 
         val view=binding.root
         setContentView(view)
-
     }
 
     override fun onResume(){
+        val id=getExtra()
+        getNotice(id)
         super.onResume()
     }
 
@@ -93,18 +95,19 @@ class ManageNotice : AppCompatActivity() {
                         setItemClickListener(
                             object : MyNoticeViewAdapter.ItemClickListener {
                                 override fun onClick(view: View, position: Int) {
-                                    val id=noticeList[position].id
+                                    val notice_id=noticeList[position].id
 
                                     //setFragmentResult("requestKey", bundleOf("projid" to projid))
 
-                                    val intent = Intent(this@ManageNotice, NoticeInfo::class.java)
+                                    val intent = Intent(this@ManageNotice,
+                                        NoticeInfo::class.java)
 
                                     intent.apply {
                                         this.putExtra("club_id",getExtra())
-                                        this.putExtra("notice_id",id)// 데이터 넣기
+                                        this.putExtra("notice_id",notice_id)// 데이터 넣기
                                     }
                                     startActivity(intent)
-
+                                    onStop()
                                     //replaceFragment(GoodsInfoFragment())
                                 }
                             })

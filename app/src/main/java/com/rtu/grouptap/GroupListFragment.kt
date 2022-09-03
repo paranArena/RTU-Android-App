@@ -31,7 +31,7 @@ class GroupListFragment : Fragment() {
     ): View? {
         _binding = FragmentGroupListBinding.inflate(inflater, container, false)
 
-        Log.d("test", "before")
+        //Log.d("test", "before")
         binding.addGroup.setOnClickListener {
             val intent = Intent(activity, AddGroup::class.java)
             startActivity(intent)

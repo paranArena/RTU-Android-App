@@ -9,8 +9,6 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.rtu.R
 import com.rtu.databinding.ActivityNoticeInfoBinding
-import com.rtu.management.ManageActivity
-import com.rtu.model.ClubDetail
 import com.rtu.model.NoticeInfoModel
 import com.rtu.retrofit.RetrofitBuilder
 import retrofit2.Call

@@ -57,7 +57,7 @@ interface API {
         @Path("id") id:Int
     ): Call<ClubDetail>
 
-    @GET("clubs/{id}/notifications/search/all")
+    @GET("/clubs/{id}/notifications/search/all")
     fun getClubNotice(
         @Path("id") id: Int
     ): Call<MyNotice>
@@ -68,6 +68,8 @@ interface API {
         @Path("notice_id") notice_id: Int
     ): Call<NoticeInfoModel>
 
-    //Todo 모든 공지사항 GET
+    @GET("/members/my/notifications")
+    fun getMyClubNotice(
+    ): Call<MyNotice>
 
 }

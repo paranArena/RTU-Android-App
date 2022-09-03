@@ -19,11 +19,11 @@ class MyNoticeViewAdapter internal constructor(var noticeList: List<NoticeModel>
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(_list: NoticeModel) {
             val imageView: ImageView = itemView.findViewById<ImageView>(R.id.iv_image)
-            /*if(_list.thumbnailPath!=null) {
-                val newUrl=_list.thumbnailPath
+            if(_list.imagePath!=null) {
+                val newUrl=_list.imagePath
                 Glide.with(itemView).load(newUrl).placeholder(R.drawable.ic_launcher_foreground)
                     .override(60, 60).into(imageView)
-            }*/
+            }
             itemView.findViewById<ImageView>(R.id.iv_image).clipToOutline=true
 
             itemView.findViewById<TextView>(R.id.iv_name).text = _list.title
@@ -50,6 +50,10 @@ class MyNoticeViewAdapter internal constructor(var noticeList: List<NoticeModel>
     // 반환된 ViewHolder에 데이터를 연결한다.
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.bind(noticeList[position])
+
+        holder.itemView.setOnClickListener{
+            itemClickListner.onClick(it,position)
+        }
 
         /*val layoutParams = holder.itemView.layoutParams
         layoutParams.height = 600
