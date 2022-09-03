@@ -133,7 +133,7 @@
 
             </TextView>
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/memberText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -168,7 +168,7 @@
                 android:background="@color/white"
                 android:layout_alignParentRight="true">
 
-            </ImageButton>
+            </ImageButton>-->
 
         </RelativeLayout>
 

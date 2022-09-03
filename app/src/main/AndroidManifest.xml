@@ -19,6 +19,9 @@
         android:theme="@style/Theme.Rtu"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".management.ManageMember"
+            android:exported="false" />
+        <activity
             android:name=".management.AddNotice"
             android:exported="false" />
         <activity

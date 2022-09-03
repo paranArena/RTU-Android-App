@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.rtu.adapter.MyGroupViewAdapter
 import com.rtu.adapter.MyNoticeViewAdapter
 import com.rtu.databinding.FragmentNoticeBinding
 import com.rtu.model.GroupModel
@@ -25,8 +24,6 @@ class NoticeFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    val data = mutableListOf<GroupModel>()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,7 +36,7 @@ class NoticeFragment : Fragment() {
     }
 
     private fun getAllNotice(){
-        RetrofitBuilder.api.getClubNotice(id).enqueue(object :
+        RetrofitBuilder.api.getMyClubNotice().enqueue(object :
             Callback<MyNotice> {
             override fun onResponse(
 
@@ -73,7 +70,6 @@ class NoticeFragment : Fragment() {
                                         this.putExtra("notice_id",noticeId)// 데이터 넣기
                                     }
                                     startActivity(intent)
-                                    onStop()
                                     //replaceFragment(GoodsInfoFragment())
                                 }
                             })

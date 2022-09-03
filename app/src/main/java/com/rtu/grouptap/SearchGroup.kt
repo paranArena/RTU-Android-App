@@ -1,5 +1,6 @@
 package com.rtu.grouptap
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rtu.R
 import com.rtu.adapter.GroupViewAdapter
+import com.rtu.adapter.MyGroupViewAdapter
 import com.rtu.model.ClubSearchDetail
 import com.rtu.model.GetSearchGroup
 import com.rtu.retrofit.RetrofitBuilder
@@ -51,7 +53,23 @@ class SearchGroup : AppCompatActivity() {
 
                     mAdapter= GroupViewAdapter(data_)
 
-                    recyclerView.adapter=mAdapter
+                    recyclerView.adapter= mAdapter?.apply{
+                        setItemClickListener(
+                            object : GroupViewAdapter.ItemClickListener {
+                                override fun onClick(view: View, position: Int) {
+                                    val id=groupList[position].id
+
+                                    val intent = Intent(this@SearchGroup,
+                                        GroupInfo::class.java)
+
+                                    intent.apply {
+                                        this.putExtra("id",id) // 데이터 넣기
+                                    }
+                                    startActivity(intent)
+
+                                }
+                            })
+                    }
                 }
 
                 else{

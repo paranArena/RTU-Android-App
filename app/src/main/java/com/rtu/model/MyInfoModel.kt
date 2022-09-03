@@ -39,3 +39,14 @@ data class MemberInfo(
     val studentId: String,
     val major: String
 ): Parcelable
+
+data class MyRole(
+    val statusCode: Int,
+    val responseMessage: String,
+    val data: ClubRole
+)
+
+@Parcelize
+data class ClubRole(
+    val clubRole: String
+): Parcelable

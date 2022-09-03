@@ -72,4 +72,14 @@ interface API {
     fun getMyClubNotice(
     ): Call<MyNotice>
 
+    @GET("/members/my/clubs/{id}/role")
+    fun getMyClubRole(
+        @Path("id") id: Int
+    ): Call<MyRole>
+
+    @POST("/clubs/{id}/requests/join")
+    fun getJoinClub(
+        @Path("id") id: Int
+    ): Call<JoinResponse>
+
 }

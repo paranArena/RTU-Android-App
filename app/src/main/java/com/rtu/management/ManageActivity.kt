@@ -47,7 +47,7 @@ class ManageActivity : AppCompatActivity() {
         }
 
         binding.members.setOnClickListener {
-            val intent = Intent(this, ManageActivity::class.java)
+            val intent = Intent(this, ManageMember::class.java)
             intent.apply {
                 this.putExtra("id",id) // 데이터 넣기
             }

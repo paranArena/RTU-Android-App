@@ -1,15 +1,20 @@
 package com.rtu.grouptap
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
+import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
 import com.rtu.R
 import com.rtu.databinding.ActivityGroupInfoBinding
 import com.rtu.management.ManageActivity
 import com.rtu.model.ClubDetail
+import com.rtu.model.JoinResponse
+import com.rtu.model.MyRole
 import com.rtu.retrofit.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
@@ -47,13 +52,27 @@ class GroupInfo : AppCompatActivity() {
 
         val id=getExtra()
         getGroupInfo(id)
+        getGroupPermission(id)
 
         binding.toolbarOption.setOnClickListener{
-            val intent = Intent(this@GroupInfo, ManageActivity::class.java)
-            intent.apply {
-                this.putExtra("id",id) // 데이터 넣기
+            when (binding.toolbarOption.text) {
+                "관리자" -> {
+                    val intent = Intent(this@GroupInfo, ManageActivity::class.java)
+                    intent.apply {
+                        this.putExtra("id", id) // 데이터 넣기
+                    }
+                    startActivity(intent)
+                }
+                "탈퇴하기" -> {
+
+                }
+                "가입하기" -> {
+                    requestJoin(id)
+                }
+                "가입대기" -> {
+
+                }
             }
-            startActivity(intent)
         }
 
         val view=binding.root
@@ -97,5 +116,84 @@ class GroupInfo : AppCompatActivity() {
             }
 
         })
+    }
+    private fun getGroupPermission(id: Int){
+        RetrofitBuilder.api.getMyClubRole(id).enqueue(object :
+            Callback<MyRole> {
+            override fun onResponse(
+
+                call: Call<MyRole>,
+                response: Response<MyRole>
+            ) {
+                if (response.isSuccessful) {
+
+                    val data=response.body()!!
+                    val role=data.data.clubRole
+                    Log.d("test", role)
+                    if(role=="OWNER" || role=="ADMIN"){
+                        binding.toolbarOption.text="관리자"
+                        binding.toolbarOption.visibility= View.VISIBLE
+                    } else if(role=="USER"){
+                        binding.toolbarOption.text="탈퇴하기"
+                    } else if(role=="WAIT"){
+                        binding.toolbarOption.text="가입대기"
+                    } else{
+                        binding.toolbarOption.text="가입하기"
+                    }
+                    //Toast.makeText(this@GoodsInfo, "업로드 성공!", Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    binding.toolbarOption.text="가입하기" // 나중에 삭제
+                }
+
+            }
+
+            override fun onFailure(call: Call<MyRole>, t: Throwable) {
+                Log.d("test", "실패$t")
+                binding.toolbarOption.text="가입하기" // 나중에 삭제
+
+                //Toast.makeText(this@GoodsInfo, "업로드 실패 ..", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    private fun requestJoin(id: Int){
+        RetrofitBuilder.api.getJoinClub(id).enqueue(object :
+            Callback<JoinResponse> {
+            override fun onResponse(
+
+                call: Call<JoinResponse>,
+                response: Response<JoinResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val data=response.body()!!
+
+                    if(data.statusCode==200){
+                        popUp("join")
+                        binding.toolbarOption.text="가입대기"
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<JoinResponse>, t: Throwable) {
+                Log.d("test", "실패$t")
+                //Toast.makeText(this@GoodsInfo, "업로드 실패 ..", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    private fun popUp(s: String){
+        if(s=="join") {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("가입 요청 성공")
+                .setMessage("관리자에게 가입 요청 하였습니다.")
+                .setPositiveButton("확인",
+                    DialogInterface.OnClickListener { dialog, id ->
+                    })
+            // 다이얼로그를 띄워주기
+            builder.show()
+        }
     }
 }

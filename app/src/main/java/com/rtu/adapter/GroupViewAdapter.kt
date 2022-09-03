@@ -47,8 +47,23 @@ class GroupViewAdapter internal constructor(var groupList: List<ClubSearchDetail
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.bind(groupList[position])
 
+        holder.itemView.setOnClickListener{
+            itemClickListner.onClick(it,position)
+        }
+
         /*val layoutParams = holder.itemView.layoutParams
         layoutParams.height = 600
         holder.itemView.requestLayout()*/
     }
+
+    interface ItemClickListener{
+        fun onClick(view: View,position: Int)
+    }
+    //를릭 리스너
+    private lateinit var itemClickListner: ItemClickListener
+
+    fun setItemClickListener(itemClickListener: ItemClickListener) {
+        this.itemClickListner = itemClickListener
+    }
+
 }

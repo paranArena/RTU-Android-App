@@ -65,3 +65,9 @@ data class CreateClubResponse(
     val responseMessage: String,
     val data: ClubSearchDetail
 )
+
+data class JoinResponse(
+    val statusCode: Int,
+    val responseMessage: String,
+    val data: String?
+)
