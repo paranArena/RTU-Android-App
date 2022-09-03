@@ -12,6 +12,7 @@ import com.rtu.adapter.MyGroupViewAdapter
 import com.rtu.databinding.FragmentRentListBinding
 
 import com.rtu.grouptap.GroupInfo
+import com.rtu.model.ClubInfo
 import com.rtu.model.ClubSearchDetail
 import com.rtu.model.GetGroupModel
 import com.rtu.retrofit.RetrofitBuilder
@@ -25,7 +26,7 @@ class RentList : Fragment() {
     private val binding get() = _binding!!
 
     //lateinit var groupViewAdapter: GroupViewAdapter
-    val data_ = mutableListOf<ClubSearchDetail>()
+    val data_ = mutableListOf<ClubInfo>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,7 +53,7 @@ class RentList : Fragment() {
                     Log.d("test", data.toString())
 
                     for (item in data.data) {
-                        data_.add(item.club)
+                        data_.add(item)
                     }
 
                     binding.rvList.adapter= MyGroupViewAdapter(data_).apply{

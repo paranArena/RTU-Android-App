@@ -10,6 +10,7 @@ import com.rtu.R
 import com.rtu.databinding.ActivityManageMemberBinding
 import com.rtu.grouptap.NoticeFragment
 import kotlinx.android.synthetic.main.activity_manage_member.*
+import java.lang.reflect.Member
 
 class ManageMember : AppCompatActivity() {
 
@@ -18,7 +19,7 @@ class ManageMember : AppCompatActivity() {
 
     private val binding get() = _binding!!
 
-    private fun getExtra(): Int {
+   fun getExtra(): Int {
         return intent.getIntExtra("id", 0)
     }
 
@@ -42,7 +43,16 @@ class ManageMember : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
+        var fragmentMemberList=MemberListFragment()
+
         val id=getExtra()
+
+        var bundle=Bundle()
+
+        bundle.putInt("id", id)
+        fragmentMemberList.arguments=bundle
+
+        replaceFragment(fragmentMemberList)
 
         tabLayout = binding.tabLayout
 
@@ -55,7 +65,7 @@ class ManageMember : AppCompatActivity() {
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab!!.position) {
-                    0 -> replaceFragment(MemberListFragment())
+                    0 -> replaceFragment(fragmentMemberList)
                     1 -> replaceFragment(NoticeFragment())
                 }
             }

@@ -18,7 +18,10 @@ data class GetGroupModel(
 @Parcelize
 data class ClubInfo(
     val id: Int,
-    val club: ClubSearchDetail,
+    val name: String,
+    val introduction: String,
+    val thumbnailPath: String,
+    val hashtags: ArrayList<String>,
     val role: String
 ): Parcelable
 

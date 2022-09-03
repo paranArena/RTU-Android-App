@@ -7,12 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.rtu.adapter.MyGroupViewAdapter
+import com.rtu.adapter.MemberListAdapter
+
 import com.rtu.databinding.FragmentMemberListBinding
-import com.rtu.grouptap.AddGroup
-import com.rtu.grouptap.GroupInfo
-import com.rtu.model.ClubSearchDetail
-import com.rtu.model.GetGroupModel
+import com.rtu.model.MemberListModel
+import com.rtu.model.MemberModel
 import com.rtu.retrofit.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,7 +23,7 @@ class MemberListFragment : Fragment() {
     private val binding get() = _binding!!
 
     //lateinit var groupViewAdapter: GroupViewAdapter
-    val data_ = mutableListOf<ClubSearchDetail>()
+    val data_ = mutableListOf<MemberModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,22 +32,24 @@ class MemberListFragment : Fragment() {
         _binding = FragmentMemberListBinding.inflate(inflater, container, false)
 
         //Log.d("test", "before")
-        binding.addGroup.setOnClickListener {
+        /*binding.addGroup.setOnClickListener {
             val intent = Intent(activity, AddGroup::class.java)
             startActivity(intent)
-        }
+        }*/
 
-        initRecycler()
+        val id= arguments?.getInt("id", 1)
+
+        initRecycler(id!!)
 
         return binding.root
     }
 
-    private fun initRecycler() {
-        RetrofitBuilder.api.myGroupRequest().enqueue(object :
-            Callback<GetGroupModel> {
+    private fun initRecycler(id: Int) {
+        RetrofitBuilder.api.getAllMember(id).enqueue(object :
+            Callback<MemberListModel> {
             override fun onResponse(
-                call: Call<GetGroupModel>,
-                response: Response<GetGroupModel>
+                call: Call<MemberListModel>,
+                response: Response<MemberListModel>
             ) {
                 if (response.isSuccessful) {
                     data_.clear()
@@ -57,23 +58,23 @@ class MemberListFragment : Fragment() {
                     Log.d("test", data.toString())
 
                     for (item in data.data) {
-                        data_.add(item.club)
+                        data_.add(item)
                     }
 
-                    binding.rvList.adapter = MyGroupViewAdapter(data_).apply {
+                    binding.rvList.adapter = MemberListAdapter(data_).apply {
                         setItemClickListener(
-                            object : MyGroupViewAdapter.ItemClickListener {
+                            object : MemberListAdapter.ItemClickListener {
                                 override fun onClick(view: View, position: Int) {
-                                    val id = groupList[position].id
+                                    val id = memberList[position].id
 
                                     //setFragmentResult("requestKey", bundleOf("projid" to projid))
 
-                                    val intent = Intent(context, GroupInfo::class.java)
+                                    /*val intent = Intent(context, GroupInfo::class.java)
 
                                     intent.apply {
                                         this.putExtra("id", id) // 데이터 넣기
                                     }
-                                    startActivity(intent)
+                                    startActivity(intent)*/
 
                                     //replaceFragment(GoodsInfoFragment())
                                 }
@@ -85,7 +86,7 @@ class MemberListFragment : Fragment() {
                 }
             }
 
-            override fun onFailure(call: Call<GetGroupModel>, t: Throwable) {
+            override fun onFailure(call: Call<MemberListModel>, t: Throwable) {
                 Log.d("test", "실패$t")
                 //Toast.makeText(getActivity(), "업로드 실패 ..", Toast.LENGTH_SHORT).show()
             }

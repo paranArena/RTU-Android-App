@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3135" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/drawable/circle_button.xml" value="0.3765" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/drawable/ic_add_group.xml" value="0.1375" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/drawable/ic_check_button.xml" value="0.123" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/drawable/item_selector.xml" value="0.2" />
@@ -12,7 +13,7 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/font/custom_font.xml" value="0.340625" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_add_group.xml" value="0.176" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_add_notice.xml" value="0.264" />
-        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_add_product.xml" value="0.176" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_add_product.xml" value="0.33" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_group_info.xml" value="0.25957049486461253" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_main_page.xml" value="0.152" />
@@ -38,6 +39,7 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/fragment_rent_list.xml" value="0.153125" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/fragment_rent_products.xml" value="0.153125" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/group_list.xml" value="0.5" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/member_list.xml" value="0.67" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/my_group_list.xml" value="0.1625" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/my_notice_list.xml" value="0.4" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/solid_button.xml" value="0.16197916666666667" />

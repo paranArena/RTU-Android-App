@@ -82,4 +82,8 @@ interface API {
         @Path("id") id: Int
     ): Call<JoinResponse>
 
+    @GET("/clubs/{id}/members/search/all")
+    fun getAllMember(
+        @Path("id") id: Int
+    ): Call<MemberListModel>
 }

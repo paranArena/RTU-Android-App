@@ -10,6 +10,7 @@ import com.rtu.R
 import com.rtu.databinding.ActivityManageProductBinding
 import com.rtu.grouptap.GroupListFragment
 import com.rtu.grouptap.NoticeFragment
+import com.rtu.management.product.ManageProductList
 import com.rtu.management.product.ManageRentFragment
 
 class ManageProduct : AppCompatActivity() {
@@ -58,7 +59,7 @@ class ManageProduct : AppCompatActivity() {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab!!.position) {
                     0 -> replaceFragment(ManageRentFragment())
-                    1 -> replaceFragment(NoticeFragment())
+                    1 -> replaceFragment(ManageProductList())
                 }
             }
         })

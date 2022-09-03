@@ -23,7 +23,7 @@ class GroupListFragment : Fragment() {
     private val binding get() = _binding!!
 
     //lateinit var groupViewAdapter: GroupViewAdapter
-    val data_ = mutableListOf<ClubSearchDetail>()
+    val data_ = mutableListOf<ClubInfo>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,7 +56,7 @@ class GroupListFragment : Fragment() {
                         Log.d("test", data.toString())
 
                         for (item in data.data) {
-                            data_.add(item.club)
+                            data_.add(item)
                         }
 
                         binding.rvList.adapter= MyGroupViewAdapter(data_).apply{
