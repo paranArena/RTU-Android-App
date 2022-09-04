@@ -44,6 +44,7 @@ class ManageMember : AppCompatActivity() {
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
         var fragmentMemberList=MemberListFragment()
+        var fragmentMemberJoin=MemberJoinFragment()
 
         val id=getExtra()
 
@@ -51,6 +52,7 @@ class ManageMember : AppCompatActivity() {
 
         bundle.putInt("id", id)
         fragmentMemberList.arguments=bundle
+        fragmentMemberJoin.arguments=bundle
 
         replaceFragment(fragmentMemberList)
 
@@ -66,7 +68,7 @@ class ManageMember : AppCompatActivity() {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab!!.position) {
                     0 -> replaceFragment(fragmentMemberList)
-                    1 -> replaceFragment(NoticeFragment())
+                    1 -> replaceFragment(fragmentMemberJoin)
                 }
             }
         })

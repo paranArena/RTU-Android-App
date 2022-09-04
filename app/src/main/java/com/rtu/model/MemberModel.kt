@@ -19,3 +19,9 @@ data class MemberModel(
     val major: String,
     val clubRole: String
 ): Parcelable
+
+class ResponseModel(
+    val statusCodes: Int,
+    val responseMessage: String,
+    val data: String?
+)

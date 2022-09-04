@@ -86,4 +86,15 @@ interface API {
     fun getAllMember(
         @Path("id") id: Int
     ): Call<MemberListModel>
+
+    @GET("/clubs/{id}/requests/join/search/all")
+    fun getJoinRequest(
+        @Path("id") id: Int
+    ): Call<MemberListModel>
+
+    @GET("/clubs/{club_id}/requests/join/{member_id}")
+    fun getAcceptRequest(
+        @Path("club_id") clubId: Int,
+        @Path("id") studentId: Int
+    ): Call<ResponseModel>
 }

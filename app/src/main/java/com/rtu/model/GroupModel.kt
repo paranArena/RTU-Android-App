@@ -22,7 +22,7 @@ data class ClubInfo(
     val introduction: String,
     val thumbnailPath: String,
     val hashtags: ArrayList<String>,
-    val role: String
+    val clubRole: String
 ): Parcelable
 
 

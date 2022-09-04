@@ -19,6 +19,12 @@
         android:theme="@style/Theme.Rtu"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".management.product.add.AddProduct3"
+            android:exported="false" />
+        <activity
+            android:name=".management.product.add.AddProduct2"
+            android:exported="false" />
+        <activity
             android:name=".management.product.add.AddProduct"
             android:exported="false" />
         <activity
