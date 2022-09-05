@@ -47,6 +47,15 @@ class ManageProduct : AppCompatActivity() {
 
         val id = getExtra()
 
+        val bundle = Bundle()
+        bundle.putInt("id", id)
+
+        var fragmentManageRent=ManageRentFragment()
+        var fragmentManageProduct=ManageProductList()
+
+        fragmentManageRent.arguments = bundle
+        fragmentManageProduct.arguments = bundle
+
         tabLayout = binding.tabLayout
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
@@ -58,8 +67,8 @@ class ManageProduct : AppCompatActivity() {
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab!!.position) {
-                    0 -> replaceFragment(ManageRentFragment())
-                    1 -> replaceFragment(ManageProductList())
+                    0 -> replaceFragment(fragmentManageRent)
+                    1 -> replaceFragment(fragmentManageProduct)
                 }
             }
         })

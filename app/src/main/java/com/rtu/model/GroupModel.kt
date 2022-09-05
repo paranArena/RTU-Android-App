@@ -21,7 +21,7 @@ data class ClubInfo(
     val name: String,
     val introduction: String,
     val thumbnailPath: String,
-    val hashtags: ArrayList<String>,
+    val hashtags: List<String>,
     val clubRole: String
 ): Parcelable
 
@@ -38,7 +38,7 @@ data class ClubSearchDetail(
     val name: String,
     val introduction: String,
     val thumbnailPath: String,
-    val hashtags: ArrayList<String>
+    val hashtags: List<String>
 ): Parcelable
 
 
@@ -56,10 +56,10 @@ data class ClubData(
     val name: String,
     val introduction: String,
     val thumbnailPath: String,
-    val hashtags: ArrayList<String>,
+    val hashtags: List<String>,
     val memberList: List<MemberInfo>,
     val notifications: List<NoticeDetailModel>,
-    val products: ArrayList<String>
+    val products: List<String>
 ): Parcelable
 
 

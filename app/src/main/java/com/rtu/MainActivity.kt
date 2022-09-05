@@ -105,6 +105,19 @@ class MainActivity : AppCompatActivity() {
         private val prefs: SharedPreferences =
             context.getSharedPreferences("tokens", Context.MODE_PRIVATE)
 
+        private val location: SharedPreferences =
+            context.getSharedPreferences("location", Context.MODE_PRIVATE)
+
+        fun getLocation(key: String, defValue: String): String
+        {
+            return prefs.getString(key, defValue).toString()
+        }
+
+        fun setLocation(key: String, str: String)
+        {
+            prefs.edit().putString(key, str).apply()
+        }
+
         fun getString(key: String, defValue: String): String
         {
             return prefs.getString(key, defValue).toString()

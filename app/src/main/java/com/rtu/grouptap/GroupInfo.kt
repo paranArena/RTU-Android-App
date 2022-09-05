@@ -101,6 +101,15 @@ class GroupInfo : AppCompatActivity() {
                     Glide.with(this@GroupInfo).load(thumbnailPath).
                     placeholder(R.drawable.ic_launcher_foreground).into(binding.groupImage)
 
+                    var hashtags: String=""
+                    for(tag in data.data.hashtags){
+                        hashtags += "#"
+                        hashtags += tag
+                        hashtags += " "
+                    }
+
+                    binding.groupTagText.text=hashtags
+
                     binding.introText.text = introduction
                     if(data.data.notifications!= null) {
                         //binding.rvList.adapter = MyNoticeViewAdapter(data.data.notifications)

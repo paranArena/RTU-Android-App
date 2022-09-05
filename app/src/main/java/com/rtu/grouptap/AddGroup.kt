@@ -28,6 +28,7 @@ import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.http.Multipart
 import java.io.File
 
 class AddGroup : AppCompatActivity() {
@@ -121,16 +122,21 @@ class AddGroup : AppCompatActivity() {
             else {
                 val inputTitle = binding.groupNameEditText.text.toString().replace("'", """\'""")
                 val inputTag =
-                    binding.tagEditText.text.toString().replace("'", """\'""").replace("#", "")
+                    binding.tagEditText.text.toString().replace("'", """\'""").split(" ")
                 val inputIntro = binding.introEditText.text.toString().replace("'", """\'""")
 
+                var tagList=mutableListOf<MultipartBody.Part>()
+
+                for(tag in inputTag){
+                    tagList.add(MultipartBody.Part.createFormData("hashtags",tag.replace("#","")))
+                }
+
                 val titleRequest = RequestBody.create(MediaType.parse("text/plain"), inputTitle);
-                val tagRequest = RequestBody.create(MediaType.parse("text/plain"), inputTag)
-                val tagRequest1 = RequestBody.create(MediaType.parse("text/plain"), "test")
+                //val tagRequest = RequestBody.create(MediaType.parse("text/plain"), inputTag)
+                //val tagRequest1 = RequestBody.create(MediaType.parse("text/plain"), "test")
 
                 val introRequest = RequestBody.create(MediaType.parse("text/plain"), inputIntro);
 
-                val tagList=listOf(tagRequest, tagRequest1)
 
                 Log.d("test", inputTitle)
 
@@ -140,7 +146,7 @@ class AddGroup : AppCompatActivity() {
                 var body = MultipartBody.Part.createFormData("thumbnail", file.name, requestFile)
 
                 RetrofitBuilder.api.createClubRequest(
-                    titleRequest, introRequest, body, tagRequest
+                    titleRequest, introRequest, body, tagList!!
                 ).enqueue(object : Callback<CreateClubResponse> {
                     override fun onResponse(
                         call: Call<CreateClubResponse>,

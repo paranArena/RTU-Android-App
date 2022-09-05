@@ -121,7 +121,7 @@
                 android:layout_below="@id/introText"
                 android:paddingHorizontal="20dp"
                 android:layout_marginHorizontal="20dp"
-                android:background="@drawable/round_button"></EditText>
+                android:background="@drawable/round_box"></EditText>
 
             <TextView
                 android:layout_width="wrap_content"

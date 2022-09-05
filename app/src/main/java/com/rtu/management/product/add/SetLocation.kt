@@ -1,14 +1,17 @@
 package com.rtu.management.product.add
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import com.rtu.MainActivity
 import com.rtu.R
 import com.rtu.databinding.ActivitySetLocationBinding
 class SetLocation : AppCompatActivity(){
     private var _binding: ActivitySetLocationBinding?=null
 
     private val binding get() = _binding!!
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
@@ -33,6 +36,10 @@ class SetLocation : AppCompatActivity(){
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
         binding.nextButton.setOnClickListener {
+            val location=MapsFragment().finalMarker.toString()
+
+            //MainActivity.GlobalApplication.prefs.setString("location", location)
+
             finish()
         }
 

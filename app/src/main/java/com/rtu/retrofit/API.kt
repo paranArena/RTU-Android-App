@@ -23,7 +23,8 @@ interface API {
         @Part ("name") name: RequestBody,
         @Part ("introduction") introduction: RequestBody,
         @Part thumbnail: MultipartBody.Part?,
-        @Part ("hashtags")  hashtag: RequestBody
+        @Part rentalPolices: List<MultipartBody.Part>
+        //@Part ("hashtags")  hashtag: RequestBody
     ): Call<CreateClubResponse>
 
     @Multipart
@@ -31,6 +32,23 @@ interface API {
     fun createNoticeRequest(
         @Part ("title") name: RequestBody,
         @Part ("content") introduction: RequestBody,
+        @Part image: MultipartBody.Part?,
+        @Path("id") id:Int
+    ): Call<CreateNoticeResponse>
+
+    @POST("/clubs/{id}/products")
+    fun createProductRequest(
+
+        @Part ("name") name: RequestBody,
+        @Part ("category") category: RequestBody,
+        @Part ("price") price: RequestBody,
+        //@Part ("rentalPolicies") rentalPolicies: RequestBody,
+        @Part rentalPolices: List<MultipartBody.Part>,
+        @Part ("fifoRentalPeriod") fifoRentalPeriod: RequestBody,
+        @Part ("reserveRentalPeriod") reserveRentalPeriod: RequestBody,
+        @Part ("locationName") locationName: RequestBody,
+        @Part ("latitude") latitude: RequestBody,
+        @Part ("caution") caution: RequestBody,
         @Part image: MultipartBody.Part?,
         @Path("id") id:Int
     ): Call<CreateNoticeResponse>

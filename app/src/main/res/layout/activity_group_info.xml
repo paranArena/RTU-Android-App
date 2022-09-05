@@ -60,11 +60,11 @@
                 android:id="@+id/groupTagText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/darkGray"
-                android:layout_marginHorizontal="20dp"
-                android:textSize="12dp"
                 android:layout_below="@id/groupImage"
-                android:text="#해시태그 #해시태그"></TextView>
+                android:layout_marginHorizontal="20dp"
+                android:text="#해시태그 #해시태그"
+                android:textColor="@color/darkGray"
+                android:textSize="12dp"></TextView>
 
             <TextView
                 android:id="@+id/groupNameText"

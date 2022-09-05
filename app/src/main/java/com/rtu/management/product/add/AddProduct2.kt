@@ -1,5 +1,6 @@
 package com.rtu.management.product.add
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +13,14 @@ class AddProduct2 : AppCompatActivity() {
     private var _binding: ActivityAddProduct2Binding?=null
 
     private val binding get() = _binding!!
+
+    private fun getId(): Int {
+        return intent.getIntExtra("id", 0)
+    }
+
+    private fun getFilePath(): String? {
+        return intent.getStringExtra("filePath")
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
@@ -38,13 +47,30 @@ class AddProduct2 : AppCompatActivity() {
         }
 
         binding.nextButton.setOnClickListener {
-            val intent = Intent(this@AddProduct2, AddProduct3::class.java)
 
-            intent.apply {
-                //this.putExtra("filePath",filePath) // 데이터 넣기
+            val name=binding.nameEditText.text
+            val category=binding.categoryEditButton.text
+            val price=binding.priceEditText.text
+
+            if(name==null || category==null || price==null){
+                showDialogFailed()
             }
-            startActivity(intent)
-            finish()
+            else {
+                val intent = Intent(this@AddProduct2, AddProduct3::class.java)
+
+                val id = getId()
+                val filePath = getFilePath()
+
+                intent.apply {
+                    this.putExtra("id", id)
+                    this.putExtra("filePath", filePath) // 데이터 넣기
+                    this.putExtra("name", name)
+                    this.putExtra("category", category)
+                    this.putExtra("price", price)
+                }
+                startActivity(intent)
+                finish()
+            }
         }
 
         val view=binding.root
@@ -61,5 +87,17 @@ class AddProduct2 : AppCompatActivity() {
                 binding.categoryEditButton.text="${items[which]}"
             }
             .show()
+    }
+
+    private fun showDialogFailed(){
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("오류")
+            .setMessage("모든 항목을 작성해주세요")
+            .setPositiveButton("확인",
+                DialogInterface.OnClickListener { dialog, id ->
+
+                })
+        // 다이얼로그를 띄워주기
+        builder.show()
     }
 }

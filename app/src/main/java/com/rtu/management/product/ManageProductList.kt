@@ -25,8 +25,15 @@ class ManageProductList : Fragment() {
 
         _binding = FragmentManageProductListBinding.inflate(inflater, container, false)
 
+        val id=arguments?.getInt("id")
+
         binding.addProduct.setOnClickListener {
             val intent = Intent(activity, AddProduct::class.java)
+
+            intent.apply {
+                this.putExtra("id",id) // 데이터 넣기
+            }
+
             startActivity(intent)
         }
 

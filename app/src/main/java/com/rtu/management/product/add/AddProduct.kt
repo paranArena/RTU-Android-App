@@ -23,6 +23,10 @@ class AddProduct : AppCompatActivity() {
 
     private val binding get() = _binding!!
 
+    private fun getId(): Int {
+        return intent.getIntExtra("id", 0)
+    }
+
     companion object {
         const val PERMISSION_REQUEST_CODE = 1001
     }
@@ -104,6 +108,8 @@ class AddProduct : AppCompatActivity() {
             requestGalleryLauncher.launch(intent)
         }
 
+        val id=getId()
+
         binding.nextButton.setOnClickListener {
             if(filePath==null){
                 showDialogToGetImg()
@@ -112,8 +118,10 @@ class AddProduct : AppCompatActivity() {
                 val intent = Intent(this@AddProduct, AddProduct2::class.java)
 
                 intent.apply {
+                    this.putExtra("id", id)
                     this.putExtra("filePath",filePath) // 데이터 넣기
                 }
+
                 startActivity(intent)
                 finish()
             }
