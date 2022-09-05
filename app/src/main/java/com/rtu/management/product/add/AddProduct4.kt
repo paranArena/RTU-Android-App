@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import com.rtu.R
-import com.rtu.databinding.ActivityAddProduct3Binding
+import com.rtu.databinding.ActivityAddProduct4Binding
 
-class AddProduct3 : AppCompatActivity() {
-    private var _binding: ActivityAddProduct3Binding?=null
+class AddProduct4 : AppCompatActivity() {
+    private var _binding: ActivityAddProduct4Binding?=null
 
     private val binding get() = _binding!!
 
@@ -23,18 +23,22 @@ class AddProduct3 : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_product3)
+        setContentView(R.layout.activity_add_product4)
 
-        _binding= ActivityAddProduct3Binding.inflate(layoutInflater)
+        _binding= ActivityAddProduct4Binding.inflate(layoutInflater)
 
         setSupportActionBar(binding.toolbar)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
+        binding.locationEditButton.setOnClickListener {
+            val intent = Intent(this@AddProduct4, SetLocation::class.java)
+            startActivity(intent)
+        }
 
         binding.nextButton.setOnClickListener {
-            val intent = Intent(this@AddProduct3, AddProduct4::class.java)
+            val intent = Intent(this@AddProduct4, AddProduct3::class.java)
 
             intent.apply {
                 //this.putExtra("filePath",filePath) // 데이터 넣기

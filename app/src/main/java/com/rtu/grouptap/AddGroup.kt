@@ -68,7 +68,7 @@ class AddGroup : AppCompatActivity() {
             showDialog("Permission granted")
         }
 
-        lateinit var filePath : String
+        var filePath : String?=null
         val requestGalleryLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) {
@@ -90,7 +90,7 @@ class AddGroup : AppCompatActivity() {
 
                 filePath=getRealPathFromURI(it.data!!.data!!)
 
-                Log.d("test",filePath)
+                Log.d("test",filePath!!)
 
                 inputStream!!.close()
                 inputStream = null

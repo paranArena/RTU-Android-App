@@ -58,8 +58,9 @@
         android:id="@+id/numberEditText"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/darkGray"
-        android:textSize="12dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="15dp"
         android:inputType="number"
         android:layout_marginHorizontal="20dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,21 +92,6 @@
         tools:layout_editor_absoluteX="20dp" />
 
     <TextView
-        android:id="@+id/explain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="다음 사항을 입력해 주세요"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.2"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
-    </TextView>
-
-    <TextView
         android:id="@+id/period"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -113,6 +99,7 @@
         android:textColor="@color/darkGray"
         android:textSize="12dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view">
     </TextView>
@@ -121,8 +108,9 @@
         android:id="@+id/periodEditText"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/darkGray"
-        android:textSize="12dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="15dp"
         android:inputType="number"
         android:layout_marginHorizontal="20dp"
         app:layout_constraintStart_toStartOf="parent"

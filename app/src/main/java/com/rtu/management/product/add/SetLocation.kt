@@ -1,14 +1,12 @@
 package com.rtu.management.product.add
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import com.rtu.R
-import com.rtu.databinding.ActivityAddProduct3Binding
-
-class AddProduct3 : AppCompatActivity() {
-    private var _binding: ActivityAddProduct3Binding?=null
+import com.rtu.databinding.ActivitySetLocationBinding
+class SetLocation : AppCompatActivity(){
+    private var _binding: ActivitySetLocationBinding?=null
 
     private val binding get() = _binding!!
 
@@ -23,23 +21,18 @@ class AddProduct3 : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_product3)
+        setContentView(R.layout.activity_set_location)
 
-        _binding= ActivityAddProduct3Binding.inflate(layoutInflater)
+        _binding= ActivitySetLocationBinding.inflate(layoutInflater)
 
         setSupportActionBar(binding.toolbar)
+
+        supportFragmentManager.beginTransaction().add(R.id.frame, MapsFragment()).commit()
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
-
         binding.nextButton.setOnClickListener {
-            val intent = Intent(this@AddProduct3, AddProduct4::class.java)
-
-            intent.apply {
-                //this.putExtra("filePath",filePath) // 데이터 넣기
-            }
-            startActivity(intent)
             finish()
         }
 
