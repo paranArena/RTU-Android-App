@@ -193,6 +193,7 @@ class RegisterActivity : AppCompatActivity() {
                 else {
                     Log.d("fail", response.body().toString())
                     failed() //회원가입 실패
+                    //success()
                 }
             }
 

@@ -31,6 +31,7 @@ data class NoticeModel(
     val clubId: Int?,
     val title: String,
     val imagePath: String,
+    val isPublic: Boolean,
     val createdAt: String,
     val updatedAt: String
 ): Parcelable
@@ -46,6 +47,8 @@ data class NoticeDetailModel(
     val id: Int,
     val title: String,
     val content: String,
+    val imagePath: String,
+    val isPublic: Boolean,
     val createdAt: String,
     val updatedAt: String
 ): Parcelable

@@ -13,4 +13,5 @@
     <color name="deepBlue">#1E2F97</color>
     <color name="red">#EB1808</color>
     <color name="green">#2CA900</color>
+    <color name="clean">#00000000</color>
 </resources>

@@ -11,32 +11,40 @@
         android:layout_height="match_parent">
 
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/notice_search_toolbar"
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/notice_search_view"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_alignParentTop="true"
-            android:background="@color/white"
-            android:elevation="5dp"
-            app:contentInsetStartWithNavigation="0dp">
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/solid_button"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@color/clean"/>
 
+        <TextView
+            android:id="@+id/listText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="검색된 그룹 목록"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@id/notice_search_view">
 
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/notice_search_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+        </TextView>
 
-
-        </androidx.appcompat.widget.Toolbar>
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/group_list"
-            android:layout_below="@id/notice_search_toolbar" />
+            android:layout_below="@id/listText" />
 
 
     </RelativeLayout>

@@ -80,9 +80,10 @@ class NoticeInfo : AppCompatActivity() {
                     val data = response.body()!! // GsonConverter를 사용해 데이터매핑
                     val title = data.data.title
                     val content = data.data.content
+                    val imagePath = data.data.imagePath
 
-                    /*Glide.with(this@GroupInfo).load(thumbnailPath).
-                    placeholder(R.drawable.ic_launcher_foreground).into(binding.groupImage)*/
+                    Glide.with(this@NoticeInfo).load(imagePath).
+                    placeholder(R.drawable.ic_launcher_foreground).into(binding.noticeImage)
 
                     binding.titleText.text = title
                     binding.contentText.text = content

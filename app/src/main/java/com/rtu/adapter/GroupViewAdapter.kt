@@ -3,6 +3,7 @@ package com.rtu.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -26,7 +27,25 @@ class GroupViewAdapter internal constructor(var groupList: List<ClubSearchDetail
 
             itemView.findViewById<TextView>(R.id.iv_name).text = _list.name
             //itemView.findViewById<TextView>(R.id.iv_category).text = _list.category
-            itemView.findViewById<TextView>(R.id.iv_tag).text = _list.introduction
+            var hashtags: String=""
+            for(tag in _list.hashtags){
+                hashtags += "#"
+                hashtags += tag
+                hashtags += " "
+            }
+
+            itemView.findViewById<TextView>(R.id.iv_tag).text = hashtags
+
+            val role=_list.clubRole
+            if(role=="NONE"){
+                itemView.findViewById<Button>(R.id.join_button).text = "미가입"
+            } else if(role=="OWNER" || role=="ADMIN"){
+                itemView.findViewById<Button>(R.id.join_button).text = "관리자"
+            } else if(role=="WAIT"){
+                itemView.findViewById<Button>(R.id.join_button).text = "요청됨"
+            } else if(role=="USER"){
+                itemView.findViewById<Button>(R.id.join_button).text = "가입됨"
+            }
         }
     }
     override fun getItemCount(): Int = groupList.size

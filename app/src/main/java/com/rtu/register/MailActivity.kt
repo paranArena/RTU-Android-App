@@ -99,7 +99,7 @@ class MailActivity : AppCompatActivity() {
             // UI조작을 위한 메서드
             runOnUiThread {
                 binding.sec.text = "$sec"	// TextView 세팅
-                binding.min.text = "$min"	// Textview 세팅
+                binding.min.text = "$min : "	// Textview 세팅
             }
         }
     }

@@ -27,7 +27,16 @@ class MyGroupViewAdapter internal constructor(var groupList: List<ClubInfo>)
 
             itemView.findViewById<TextView>(R.id.iv_name).text = _list.name
             //itemView.findViewById<TextView>(R.id.iv_category).text = _list.category
-            itemView.findViewById<TextView>(R.id.iv_tag).text = _list.introduction
+            var hashtags: String=""
+            for(tag in _list.hashtags){
+                hashtags += "#"
+                hashtags += tag
+                hashtags += " "
+            }
+
+            itemView.findViewById<TextView>(R.id.iv_tag).text = hashtags
+
+            //itemView.findViewById<TextView>(R.id.iv_tag).text = _list.introduction
         }
     }
     override fun getItemCount(): Int = groupList.size

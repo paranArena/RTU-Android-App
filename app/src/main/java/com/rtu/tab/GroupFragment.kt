@@ -37,16 +37,15 @@ class GroupFragment : Fragment() {
 
         replaceFragment(GroupListFragment())
 
-        //binding.searchView.isSubmitButtonEnabled=true
 
         binding.searchView.setOnClickListener {
             val intent = Intent(activity, SearchGroup::class.java)
             startActivity(intent)
         }
 
-        binding.searchView.setOnSearchClickListener {
-            val intent = Intent(activity, SearchGroup::class.java)
-            startActivity(intent)
+
+        /*binding.searchView.setOnSearchClickListener{
+
         }
 
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -61,7 +60,7 @@ class GroupFragment : Fragment() {
 
                 return true
             }
-        })
+        })*/
 
         tabLayout = binding.tabLayout
 
