@@ -44,6 +44,21 @@ data class RegisterData(
     val authorityDtoSet: List<Authority>
 )
 
+data class MailModel(
+    val email: String
+)
+
+data class MailCodeModel(
+    val email: String,
+    val code: String
+)
+
+data class BasicResponse(
+    val statusCode: Int,
+    val responseMessage: String,
+    val data: String?
+)
+
 @Parcelize
 data class Club(
     val item: String

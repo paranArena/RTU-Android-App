@@ -64,13 +64,13 @@ class GroupInfo : AppCompatActivity() {
                     startActivity(intent)
                 }
                 "탈퇴하기" -> {
-
+                    requestLeave(id)
                 }
                 "가입하기" -> {
                     requestJoin(id)
                 }
-                "가입대기" -> {
-
+                "신청취소" -> {
+                    requestCancel(id)
                 }
             }
         }
@@ -145,7 +145,7 @@ class GroupInfo : AppCompatActivity() {
                     } else if(role=="USER"){
                         binding.toolbarOption.text="탈퇴하기"
                     } else if(role=="WAIT"){
-                        binding.toolbarOption.text="가입대기"
+                        binding.toolbarOption.text="신청취소"
                     } else{
                         binding.toolbarOption.text="가입하기"
                     }
@@ -180,7 +180,7 @@ class GroupInfo : AppCompatActivity() {
 
                     if(data.statusCode==200){
                         popUp("join")
-                        binding.toolbarOption.text="가입대기"
+                        binding.toolbarOption.text="신청취소"
                     }
                 }
             }
@@ -193,11 +193,84 @@ class GroupInfo : AppCompatActivity() {
         })
     }
 
+    private fun requestCancel(id: Int){
+        RetrofitBuilder.api.getJoinClubCancel(id).enqueue(object :
+            Callback<JoinResponse> {
+            override fun onResponse(
+
+                call: Call<JoinResponse>,
+                response: Response<JoinResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val data=response.body()!!
+
+                    if(data.statusCode==200){
+                        popUp("cancel")
+                        binding.toolbarOption.text="가입하기"
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<JoinResponse>, t: Throwable) {
+                Log.d("test", "실패$t")
+                //Toast.makeText(this@GoodsInfo, "업로드 실패 ..", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    private fun requestLeave(id: Int){
+        RetrofitBuilder.api.getLeaveClub(id).enqueue(object :
+            Callback<JoinResponse> {
+            override fun onResponse(
+
+                call: Call<JoinResponse>,
+                response: Response<JoinResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val data=response.body()!!
+
+                    if(data.statusCode==200){
+                        popUp("leave")
+                        binding.toolbarOption.text="가입하기"
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<JoinResponse>, t: Throwable) {
+                Log.d("test", "실패$t")
+                //Toast.makeText(this@GoodsInfo, "업로드 실패 ..", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+
     private fun popUp(s: String){
         if(s=="join") {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("가입 요청 성공")
                 .setMessage("관리자에게 가입 요청 하였습니다.")
+                .setPositiveButton("확인",
+                    DialogInterface.OnClickListener { dialog, id ->
+                    })
+            // 다이얼로그를 띄워주기
+            builder.show()
+        }
+        if(s=="cancel") {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("가입 취소 성공")
+                .setMessage("가입 신청이 취소되었습니다.")
+                .setPositiveButton("확인",
+                    DialogInterface.OnClickListener { dialog, id ->
+                    })
+            // 다이얼로그를 띄워주기
+            builder.show()
+        }
+        if(s=="leave") {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("탈퇴 성공")
+                .setMessage("그룹에서 탈퇴되었습니다.")
                 .setPositiveButton("확인",
                     DialogInterface.OnClickListener { dialog, id ->
                     })

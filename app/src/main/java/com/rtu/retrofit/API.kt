@@ -96,8 +96,18 @@ interface API {
         @Path("id") id: Int
     ): Call<MyRole>
 
-    @POST("/clubs/{id}/requests/join")
+    @POST("/clubs/{id}/requests/join") //클럽가입
     fun getJoinClub(
+        @Path("id") id: Int
+    ): Call<JoinResponse>
+
+    @DELETE("/clubs/{id}/requests/join/cancel") //가입 신청 취소
+    fun getJoinClubCancel(
+        @Path("id") id: Int
+    ): Call<JoinResponse>
+
+    @DELETE("/clubs/{id}/requests/join/cancel") //가입 신청 취소
+    fun getLeaveClub(
         @Path("id") id: Int
     ): Call<JoinResponse>
 
@@ -116,4 +126,14 @@ interface API {
         @Path("club_id") clubId: Int,
         @Path("id") studentId: Int
     ): Call<ResponseModel>
+
+    @POST("/members/email/requestCode")
+    fun getRequestCode(
+        @Body requestMail: MailModel
+    ): Call<BasicResponse>
+
+    @POST("/members/email/verifyCode")
+    fun getVerifyCode(
+        @Body requestMail: MailCodeModel
+    ): Call<BasicResponse>
 }

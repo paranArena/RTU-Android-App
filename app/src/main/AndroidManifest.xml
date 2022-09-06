@@ -21,6 +21,12 @@
         android:theme="@style/Theme.Rtu"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".register.WelcomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".register.MailActivity"
+            android:exported="false" />
+        <activity
             android:name=".management.product.add.AddProduct5"
             android:exported="false" />
 

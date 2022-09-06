@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitBuilder {
     var api: API
-    private const val BASE_URL="http://ec2-3-34-90-174.ap-northeast-2.compute.amazonaws.com:8080"
+    private const val BASE_URL="http://ec2-15-165-38-225.ap-northeast-2.compute.amazonaws.com:8080"
 
     init {
         val gson= GsonBuilder()
