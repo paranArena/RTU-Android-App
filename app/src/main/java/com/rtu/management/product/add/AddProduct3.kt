@@ -58,8 +58,8 @@ class AddProduct3 : AppCompatActivity() {
 
 
         binding.nextButton.setOnClickListener {
-            val number=binding.numberEditText.text
-            val period=binding.periodEditText.text
+            val number=binding.numberEditText.text.toString()
+            val period=binding.periodEditText.text.toString()
 
             if(number==null || period==null){
                 showDialogFailed()

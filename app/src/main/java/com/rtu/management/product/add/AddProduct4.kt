@@ -71,7 +71,7 @@ class AddProduct4 : AppCompatActivity() {
         }
 
         binding.nextButton.setOnClickListener {
-            val detail=binding.detailEditText.text
+            val detail=binding.detailEditText.text.toString()
 
             if(detail==null){
                 showDialogFailed()

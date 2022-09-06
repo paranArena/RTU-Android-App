@@ -36,22 +36,23 @@ interface API {
         @Path("id") id:Int
     ): Call<CreateNoticeResponse>
 
+    @Multipart
     @POST("/clubs/{id}/products")
     fun createProductRequest(
-
         @Part ("name") name: RequestBody,
         @Part ("category") category: RequestBody,
         @Part ("price") price: RequestBody,
         //@Part ("rentalPolicies") rentalPolicies: RequestBody,
-        @Part rentalPolices: List<MultipartBody.Part>,
+        @Part rentalPolicies: List<MultipartBody.Part>,
         @Part ("fifoRentalPeriod") fifoRentalPeriod: RequestBody,
         @Part ("reserveRentalPeriod") reserveRentalPeriod: RequestBody,
         @Part ("locationName") locationName: RequestBody,
         @Part ("latitude") latitude: RequestBody,
+        @Part ("longitude") longitude: RequestBody,
         @Part ("caution") caution: RequestBody,
         @Part image: MultipartBody.Part?,
         @Path("id") id:Int
-    ): Call<CreateNoticeResponse>
+    ): Call<CreateProductResponse>
 
     @GET("/members/{email}/exists")
     fun checkEmailRequest(

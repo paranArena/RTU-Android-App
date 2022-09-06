@@ -48,9 +48,9 @@ class AddProduct2 : AppCompatActivity() {
 
         binding.nextButton.setOnClickListener {
 
-            val name=binding.nameEditText.text
-            val category=binding.categoryEditButton.text
-            val price=binding.priceEditText.text
+            val name=binding.nameEditText.text.toString()
+            val category=binding.categoryEditButton.text.toString()
+            val price=binding.priceEditText.text.toString()
 
             if(name==null || category==null || price==null){
                 showDialogFailed()
