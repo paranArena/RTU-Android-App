@@ -40,7 +40,6 @@ class ManageProduct : AppCompatActivity() {
         _binding = ActivityManageProductBinding.inflate(layoutInflater)
 
         setSupportActionBar(binding.toolbar)
-        replaceFragment(ManageRentFragment())
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
@@ -51,10 +50,12 @@ class ManageProduct : AppCompatActivity() {
         bundle.putInt("id", id)
 
         var fragmentManageRent=ManageRentFragment()
-        var fragmentManageProduct=ManageProductList()
+        var fragmentManageProductList=ManageProductList()
 
         fragmentManageRent.arguments = bundle
-        fragmentManageProduct.arguments = bundle
+        fragmentManageProductList.arguments = bundle
+
+        replaceFragment(fragmentManageRent)
 
         tabLayout = binding.tabLayout
 
@@ -68,7 +69,7 @@ class ManageProduct : AppCompatActivity() {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab!!.position) {
                     0 -> replaceFragment(fragmentManageRent)
-                    1 -> replaceFragment(fragmentManageProduct)
+                    1 -> replaceFragment(fragmentManageProductList)
                 }
             }
         })

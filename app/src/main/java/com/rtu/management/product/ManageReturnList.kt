@@ -6,28 +6,32 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.rtu.R
 import com.rtu.adapter.ManageRentAdapter
-import com.rtu.databinding.FragmentManageBookListBinding
+import com.rtu.adapter.ReturnLogAdapter
+import com.rtu.databinding.FragmentManageRentedListBinding
 import com.rtu.model.ManageRentData
 import com.rtu.model.ManageRentModel
+import com.rtu.model.ReturnLog
+import com.rtu.model.ReturnModel
 import com.rtu.retrofit.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ManageBookList : Fragment() {
-    private var _binding: FragmentManageBookListBinding?=null
+class ManageReturnList : Fragment() {
+    private var _binding: FragmentManageRentedListBinding?=null
 
     private val binding get() = _binding!!
 
     //lateinit var groupViewAdapter: GroupViewAdapter
-    val data_ = mutableListOf<ManageRentData>()
+    val data_ = mutableListOf<ReturnLog>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentManageBookListBinding.inflate(inflater, container, false)
+        _binding = FragmentManageRentedListBinding.inflate(inflater, container, false)
 
         val id=arguments?.getInt("id")
 
@@ -37,11 +41,11 @@ class ManageBookList : Fragment() {
     }
 
     private fun initRecycler(id: Int){
-        RetrofitBuilder.api.searchClubRentalsAll(id).enqueue(object :
-            Callback<ManageRentModel> {
+        RetrofitBuilder.api.searchClubReturnAll(id).enqueue(object :
+            Callback<ReturnModel> {
             override fun onResponse(
-                call: Call<ManageRentModel>,
-                response: Response<ManageRentModel>
+                call: Call<ReturnModel>,
+                response: Response<ReturnModel>
             ) {
                 if (response.isSuccessful) {
                     data_.clear()
@@ -50,12 +54,10 @@ class ManageBookList : Fragment() {
                     Log.d("test", data.toString())
 
                     for (item in data.data) {
-                        if(item.rentalInfo.rentalStatus=="WAIT") {
-                            data_.add(item)
-                        }
+                        data_.add(item)
                     }
 
-                    binding.rvList.adapter= ManageRentAdapter(data_)
+                    binding.rvList.adapter= ReturnLogAdapter(data_)
                 }
 
                 else{
@@ -64,7 +66,7 @@ class ManageBookList : Fragment() {
                 }
             }
 
-            override fun onFailure(call: Call<ManageRentModel>, t: Throwable) {
+            override fun onFailure(call: Call<ReturnModel>, t: Throwable) {
                 Log.d("test", "실패$t")
                 //Toast.makeText(getActivity(), "업로드 실패 ..", Toast.LENGTH_SHORT).show()
             }

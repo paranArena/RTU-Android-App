@@ -23,8 +23,21 @@ class ManageRentFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        val id=arguments?.getInt("id")
+
+        val bundle = Bundle()
+        bundle.putInt("id", id!!)
+
+        var fragmentManageBookList=ManageBookList()
+        var fragmentManageRentedList=ManageRentedList()
+        var fragmentManageReturnList=ManageReturnList()
+
+        fragmentManageBookList.arguments = bundle
+        fragmentManageRentedList.arguments = bundle
+        fragmentManageReturnList.arguments = bundle
+
         _binding = FragmentManageRentBinding.inflate(inflater, container, false)
-        replaceFragment(ManageBookList())
+        replaceFragment(fragmentManageBookList)
 
         frameLayout = binding.frame
         tabLayout = binding.tabLayout
@@ -38,9 +51,9 @@ class ManageRentFragment : Fragment() {
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab!!.position) {
-                    0 -> replaceFragment(ManageBookList())
-                    1 -> replaceFragment(ManageBookList())
-                    2 -> replaceFragment(ManageBookList())
+                    0 -> replaceFragment(fragmentManageBookList)
+                    1 -> replaceFragment(fragmentManageRentedList)
+                    2 -> replaceFragment(fragmentManageReturnList)
                 }
             }
         })

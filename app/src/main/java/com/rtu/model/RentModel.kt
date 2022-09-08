@@ -65,4 +65,23 @@ data class ManageRentData(
     val imagePath: String,
     val rentalPolicy: String,
     val rentalInfo: RentalInfo
+): Parcelable
+
+data class ReturnModel(
+    val statusCode: Int,
+    val responseMessage: String,
+    val data: List<ReturnLog>
 )
+
+@Parcelize
+data class ReturnLog(
+    val id: Int,
+    val thumbnailPath: String,
+    val productName: String,
+    val memberName: String,
+    val rentDate: String,
+    val expDate: String,
+    val returnDate: String,
+    val rentalStatus: String,
+    val numbering: Int
+): Parcelable

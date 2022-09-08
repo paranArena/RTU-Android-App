@@ -34,26 +34,7 @@ class MainPageActivity : AppCompatActivity() {
         // 애플리케이션 실행 후 첫 화면 설정
         supportFragmentManager.beginTransaction().add(frame.id, HomeFragment()).commit()
 
-        RetrofitBuilder.api.myInfoRequest().enqueue(object :
-            Callback<MyInfoModel> {
-            override fun onResponse(
-                call: Call<MyInfoModel>,
-                response: Response<MyInfoModel>
-            ) {
-                if(response.isSuccessful) {
-                    Log.d("test", response.body().toString())
 
-                }
-                else {
-                    Log.d("fail", response.body().toString())
-                }
-            }
-
-            override fun onFailure(call: Call<MyInfoModel>, t: Throwable) {
-                Log.d("test", "실패$t")
-            }
-
-        })
         // 하단 네비게이션 바 클릭 이벤트 설정
         bottomNagivationView.setOnItemSelectedListener {item ->
             when(item.itemId) {

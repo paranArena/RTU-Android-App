@@ -8,14 +8,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.rtu.R
-import com.rtu.model.ProductDetail
+import com.rtu.model.ManageRentData
 
-class ManageRentAdapter internal constructor(var productList: List<ProductDetail>)
+class ManageRentAdapter internal constructor(var productList: List<ManageRentData>)
     : RecyclerView.Adapter<ManageRentAdapter.ListViewHolder>() {
 
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(_list: ProductDetail) {
+        fun bind(_list: ManageRentData) {
             val imageView: ImageView = itemView.findViewById<ImageView>(R.id.iv_image)
             if(_list.imagePath!=null) {
                 val newUrl=_list.imagePath
@@ -24,12 +24,21 @@ class ManageRentAdapter internal constructor(var productList: List<ProductDetail
             }
             itemView.findViewById<ImageView>(R.id.iv_image).clipToOutline=true
 
-            itemView.findViewById<TextView>(R.id.iv_name).text = _list.name
-            itemView.findViewById<TextView>(R.id.iv_group).text=_list.clubName
+            itemView.findViewById<TextView>(R.id.iv_product).text = _list.name
+            itemView.findViewById<TextView>(R.id.iv_name).text=_list.memberName
 
-            val left= _list.left.toString()
-            val max = _list.max.toString()
-            itemView.findViewById<TextView>(R.id.iv_number).text = "$left / $max"
+            val rentDate=_list.rentalInfo.rentDate.substring(0 until 10).replace("-",". ")
+
+            itemView.findViewById<TextView>(R.id.iv_log).text = rentDate
+
+            if(_list.rentalInfo.rentalStatus=="WAIT"){
+                itemView.findViewById<TextView>(R.id.iv_explain).text = "픽업 예정"
+                itemView.findViewById<TextView>(R.id.iv_date).text = ""
+            } else{
+                itemView.findViewById<TextView>(R.id.iv_explain).text = "반납 예정"
+                val dueDate=_list.rentalInfo.expDate!!.substring(0 until 10).replace("-",". ")
+                itemView.findViewById<TextView>(R.id.iv_date).text = dueDate
+            }
             //itemView.findViewById<TextView>(R.id.iv_category).text = _list.category
 
         }
@@ -44,7 +53,7 @@ class ManageRentAdapter internal constructor(var productList: List<ProductDetail
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         return ListViewHolder(
             // 새로운 뷰를 생성해 뷰홀더에 인자로 넣어준다.
-            LayoutInflater.from(parent.context).inflate(R.layout.manage_reserve_list, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.return_list, parent, false)
         )
     }
 
@@ -52,9 +61,9 @@ class ManageRentAdapter internal constructor(var productList: List<ProductDetail
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.bind(productList[position])
 
-        holder.itemView.setOnClickListener{
+        /*holder.itemView.setOnClickListener{
             itemClickListner.onClick(it,position)
-        }
+        }*/
 
         /*val layoutParams = holder.itemView.layoutParams
         layoutParams.height = 600

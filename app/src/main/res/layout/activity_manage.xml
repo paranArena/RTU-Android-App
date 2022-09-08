@@ -29,7 +29,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/round_button"
+        android:backgroundTint="@color/lightGray"
         android:orientation="vertical"
         android:padding="20dp">
          <TextView
@@ -116,10 +119,6 @@
             </com.google.android.material.button.MaterialButtonToggleGroup>
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
 
 
     </LinearLayout>

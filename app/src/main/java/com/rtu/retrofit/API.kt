@@ -178,4 +178,14 @@ interface API {
     fun searchClubRentalsAll(
         @Path("club_id") clubId: Int
     ): Call<ManageRentModel>
+
+    @GET("/clubs/{club_id}/rentals/history/search/all")
+    fun searchClubReturnAll(
+        @Path("club_id") clubId: Int
+    ): Call<ReturnModel>
+
+    @GET("/clubs/{club_id}/products/search/all")
+    fun searchClubProductsAll(
+        @Path("club_id") clubId: Int
+    ): Call<GetProductModel>
 }

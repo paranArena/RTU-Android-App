@@ -1,49 +1,60 @@
 package com.rtu.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.rtu.R
-import com.rtu.model.ProductDetail
-import com.rtu.model.RentDetail
+import com.rtu.model.ReturnLog
 
-class MyRentalAdapter internal constructor(var productList: List<RentDetail>)
-    : RecyclerView.Adapter<MyRentalAdapter.ListViewHolder>() {
+class ReturnLogAdapter internal constructor(var productList: List<ReturnLog>)
+    : RecyclerView.Adapter<ReturnLogAdapter.ListViewHolder>() {
 
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(_list: RentDetail) {
+        fun bind(_list: ReturnLog) {
             val imageView: ImageView = itemView.findViewById<ImageView>(R.id.iv_image)
-            if(_list.imagePath!=null) {
-                val newUrl=_list.imagePath
+            if(_list.thumbnailPath!=null) {
+                val newUrl=_list.thumbnailPath
                 Glide.with(itemView).load(newUrl).placeholder(R.drawable.ic_launcher_foreground)
                     .override(60, 60).into(imageView)
             }
             itemView.findViewById<ImageView>(R.id.iv_image).clipToOutline=true
 
-            itemView.findViewById<TextView>(R.id.iv_name).text = _list.name
-            itemView.findViewById<TextView>(R.id.iv_group).text = _list.clubName
+            itemView.findViewById<TextView>(R.id.iv_product).text = _list.productName
+            itemView.findViewById<TextView>(R.id.iv_name).text=_list.memberName
 
-            if(_list.rentalInfo==null){
-                itemView.findViewById<Button>(R.id.iv_status).text = "대여가능"
+            val rentDate=_list.rentDate.substring(0 until 10).replace("-",". ")
+            if(_list.expDate!=null) {
+                val expDate = _list.expDate.substring(0 until 10).replace("-", ". ")
+                itemView.findViewById<TextView>(R.id.iv_log).text = "$rentDate ~ $expDate"
             } else{
-                    val status=_list.rentalInfo.rentalStatus
-                    if(status=="WAIT"){
-                        itemView.findViewById<Button>(R.id.iv_status).text = "예약중"
-                    }
-                    if(status=="RENT"){
-                        itemView.findViewById<Button>(R.id.iv_status).text = "대여중"
-                    }
-                    if(status=="LATE"){
-                        itemView.findViewById<Button>(R.id.iv_status).text = "연체"
-                    }
+                val expDate=""
+                itemView.findViewById<TextView>(R.id.iv_log).text = "$rentDate"
+            }
+            val returnDate=_list.returnDate.substring(0 until 10).replace("-",". ")
+
+
+
+            itemView.findViewById<TextView>(R.id.iv_date).text = returnDate
+
+            if(_list.rentalStatus=="DONE"){
+                itemView.findViewById<TextView>(R.id.iv_explain).text = "기한 내 반납"
+                itemView.findViewById<TextView>(R.id.iv_explain).setTextColor(Color.BLUE)
             }
 
+            if(_list.rentalStatus=="LATE"){
+                itemView.findViewById<TextView>(R.id.iv_explain).text = "늦음"
+                itemView.findViewById<TextView>(R.id.iv_explain).setTextColor(Color.RED)
+            }
+
+            if(_list.rentalStatus=="CANCEL"){
+                itemView.findViewById<TextView>(R.id.iv_explain).text = "예약 취소"
+            }
             //itemView.findViewById<TextView>(R.id.iv_category).text = _list.category
 
         }
@@ -58,7 +69,7 @@ class MyRentalAdapter internal constructor(var productList: List<RentDetail>)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         return ListViewHolder(
             // 새로운 뷰를 생성해 뷰홀더에 인자로 넣어준다.
-            LayoutInflater.from(parent.context).inflate(R.layout.rental_list, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.manage_reserve_list, parent, false)
         )
     }
 
@@ -66,9 +77,9 @@ class MyRentalAdapter internal constructor(var productList: List<RentDetail>)
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.bind(productList[position])
 
-        holder.itemView.setOnClickListener{
+        /*holder.itemView.setOnClickListener{
             itemClickListner.onClick(it,position)
-        }
+        }*/
 
         /*val layoutParams = holder.itemView.layoutParams
         layoutParams.height = 600

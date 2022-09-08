@@ -6,8 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.rtu.R
 import com.rtu.adapter.ManageRentAdapter
-import com.rtu.databinding.FragmentManageBookListBinding
+import com.rtu.databinding.FragmentManageRentedListBinding
 import com.rtu.model.ManageRentData
 import com.rtu.model.ManageRentModel
 import com.rtu.retrofit.RetrofitBuilder
@@ -15,8 +16,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ManageBookList : Fragment() {
-    private var _binding: FragmentManageBookListBinding?=null
+class ManageRentedList : Fragment()  {
+    private var _binding: FragmentManageRentedListBinding?=null
 
     private val binding get() = _binding!!
 
@@ -27,7 +28,7 @@ class ManageBookList : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentManageBookListBinding.inflate(inflater, container, false)
+        _binding = FragmentManageRentedListBinding.inflate(inflater, container, false)
 
         val id=arguments?.getInt("id")
 
@@ -50,7 +51,7 @@ class ManageBookList : Fragment() {
                     Log.d("test", data.toString())
 
                     for (item in data.data) {
-                        if(item.rentalInfo.rentalStatus=="WAIT") {
+                        if(item.rentalInfo.rentalStatus=="RENT" || item.rentalInfo.rentalStatus=="LATE") {
                             data_.add(item)
                         }
                     }
