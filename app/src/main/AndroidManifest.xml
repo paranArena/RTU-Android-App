@@ -21,6 +21,9 @@
         android:theme="@style/Theme.Rtu"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".product.ProductInfo"
+            android:exported="false" />
+        <activity
             android:name=".register.WelcomeActivity"
             android:exported="false" />
         <activity

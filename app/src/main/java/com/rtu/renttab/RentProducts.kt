@@ -9,11 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.rtu.R
 import com.rtu.adapter.MyGroupViewAdapter
+import com.rtu.adapter.MyProductAdapter
 import com.rtu.databinding.FragmentRentProductsBinding
 import com.rtu.grouptap.GroupInfo
-import com.rtu.model.ClubInfo
-import com.rtu.model.ClubSearchDetail
-import com.rtu.model.GetGroupModel
+import com.rtu.model.*
+import com.rtu.product.ProductInfo
 import com.rtu.retrofit.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,7 +25,7 @@ class RentProducts : Fragment() {
     private val binding get() = _binding!!
 
     //lateinit var groupViewAdapter: GroupViewAdapter
-    val data_ = mutableListOf<ClubInfo>()
+    val data_ = mutableListOf<ProductDetail>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,11 +39,11 @@ class RentProducts : Fragment() {
     }
 
     private fun initRecycler(){
-        RetrofitBuilder.api.myGroupRequest().enqueue(object :
-            Callback<GetGroupModel> {
+        RetrofitBuilder.api.getMyProducts().enqueue(object :
+            Callback<GetProductModel> {
             override fun onResponse(
-                call: Call<GetGroupModel>,
-                response: Response<GetGroupModel>
+                call: Call<GetProductModel>,
+                response: Response<GetProductModel>
             ) {
                 if (response.isSuccessful) {
                     data_.clear()
@@ -55,22 +55,23 @@ class RentProducts : Fragment() {
                         data_.add(item)
                     }
 
-                    binding.rvList.adapter= MyGroupViewAdapter(data_).apply{
+                    binding.rvList.adapter= MyProductAdapter(data_).apply{
                         setItemClickListener(
-                            object : MyGroupViewAdapter.ItemClickListener {
+                            object : MyProductAdapter.ItemClickListener {
                                 override fun onClick(view: View, position: Int) {
-                                    val id=groupList[position].id
+                                    val id=productList[position].id
+                                    val clubId=productList[position].clubId
 
                                     //setFragmentResult("requestKey", bundleOf("projid" to projid))
 
-                                    val intent = Intent(context, GroupInfo::class.java)
+                                    val intent = Intent(context, ProductInfo::class.java)
 
                                     intent.apply {
-                                        this.putExtra("id",id) // 데이터 넣기
+                                        this.putExtra("clubId",clubId)
+                                        this.putExtra("productId",id) // 데이터 넣기
                                     }
                                     startActivity(intent)
 
-                                    //replaceFragment(GoodsInfoFragment())
                                 }
                             })
                     }
@@ -82,7 +83,7 @@ class RentProducts : Fragment() {
                 }
             }
 
-            override fun onFailure(call: Call<GetGroupModel>, t: Throwable) {
+            override fun onFailure(call: Call<GetProductModel>, t: Throwable) {
                 Log.d("test", "실패$t")
                 //Toast.makeText(getActivity(), "업로드 실패 ..", Toast.LENGTH_SHORT).show()
             }

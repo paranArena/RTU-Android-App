@@ -35,9 +35,9 @@ class RentFragment : Fragment() {
 
         _binding = FragmentRentBinding.inflate(inflater, container, false)
 
-        frameLayout = binding.groupList
+        frameLayout = binding.rentList
 
-        replaceFragment(GroupListFragment())
+        replaceFragment(RentProducts())
 
         //binding.searchView.isSubmitButtonEnabled=true
 
@@ -86,7 +86,7 @@ class RentFragment : Fragment() {
     }
 
     private fun replaceFragment(fragment: Fragment) {
-        parentFragmentManager.beginTransaction().replace(R.id.group_list, fragment)
+        parentFragmentManager.beginTransaction().replace(R.id.rent_list, fragment)
             .addToBackStack(null).commit()
     }
 }

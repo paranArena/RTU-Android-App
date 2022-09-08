@@ -18,6 +18,7 @@ import com.rtu.model.MailModel
 import com.rtu.model.RegisterRequest
 import com.rtu.model.RegisterResponse
 import com.rtu.register.MailActivity
+import com.rtu.register.WelcomeActivity
 import com.rtu.retrofit.RetrofitBuilder
 import kotlinx.android.synthetic.main.activity_register.*
 import retrofit2.Call
@@ -115,9 +116,13 @@ class RegisterActivity : AppCompatActivity() {
                 binding.idHelp.visibility=View.VISIBLE
                 failed()
             } else {
-                val requestMail = MailModel(email=email)
 
-                requestCode(requestMail)
+                val registerData = RegisterRequest(
+                    email = email!!, password = password!!, name = name!!, major = major!!,
+                    phoneNumber = phoneNumber!!, studentId = id!!
+                )
+
+                signUp(registerData)
             }
 
         }
@@ -142,21 +147,11 @@ class RegisterActivity : AppCompatActivity() {
             append(binding.mailEditText.text.toString())
             append("@ajou.ac.kr")
         }
-        val password=binding.passwordEditText.text.toString()
-        val name=binding.nameEditText.text.toString()
-        val major=binding.majorEditText.text.toString()
-        val phoneNumber=binding.numberEditText.text.toString()
-        val id=binding.idEditText.text.toString()
 
         val intent = Intent(this@RegisterActivity, MailActivity::class.java)
 
         intent.apply {
             this.putExtra("email", email)
-            this.putExtra("password", password) // 데이터 넣기
-            this.putExtra("name", name)
-            this.putExtra("major", major)
-            this.putExtra("phoneNumber", phoneNumber)
-            this.putExtra("id", id)
         }
         startActivity(intent)
         finish()
@@ -174,35 +169,6 @@ class RegisterActivity : AppCompatActivity() {
         builder.show()
     }
 
-    private fun requestCode(requestMail: MailModel){
-        RetrofitBuilder.api.getRequestCode(requestMail).enqueue(object :
-            Callback<BasicResponse> {
-            override fun onResponse(
-                call: Call<BasicResponse>,
-                response: Response<BasicResponse>
-            ) {
-                if(response.isSuccessful) {
-                    Log.d("test", response.body().toString())
-
-                    var data = response.body()!!
-
-                    if(data.statusCode==200){
-                        success() //인증번호 전송
-                    }
-                }
-                else {
-                    Log.d("fail", response.body().toString())
-                    failed() //회원가입 실패
-                    //success()
-                }
-            }
-
-            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
-                Log.d("test", "실패$t")
-            }
-
-        })
-    }
 
     private fun checkEmail(email: String){
         RetrofitBuilder.api.checkEmailRequest(email).enqueue(object :
@@ -237,6 +203,35 @@ class RegisterActivity : AppCompatActivity() {
             override fun onFailure(call: Call<Boolean>, t: Throwable) {
                 Log.d("test", "실패$t")
             }
+        })
+    }
+
+    private fun signUp(registerRequest: RegisterRequest){
+        RetrofitBuilder.api.registerPostRequest(registerRequest).enqueue(object :
+            Callback<RegisterResponse> {
+            override fun onResponse(
+                call: Call<RegisterResponse>,
+                response: Response<RegisterResponse>
+            ) {
+                if(response.isSuccessful) {
+                    Log.d("test", response.body().toString())
+
+                    var data = response.body()!!
+
+                    if(data.statusCode==200){
+                        success()
+                    }
+                }
+                else {
+                    Log.d("fail", response.body().toString())
+                    failed() //회원가입 실패
+                }
+            }
+
+            override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                Log.d("test", "실패$t")
+            }
+
         })
     }
 }

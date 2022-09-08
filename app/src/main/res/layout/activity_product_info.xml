@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".product.ProductInfo">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:outlineAmbientShadowColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/productImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/change"></ImageView>
+
+            <TextView
+                android:id="@+id/groupNameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/productImage"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Ren2U"
+                android:textColor="@color/darkGray"
+                android:textSize="12dp"></TextView>
+
+            <TextView
+                android:id="@+id/productNameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/productImage"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                android:text="폴라로이드 카메라"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="26dp"></TextView>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="?android:attr/listDivider"
+                android:layout_below="@id/productNameText" />
+
+            <TextView
+                android:id="@+id/categoryText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:text="카테고리"
+                android:textColor="@color/darkGray"
+                android:textSize="12dp"></TextView>
+
+            <TextView
+                android:id="@+id/category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:gravity="end"
+                android:text="디지털기기"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12dp"></TextView>
+
+            <TextView
+                android:id="@+id/priceText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/category"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="15dp"
+                android:text="물품가치"
+                android:textColor="@color/darkGray"
+                android:textSize="12dp"></TextView>
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/category"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="15dp"
+                android:gravity="end"
+                android:text="15000원"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12dp"></TextView>
+
+            <TextView
+                android:id="@+id/productListText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/price"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="15dp"
+                android:text="물품목록"
+                android:textColor="@color/darkGray"
+                android:textSize="12dp"></TextView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_list"
+                android:layout_below="@id/productListText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_list"/>
+
+            <TextView
+                android:id="@+id/cautionText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rv_list"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="15dp"
+                android:text="사용시 주의사항"
+                android:textColor="@color/darkGray"
+                android:textSize="12dp"></TextView>
+
+            <TextView
+                android:id="@+id/caution"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cautionText"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="15dp"
+                android:text="사용시 주의사항"
+                android:textColor="@color/black"
+                android:paddingHorizontal="10dp"
+                android:foregroundGravity="center"
+                android:background="@drawable/round_button"
+                android:backgroundTint="@color/lightGray"
+                android:layout_marginBottom="60dp"
+                android:textSize="12dp" />
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="대여가능 수량: 1"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:background="@drawable/square_button"
+        android:gravity="center_vertical"
+        android:elevation="100dp"
+        android:textStyle="bold"
+        android:paddingStart="20dp"
+        ></TextView>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/shadow">
+    </ImageView>
+
+    <ImageButton
+        android:id="@+id/rent_button"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_rent_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:elevation="100dp"
+        android:background="@color/clean"
+        ></ImageButton>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,7 @@ import com.rtu.adapter.GroupViewAdapter
 import com.rtu.adapter.MyGroupViewAdapter
 import com.rtu.model.ClubSearchDetail
 import com.rtu.model.GetSearchGroup
+import com.rtu.model.SearchNameModel
 import com.rtu.retrofit.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,6 +29,80 @@ class SearchGroup : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_group)
         initView()
+
+        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+
+                // 검색 버튼 누를 때 호출
+
+                searchName(query)
+
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                return true
+            }
+        })
+    }
+
+    private fun searchName(query: String?){
+        if(query==null){
+            initView()
+        } else{
+            val recyclerView = findViewById<View>(R.id.rv_list) as RecyclerView
+            recyclerView.layoutManager = LinearLayoutManager(this)
+
+            val data_ = mutableListOf<ClubSearchDetail>()
+            RetrofitBuilder.api.groupSearchNameRequest(query).enqueue(object :
+                Callback<SearchNameModel> {
+                override fun onResponse(
+                    call: Call<SearchNameModel>,
+                    response: Response<SearchNameModel>
+                ) {
+                    if (response.isSuccessful) {
+                        data_.clear()
+                        //Log.d("test", response.body().toString())
+                        var data = response.body()!! // GsonConverter를 사용해 데이터매핑
+                        Log.d("test", data.toString())
+
+                        data_.add(data.data)
+
+                        mAdapter= GroupViewAdapter(data_)
+
+                        recyclerView.adapter= mAdapter?.apply{
+                            setItemClickListener(
+                                object : GroupViewAdapter.ItemClickListener {
+                                    override fun onClick(view: View, position: Int) {
+                                        val id=groupList[position].id
+
+                                        val intent = Intent(this@SearchGroup,
+                                            GroupInfo::class.java)
+
+                                        intent.apply {
+                                            this.putExtra("id",id) // 데이터 넣기
+                                        }
+                                        startActivity(intent)
+
+                                    }
+                                })
+                        }
+                    }
+
+                    else{
+                        Log.d("test", "error")
+
+                    }
+                }
+
+                override fun onFailure(call: Call<SearchNameModel>, t: Throwable) {
+                    Log.d("test", "실패$t")
+                    //Toast.makeText(getActivity(), "업로드 실패 ..", Toast.LENGTH_SHORT).show()
+                }
+
+            })
+        }
     }
 
     private fun initView() {

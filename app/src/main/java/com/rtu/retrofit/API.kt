@@ -63,6 +63,11 @@ interface API {
     fun groupSearchRequest(
     ): Call<GetSearchGroup>
 
+    @GET("/clubs/search?name={word}")
+    fun groupSearchNameRequest(
+        @Path("word") word:String
+    ): Call<SearchNameModel>
+
     @GET("/members/my/clubs")
     fun myGroupRequest(
     ): Call<GetGroupModel>
@@ -121,10 +126,10 @@ interface API {
         @Path("id") id: Int
     ): Call<MemberListModel>
 
-    @GET("/clubs/{club_id}/requests/join/{member_id}")
+    @POST("/clubs/{club_id}/requests/join/{member_id}")
     fun getAcceptRequest(
         @Path("club_id") clubId: Int,
-        @Path("id") studentId: Int
+        @Path("member_id") studentId: Int
     ): Call<ResponseModel>
 
     @POST("/members/email/requestCode")
@@ -136,4 +141,14 @@ interface API {
     fun getVerifyCode(
         @Body requestMail: MailCodeModel
     ): Call<BasicResponse>
+
+    @GET("/members/my/products")
+    fun getMyProducts(
+    ): Call<GetProductModel>
+
+    @GET("/clubs/{club_id}/products/{product_id}")
+    fun getProduct(
+        @Path("club_id") clubId: Int,
+        @Path("product_id") productId: Int
+    ): Call<GetProductResponse>
 }

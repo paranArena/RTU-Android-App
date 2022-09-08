@@ -10,7 +10,10 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/drawable/item_selector.xml" value="0.2" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/drawable/round_box.xml" value="0.1375" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/drawable/round_button.xml" value="0.377" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/drawable/shadow.xml" value="0.243" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/drawable/solid_button.xml" value="0.3135" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/drawable/square_botton.xml" value="0.243" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/drawable/square_button.xml" value="0.243" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/font/custom_font.xml" value="0.340625" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_add_group.xml" value="0.264" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_add_notice.xml" value="0.264" />
@@ -19,7 +22,7 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_add_product3.xml" value="0.264" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_add_product4.xml" value="0.264" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_add_product5.xml" value="0.2" />
-        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_group_info.xml" value="0.5" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_group_info.xml" value="0.33" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_mail.xml" value="0.38645833333333335" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_main_page.xml" value="0.152" />
@@ -28,6 +31,7 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_manage_notice.xml" value="0.264" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_manage_product.xml" value="0.176" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_notice_info.xml" value="0.33" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_product_info.xml" value="0.33" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_register.xml" value="0.44074074074074077" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_search_group.xml" value="0.43125" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_set_location.xml" value="0.176" />
@@ -46,14 +50,16 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/fragment_mypage.xml" value="0.33697916666666666" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/fragment_notice.xml" value="0.176" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/fragment_notifications.xml" value="0.1625" />
-        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/fragment_rent.xml" value="0.14479166666666668" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/fragment_rent.xml" value="0.33" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/fragment_rent_list.xml" value="0.153125" />
-        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/fragment_rent_products.xml" value="0.153125" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/fragment_rent_products.xml" value="0.33" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/group_list.xml" value="0.9" />
-        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/join_list.xml" value="0.264" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/item_list.xml" value="0.33" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/join_list.xml" value="0.67" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/member_list.xml" value="0.2" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/my_group_list.xml" value="0.1625" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/my_notice_list.xml" value="0.4" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/product_list.xml" value="0.5" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/solid_button.xml" value="0.16197916666666667" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/menu/bottom_nav_menu.xml" value="0.16197916666666667" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/menu/menu_bottom_nav.xml" value="0.33645833333333336" />

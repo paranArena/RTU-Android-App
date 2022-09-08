@@ -27,26 +27,6 @@ class MailActivity : AppCompatActivity() {
         return intent.getStringExtra("email")
     }
 
-    private fun getPassword(): String? {
-        return intent.getStringExtra("password")
-    }
-
-    private fun getName(): String? {
-        return intent.getStringExtra("name")
-    }
-
-    private fun getMajor(): String? {
-        return intent.getStringExtra("major")
-    }
-
-    private fun getPhoneNumber(): String? {
-        return intent.getStringExtra("phoneNumber")
-    }
-
-    private fun getId(): String? {
-        return intent.getStringExtra("id")
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             android.R.id.home -> {
@@ -69,13 +49,16 @@ class MailActivity : AppCompatActivity() {
 
         binding.message.visibility= View.INVISIBLE
 
+        val email=getEmail()
+        val requestMail = MailModel(email=email!!)
+
+        requestCode(requestMail)
+
         timeStart()
 
         if(time<0){
             timePause()
         }
-
-        val email=getEmail()
 
         binding.nextButton.setOnClickListener {
             val code=binding.pin.text.toString()
@@ -109,31 +92,23 @@ class MailActivity : AppCompatActivity() {
     }
 
     private fun success(){
-        val email=getEmail()
-        val password=getPassword()
-        val name=getName()
-        val major=getMajor()
-        val phoneNumber=getPhoneNumber()
-        val id=getId()
+        val intent = Intent(this@MailActivity, WelcomeActivity::class.java)
 
-        val registerData = RegisterRequest(
-            email = email!!, password = password!!, name = name!!, major = major!!,
-            phoneNumber = phoneNumber!!, studentId = id!!
-        )
-
-        signUp(registerData)
+        startActivity(intent)
+        finish()
     }
 
     private fun failed(){
         binding.message.visibility= View.VISIBLE
     }
 
-    private fun signUp(registerRequest: RegisterRequest){
-        RetrofitBuilder.api.registerPostRequest(registerRequest).enqueue(object :
-            Callback<RegisterResponse> {
+
+    private fun requestCode(requestMail: MailModel){
+        RetrofitBuilder.api.getRequestCode(requestMail).enqueue(object :
+            Callback<BasicResponse> {
             override fun onResponse(
-                call: Call<RegisterResponse>,
-                response: Response<RegisterResponse>
+                call: Call<BasicResponse>,
+                response: Response<BasicResponse>
             ) {
                 if(response.isSuccessful) {
                     Log.d("test", response.body().toString())
@@ -141,19 +116,17 @@ class MailActivity : AppCompatActivity() {
                     var data = response.body()!!
 
                     if(data.statusCode==200){
-                        val intent = Intent(this@MailActivity, WelcomeActivity::class.java)
-
-                        startActivity(intent)
-                        finish()
+                        success() //인증번호 전송
                     }
                 }
                 else {
                     Log.d("fail", response.body().toString())
                     failed() //회원가입 실패
+                    //success()
                 }
             }
 
-            override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
                 Log.d("test", "실패$t")
             }
 

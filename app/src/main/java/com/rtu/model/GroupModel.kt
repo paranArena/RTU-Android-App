@@ -9,6 +9,12 @@ data class GroupModel(
     val introduction: String
 )
 
+data class SearchNameModel(
+    val statusCode: Int,
+    val responseMessage: String,
+    val data: ClubSearchDetail
+)
+
 data class GetGroupModel(
     val statusCode: Int,
     val responseMessage: String,

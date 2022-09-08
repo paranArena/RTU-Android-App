@@ -15,17 +15,22 @@ import com.rtu.model.MemberListModel
 import com.rtu.model.MemberModel
 import com.rtu.model.ResponseModel
 import com.rtu.retrofit.RetrofitBuilder
+import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.coroutines.CoroutineContext
 
 class MemberJoinFragment : Fragment() {
-    private var _binding: FragmentMemberJoinBinding?=null
+    private var _binding: FragmentMemberJoinBinding? = null
 
     private val binding get() = _binding!!
+    private var data_ = mutableListOf<MemberModel>()
+
+
 
     //lateinit var groupViewAdapter: GroupViewAdapter
-    val data_ = mutableListOf<MemberModel>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,9 +44,27 @@ class MemberJoinFragment : Fragment() {
             startActivity(intent)
         }*/
 
-        val id= arguments?.getInt("id", 1)
+        val clubId = arguments?.getInt("id", 1)
 
-        initRecycler(id!!)
+
+        GlobalScope.launch {
+            delay(1000)
+
+            activity?.runOnUiThread {
+                binding.rvList.adapter = JoinListAdapter(data_).apply {
+                    setItemClickListener(
+                        object : JoinListAdapter.ItemClickListener {
+                            override fun onClick(view: View, position: Int) {
+                                val id = memberList[position].id
+
+                                getAccept(clubId!!, id)
+                            }
+                        })
+                }
+            }
+        }
+
+        initRecycler(clubId!!)
 
         return binding.root
     }
@@ -57,13 +80,13 @@ class MemberJoinFragment : Fragment() {
                     data_.clear()
                     //Log.d("test", response.body().toString())
                     var data = response.body()!! // GsonConverter를 사용해 데이터매핑
-                    Log.d("test", data.toString())
+                    Log.d("test", data.data.toString())
 
                     for (item in data.data) {
                         data_.add(item)
                     }
 
-                    binding.rvList.adapter = JoinListAdapter(data_).apply {
+                    /*binding.rvList.adapter = JoinListAdapter(data_).apply {
                         setItemClickListener(
                             object : JoinListAdapter.ItemClickListener {
                                 override fun onClick(view: View, position: Int) {
@@ -81,9 +104,9 @@ class MemberJoinFragment : Fragment() {
                                     //replaceFragment(GoodsInfoFragment())
                                 }
                             })
-                    }
+                    }*/
                 } else {
-                    Log.d("test", "error")
+                    Log.d("test", response.code().toString())
 
                 }
             }
@@ -107,6 +130,7 @@ class MemberJoinFragment : Fragment() {
                 if (response.isSuccessful) {
                     val data = response.body()!!
                 }
+                Log.d("test", response.code().toString())
             }
 
             override fun onFailure(call: Call<ResponseModel>, t: Throwable) {

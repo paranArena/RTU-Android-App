@@ -8,37 +8,33 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.rtu.R
-import com.rtu.model.MemberModel
-import kotlinx.android.synthetic.main.join_list.view.*
+import com.rtu.model.ProductDetail
 
-class JoinListAdapter internal constructor(var memberList: List<MemberModel>)
-    : RecyclerView.Adapter<JoinListAdapter.ListViewHolder>() {
+class MyProductAdapter internal constructor(var productList: List<ProductDetail>)
+    : RecyclerView.Adapter<MyProductAdapter.ListViewHolder>() {
 
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(_list: MemberModel) {
+        fun bind(_list: ProductDetail) {
             val imageView: ImageView = itemView.findViewById<ImageView>(R.id.iv_image)
-            /*if(_list.thumbnailPath!=null) {
-                val newUrl=_list.thumbnailPath
+            if(_list.imagePath!=null) {
+                val newUrl=_list.imagePath
                 Glide.with(itemView).load(newUrl).placeholder(R.drawable.ic_launcher_foreground)
                     .override(60, 60).into(imageView)
-            }*/
-            Glide.with(itemView).load(R.drawable.change).placeholder(R.drawable.ic_launcher_foreground)
-                .override(60, 60).into(imageView)
-
-
+            }
             itemView.findViewById<ImageView>(R.id.iv_image).clipToOutline=true
 
             itemView.findViewById<TextView>(R.id.iv_name).text = _list.name
+            itemView.findViewById<TextView>(R.id.iv_group).text=_list.clubName
+
+            val left= _list.left.toString()
+            val max = _list.max.toString()
+            itemView.findViewById<TextView>(R.id.iv_number).text = "$left / $max"
             //itemView.findViewById<TextView>(R.id.iv_category).text = _list.category
-            itemView.findViewById<TextView>(R.id.iv_tag).text = (_list.major + " " + _list.studentId.substring(2 until 4))
-            itemView.findViewById<TextView>(R.id.iv_accept).setOnClickListener {
-                itemClickListner.onClick(it,position)
-            }
+
         }
     }
-    override fun getItemCount(): Int = memberList.size
-
+    override fun getItemCount(): Int = productList.size
 
     override fun getItemViewType(position: Int): Int {
         return position
@@ -48,17 +44,17 @@ class JoinListAdapter internal constructor(var memberList: List<MemberModel>)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         return ListViewHolder(
             // 새로운 뷰를 생성해 뷰홀더에 인자로 넣어준다.
-            LayoutInflater.from(parent.context).inflate(R.layout.join_list, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.product_list, parent, false)
         )
     }
 
     // 반환된 ViewHolder에 데이터를 연결한다.
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.bind(memberList[position])
-        /*holder.itemView.setOnClickListener{
-            itemClickListner.onClick(it,position)
-        }*/
+        holder.bind(productList[position])
 
+        holder.itemView.setOnClickListener{
+            itemClickListner.onClick(it,position)
+        }
 
         /*val layoutParams = holder.itemView.layoutParams
         layoutParams.height = 600
@@ -66,7 +62,7 @@ class JoinListAdapter internal constructor(var memberList: List<MemberModel>)
     }
 
     interface ItemClickListener{
-        fun onClick(view: View,position: Int)
+        fun onClick(view: View, position: Int)
     }
     //를릭 리스너
     private lateinit var itemClickListner: ItemClickListener
@@ -74,5 +70,4 @@ class JoinListAdapter internal constructor(var memberList: List<MemberModel>)
     fun setItemClickListener(itemClickListener: ItemClickListener) {
         this.itemClickListner = itemClickListener
     }
-
 }

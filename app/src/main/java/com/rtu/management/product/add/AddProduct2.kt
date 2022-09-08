@@ -79,7 +79,7 @@ class AddProduct2 : AppCompatActivity() {
 
     private fun selectCategory(){
         val items = arrayOf("가전제품", "게임/취미", "공부할 때", "도서",
-        "디지털 기기", "비오는 날", "생활용품", "스포츠/레저", "의류", "주방용 기구", "춥거나, 더울 때",
+        "디지털기기", "비오는 날", "생활용품", "스포츠/레저", "의류", "주방용 기구", "춥거나, 더울 때",
         "피크닉", "행사", "기타")
         val builder = AlertDialog.Builder(this)
             .setTitle("카테고리")
