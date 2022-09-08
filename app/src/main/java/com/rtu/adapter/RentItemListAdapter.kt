@@ -1,34 +1,32 @@
 package com.rtu.adapter
 
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.rtu.R
-import com.rtu.model.ItemModel
 import com.rtu.model.ItemsModel
 import java.text.DecimalFormat
 
-class ItemListAdapter internal constructor(var itemList: List<ItemsModel>, val name: String)
-    : RecyclerView.Adapter<ItemListAdapter.ListViewHolder>() {
+class RentItemListAdapter internal constructor(var itemList: List<ItemsModel>, val name: String)
+    : RecyclerView.Adapter<RentItemListAdapter.ListViewHolder>() {
 
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(_list: ItemsModel) {
 
-            val df=DecimalFormat("000")
+            val df= DecimalFormat("000")
             val dn=df.format(_list.numbering)
             itemView.findViewById<TextView>(R.id.iv_name).text = "$name-$dn"
 
-            if(_list.rentalInfo==null){
+            /*val status: String?=_list.rentalInfo.rentalStatus
+
+            if(status==null){
                 itemView.findViewById<TextView>(R.id.iv_status).text = "대여가능"
-            } else{
-                itemView.findViewById<TextView>(R.id.iv_status).text = "불가"
-            }
+            } else {
+                itemView.findViewById<TextView>(R.id.iv_status).text = _list.rentalInfo.rentalStatus
+            }*/
         }
     }
     override fun getItemCount(): Int = itemList.size

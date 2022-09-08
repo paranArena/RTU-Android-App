@@ -21,6 +21,9 @@
         android:theme="@style/Theme.Rtu"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".renttab.RentComplete"
+            android:exported="false" />
+        <activity
             android:name=".product.ProductInfo"
             android:exported="false" />
         <activity

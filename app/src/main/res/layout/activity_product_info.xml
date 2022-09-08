@@ -133,12 +133,12 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_list"
-                android:layout_below="@id/productListText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/productListText"
                 android:layout_marginHorizontal="10dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_list"/>
+                tools:listitem="@layout/item_list" />
 
             <TextView
                 android:id="@+id/cautionText"
@@ -173,7 +173,16 @@
     </ScrollView>
     </FrameLayout>
 
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toTopOf="@id/helpText">
+
+    </FrameLayout>
+
     <TextView
+        android:id="@+id/helpText"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
