@@ -41,7 +41,8 @@ data class ItemsModel(
 data class RentalInfo(
     val rentalStatus: String?,
     val rentDate: String,
-    val expDate: String?
+    val expDate: String?,
+    val meRental: Boolean
 ): Parcelable
 
 @Parcelize

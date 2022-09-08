@@ -1,20 +1,23 @@
 package com.rtu.product
 
 
+import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.rtu.R
 import com.rtu.adapter.ItemListAdapter
 import com.rtu.adapter.MyNoticeViewAdapter
 import com.rtu.databinding.ActivityProductInfoBinding
-import com.rtu.model.ClubDetail
-import com.rtu.model.CreateProductResponse
-import com.rtu.model.GetProductResponse
+import com.rtu.management.AddNotice
+import com.rtu.model.*
+import com.rtu.renttab.RentComplete
 import com.rtu.retrofit.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
@@ -74,14 +77,25 @@ class ProductInfo : AppCompatActivity() {
 
             selectProductFragment.arguments=bundle
 
-            if(buttonStatus==0) {
+            if(buttonStatus==0) {// 처음
                 if(moveInfo==null) {
                     addFragment(selectProductFragment)
                 }
             }
 
-            if(buttonStatus==1) {
+            if(buttonStatus==1) {//대여 하기
+                getRent(clubId,selectedItemId)
+                buttonStatus=0
+            }
 
+            if(buttonStatus==2){//대여 확정
+                applyRent(clubId,selectedItemId)
+                buttonStatus=0
+            }
+
+            if(buttonStatus==3){//대여 확정
+                returnRent(clubId,selectedItemId)
+                buttonStatus=0
             }
         }
 
@@ -143,10 +157,93 @@ class ProductInfo : AppCompatActivity() {
         })
     }
 
+    private fun getRent(clubId: Int, itemId: Int){
+        RetrofitBuilder.api.requestRent(clubId, itemId).enqueue(object :
+            Callback<RequestRentResponse> {
+            override fun onResponse(
+
+                call: Call<RequestRentResponse>,
+                response: Response<RequestRentResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val data=response.body()!!
+                    val intent = Intent(this@ProductInfo, RentComplete::class.java)
+
+                    val productId=getProductId()
+
+                    intent.apply {
+                        this.putExtra("name",data.data.numbering.toString()) // 데이터 넣기
+                        this.putExtra("id",data.data.id)
+                        this.putExtra("clubId",data.data.id)
+                        this.putExtra("productId",productId)
+                    }
+
+                    startActivity(intent)
+
+                    onBackPressed()
+
+                }
+            }
+
+            override fun onFailure(call: Call<RequestRentResponse>, t: Throwable) {
+                Log.d("test", "실패$t")
+                //Toast.makeText(this@GoodsInfo, "업로드 실패 ..", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    private fun applyRent(clubId: Int, itemId: Int){
+        RetrofitBuilder.api.applyRent(clubId, itemId).enqueue(object :
+            Callback<RentResponse> {
+            override fun onResponse(
+
+                call: Call<RentResponse>,
+                response: Response<RentResponse>
+            ) {
+                if (response.isSuccessful) {
+                    showDialog("apply")
+                }
+            }
+
+            override fun onFailure(call: Call<RentResponse>, t: Throwable) {
+                Log.d("test", "실패$t")
+                //Toast.makeText(this@GoodsInfo, "업로드 실패 ..", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    private fun returnRent(clubId: Int, itemId: Int){
+        RetrofitBuilder.api.returnRent(clubId, itemId).enqueue(object :
+            Callback<RentResponse> {
+            override fun onResponse(
+
+                call: Call<RentResponse>,
+                response: Response<RentResponse>
+            ) {
+                if (response.isSuccessful) {
+                    showDialog("return")
+                }
+            }
+
+            override fun onFailure(call: Call<RentResponse>, t: Throwable) {
+                Log.d("test", "실패$t")
+                //Toast.makeText(this@GoodsInfo, "업로드 실패 ..", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
     override fun onBackPressed() {
         val selectProductFragment=SelectProductFragment()
         if(moveInfo!=null) {
             removeFragment(selectProductFragment)
+            binding.rentButton.setImageResource(R.drawable.ic_rent_button)
+            val clubId=getClubId()
+            val productId=getProductId()
+
+            getProductInfo(clubId, productId)
         }
         else{
             super.onBackPressed()
@@ -166,15 +263,58 @@ class ProductInfo : AppCompatActivity() {
         supportFragmentManager.popBackStack()
     }
 
-    fun changeButton(s: String, id: Int){
+    fun changeButton(s: String, selectedItem: ItemsModel?){
         if(s=="selected") {
-            binding.rentButton.setImageResource(R.drawable.ic_rented_button)
-            buttonStatus=1
-            selectedItemId=id
+
+            if(selectedItem!!.rentalInfo==null){
+                buttonStatus=1
+                binding.rentButton.setImageResource(R.drawable.ic_rented_button)
+            } else if(selectedItem!!.rentalInfo.meRental){
+                val status=selectedItem!!.rentalInfo.rentalStatus
+                if(status=="WAIT"){
+                    buttonStatus=2
+                    binding.rentButton.setImageResource(R.drawable.ic_rent_set_button)
+                }
+                if(status=="RENT" || status=="LATE"){
+                    buttonStatus=3
+                    binding.rentButton.setImageResource(R.drawable.ic_return_button)
+                }
+            } else{
+                buttonStatus=0
+            }
+
+
+            selectedItemId=selectedItem!!.id
         }
         if(s=="wait"){
             binding.rentButton.setImageResource(R.drawable.ic_rent_button)
             buttonStatus=0
+        }
+    }
+
+    fun showDialog(s: String){
+        if(s=="apply") {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("대여 확정")
+                .setMessage("대여가 확정되었습니다.")
+                .setPositiveButton("확인",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        this@ProductInfo.onBackPressed()
+                    })
+            // 다이얼로그를 띄워주기
+            builder.show()
+        }
+
+        if(s=="return") {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("반납 성공")
+                .setMessage("물건이 정상적으로 반납되었습니다.")
+                .setPositiveButton("확인",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        this@ProductInfo.onBackPressed()
+                    })
+            // 다이얼로그를 띄워주기
+            builder.show()
         }
     }
 }

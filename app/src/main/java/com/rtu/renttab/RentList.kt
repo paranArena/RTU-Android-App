@@ -9,12 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.rtu.R.layout.fragment_rent_list
 import com.rtu.adapter.MyGroupViewAdapter
+import com.rtu.adapter.MyRentalAdapter
 import com.rtu.databinding.FragmentRentListBinding
 
 import com.rtu.grouptap.GroupInfo
-import com.rtu.model.ClubInfo
-import com.rtu.model.ClubSearchDetail
-import com.rtu.model.GetGroupModel
+import com.rtu.model.*
 import com.rtu.retrofit.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,7 +25,7 @@ class RentList : Fragment() {
     private val binding get() = _binding!!
 
     //lateinit var groupViewAdapter: GroupViewAdapter
-    val data_ = mutableListOf<ClubInfo>()
+    val data_ = mutableListOf<RentDetail>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,11 +39,11 @@ class RentList : Fragment() {
     }
 
     private fun initRecycler(){
-        RetrofitBuilder.api.myGroupRequest().enqueue(object :
-            Callback<GetGroupModel> {
+        RetrofitBuilder.api.getMyRentals().enqueue(object :
+            Callback<MyRentalResponse> {
             override fun onResponse(
-                call: Call<GetGroupModel>,
-                response: Response<GetGroupModel>
+                call: Call<MyRentalResponse>,
+                response: Response<MyRentalResponse>
             ) {
                 if (response.isSuccessful) {
                     data_.clear()
@@ -56,22 +55,11 @@ class RentList : Fragment() {
                         data_.add(item)
                     }
 
-                    binding.rvList.adapter= MyGroupViewAdapter(data_).apply{
+                    binding.rvList.adapter= MyRentalAdapter(data_).apply{
                         setItemClickListener(
-                            object : MyGroupViewAdapter.ItemClickListener {
+                            object : MyRentalAdapter.ItemClickListener {
                                 override fun onClick(view: View, position: Int) {
-                                    val id=groupList[position].id
-
-                                    //setFragmentResult("requestKey", bundleOf("projid" to projid))
-
-                                    val intent = Intent(context, GroupInfo::class.java)
-
-                                    intent.apply {
-                                        this.putExtra("id",id) // 데이터 넣기
-                                    }
-                                    startActivity(intent)
-
-                                    //replaceFragment(GoodsInfoFragment())
+                                    val id=productList[position].id
                                 }
                             })
                     }
@@ -83,7 +71,7 @@ class RentList : Fragment() {
                 }
             }
 
-            override fun onFailure(call: Call<GetGroupModel>, t: Throwable) {
+            override fun onFailure(call: Call<MyRentalResponse>, t: Throwable) {
                 Log.d("test", "실패$t")
                 //Toast.makeText(getActivity(), "업로드 실패 ..", Toast.LENGTH_SHORT).show()
             }

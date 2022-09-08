@@ -10,23 +10,12 @@
         android:layout_width="match_parent"
         android:id="@+id/search_view"
         android:layout_height="35dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginHorizontal="10dp"
         android:background="@drawable/solid_button"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="60dp"
+        app:iconifiedByDefault="false"
         app:queryHint="I'll Ren 2 U!">
     </androidx.appcompat.widget.SearchView>
-
-    <ImageButton
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="end"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="15dp"
-        android:src="@drawable/ic_bell"
-        android:background="@color/white">
-
-    </ImageButton>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"

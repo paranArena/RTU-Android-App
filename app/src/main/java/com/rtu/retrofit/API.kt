@@ -151,4 +151,31 @@ interface API {
         @Path("club_id") clubId: Int,
         @Path("product_id") productId: Int
     ): Call<GetProductResponse>
+
+    @POST("/clubs/{club_id}/rentals/{item_id}/request")
+    fun requestRent(
+        @Path("club_id") clubId: Int,
+        @Path("item_id") itemId: Int
+    ): Call<RequestRentResponse>
+
+    @PUT("/clubs/{club_id}/rentals/{item_id}/apply")
+    fun applyRent(
+        @Path("club_id") clubId: Int,
+        @Path("item_id") itemId: Int
+    ): Call<RentResponse>
+
+    @PUT("/clubs/{club_id}/rentals/{item_id}/return")
+    fun returnRent(
+        @Path("club_id") clubId: Int,
+        @Path("item_id") itemId: Int
+    ): Call<RentResponse>
+
+    @GET("/members/my/rentals")
+    fun getMyRentals(
+    ): Call<MyRentalResponse>
+
+    @GET("/clubs/{club_id}/rentals/search/all")
+    fun searchClubRentalsAll(
+        @Path("club_id") clubId: Int
+    ): Call<ManageRentModel>
 }

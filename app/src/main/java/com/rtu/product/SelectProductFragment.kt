@@ -1,25 +1,19 @@
 package com.rtu.product
 
-import android.annotation.SuppressLint
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+
 import com.rtu.R
 import com.rtu.adapter.ItemListAdapter
-import com.rtu.adapter.JoinListAdapter
-import com.rtu.adapter.MyGroupViewAdapter
+
 import com.rtu.databinding.FragmentSelectProductBinding
-import com.rtu.grouptap.AddGroup
-import com.rtu.grouptap.GroupInfo
+
 import com.rtu.model.*
 import com.rtu.retrofit.RetrofitBuilder
 import kotlinx.coroutines.GlobalScope
@@ -70,12 +64,13 @@ class SelectProductFragment : Fragment()  {
                             override fun onClick(view: View, position: Int) {
                                 if(selectedItemId==0){
                                     selectedItemId=itemList[position].id
+                                    val selectedItem=itemList[position]
 
                                     view.findViewById<View>(R.id.backgroundView).setBackgroundResource(R.color.deepBlue)
                                     view.findViewById<TextView>(R.id.iv_name).setTextColor(Color.WHITE)
                                     view.findViewById<TextView>(R.id.iv_status).setTextColor(Color.WHITE)
 
-                                    (activity as ProductInfo).changeButton("selected", selectedItemId)
+                                    (activity as ProductInfo).changeButton("selected", selectedItem)
 
                                 } else{
                                     if(selectedItemId==itemList[position].id){
@@ -85,7 +80,7 @@ class SelectProductFragment : Fragment()  {
                                             resources.getColor(R.color.darkGray))
                                         selectedItemId=0
 
-                                        (activity as ProductInfo).changeButton("wait", 0)
+                                        (activity as ProductInfo).changeButton("wait", null)
                                     }
                                 }
                             }
@@ -111,9 +106,7 @@ class SelectProductFragment : Fragment()  {
                     name = data.data.name
 
                     for (item in data.data.items) {
-                        if(item.rentalInfo==null) {
-                            data_.add(item)
-                        }
+                        data_.add(item)
                     }
 
                     /*binding.rvList.isNestedScrollingEnabled=false
