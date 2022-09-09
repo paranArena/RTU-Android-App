@@ -33,6 +33,13 @@ class MainActivity : AppCompatActivity() {
 
         //binding.loginButton.isEnabled=false
 
+        val tokenCheck=GlobalApplication.prefs.getString("token","x")
+
+        if(tokenCheck!="x"){
+            val intent = Intent(this, MainPageActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.register.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
@@ -126,6 +133,11 @@ class MainActivity : AppCompatActivity() {
         fun setString(key: String, str: String)
         {
             prefs.edit().putString(key, str).apply()
+        }
+
+        fun removeString(key: String)
+        {
+            prefs.edit().remove(key).commit()
         }
     }
 }

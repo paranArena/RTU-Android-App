@@ -1,13 +1,20 @@
 package com.rtu.tab
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
+import com.rtu.MainPageActivity
 import com.rtu.databinding.FragmentMypageBinding
+import com.rtu.model.BasicResponse
 import com.rtu.model.MyInfoModel
+import com.rtu.mypagetab.ConditionsActivity
+import com.rtu.mypagetab.MyInfoActivity
 import com.rtu.retrofit.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,6 +33,26 @@ class MypageFragment : Fragment() {
         _binding = FragmentMypageBinding.inflate(inflater, container, false)
 
         getMyInfo()
+
+        binding.profile.setOnClickListener {
+            val intent = Intent(context, MyInfoActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.deleteUser.setOnClickListener {
+            dialog()
+            activity?.finish()
+        }
+
+        binding.promise.setOnClickListener {
+            val intent = Intent(context, ConditionsActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.logout.setOnClickListener {
+            (activity as MainPageActivity).deleteToken()
+            activity?.finish()
+        }
 
         return binding.root
     }
@@ -56,6 +83,43 @@ class MypageFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<MyInfoModel>, t: Throwable) {
+                Log.d("test", "실패$t")
+            }
+
+        })
+    }
+
+    private fun dialog(){
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("회원탈퇴")
+            .setMessage("정말로 탈퇴하시겠습니까?")
+            .setPositiveButton("확인",
+                DialogInterface.OnClickListener { dialog, id ->
+                }).setNegativeButton("취소",
+                DialogInterface.OnClickListener { dialog, id ->
+                })
+        // 다이얼로그를 띄워주기
+        builder.show()
+    }
+
+    private fun quitService(){
+        RetrofitBuilder.api.quitService().enqueue(object :
+            Callback<BasicResponse> {
+            override fun onResponse(
+                call: Call<BasicResponse>,
+                response: Response<BasicResponse>
+            ) {
+                if(response.isSuccessful) {
+                    Log.d("test", response.body().toString())
+
+                    activity?.finish()
+                }
+                else {
+                    Log.d("fail", response.body().toString())
+                }
+            }
+
+            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
                 Log.d("test", "실패$t")
             }
 

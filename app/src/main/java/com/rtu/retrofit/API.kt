@@ -188,4 +188,8 @@ interface API {
     fun searchClubProductsAll(
         @Path("club_id") clubId: Int
     ): Call<GetProductModel>
+
+    @GET("/members/my/quit")
+    fun quitService(
+    ): Call<BasicResponse>
 }

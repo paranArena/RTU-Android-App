@@ -77,4 +77,8 @@ class MainPageActivity : AppCompatActivity() {
             finishAffinity()
         }
     }
+
+    fun deleteToken(){
+        MainActivity.GlobalApplication.prefs.removeString("token")
+    }
 }
