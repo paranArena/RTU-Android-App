@@ -81,12 +81,16 @@ class NoticeInfo : AppCompatActivity() {
                     val title = data.data.title
                     val content = data.data.content
                     val imagePath = data.data.imagePath
+                    val createdAt = data.data.createdAt
 
                     Glide.with(this@NoticeInfo).load(imagePath).
                     placeholder(R.drawable.ic_launcher_foreground).into(binding.noticeImage)
 
+                    binding.noticeImage.clipToOutline=true
+
                     binding.titleText.text = title
                     binding.contentText.text = content
+                    binding.createdAt.text= createdAt
                 }
             }
 

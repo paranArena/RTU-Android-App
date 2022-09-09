@@ -192,4 +192,32 @@ interface API {
     @GET("/members/my/quit")
     fun quitService(
     ): Call<BasicResponse>
+
+    @DELETE ("/clubs/{clubId}")
+    fun deleteClub(
+        @Path("clubId") clubId: Int
+    ): Call<BasicResponse>
+
+    @GET("members/{email}/info")
+    fun getMemberInfo(
+        @Path("email") email: String
+    ): Call<MemberInfoModel>
+
+    @PUT("/clubs/{clubId}/members/{memberId}/role/admin")
+    fun grantAdmin(
+        @Path("clubId") clubId: Int,
+        @Path("memberId") memberId: Int
+    ): Call<BasicResponse>
+
+    @PUT("/clubs/{clubId}/members/{memberId}/role/user")
+    fun grantUser(
+        @Path("clubId") clubId: Int,
+        @Path("memberId") memberId: Int
+    ): Call<BasicResponse>
+
+    @DELETE("/clubs/{clubId}/members/{memberId}")
+    fun removeMember(
+        @Path("clubId") clubId: Int,
+        @Path("memberId") memberId: Int
+    ): Call<BasicResponse>
 }

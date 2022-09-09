@@ -63,10 +63,7 @@ data class ClubData(
     val name: String,
     val introduction: String,
     val thumbnailPath: String,
-    val hashtags: List<String>,
-    val memberList: List<MemberInfo>,
-    val notifications: List<NoticeDetailModel>,
-    val products: List<String>
+    val hashtags: List<String>
 ): Parcelable
 
 

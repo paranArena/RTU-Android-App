@@ -10,10 +10,12 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
 import com.rtu.R
+import com.rtu.adapter.MyNoticeViewAdapter
 import com.rtu.databinding.ActivityGroupInfoBinding
 import com.rtu.management.ManageActivity
 import com.rtu.model.ClubDetail
 import com.rtu.model.JoinResponse
+import com.rtu.model.MyNotice
 import com.rtu.model.MyRole
 import com.rtu.retrofit.RetrofitBuilder
 import retrofit2.Call
@@ -53,6 +55,7 @@ class GroupInfo : AppCompatActivity() {
         val id=getExtra()
         getGroupInfo(id)
         getGroupPermission(id)
+        getNotice(id)
 
         binding.toolbarOption.setOnClickListener{
             when (binding.toolbarOption.text) {
@@ -62,6 +65,7 @@ class GroupInfo : AppCompatActivity() {
                         this.putExtra("id", id) // 데이터 넣기
                     }
                     startActivity(intent)
+                    finish()
                 }
                 "탈퇴하기" -> {
                     requestLeave(id)
@@ -94,8 +98,6 @@ class GroupInfo : AppCompatActivity() {
                     val introduction = data.data.introduction
                     val thumbnailPath = data.data.thumbnailPath
 
-                    val noticeList=data.data.memberList
-
                     binding.toolbarTitle.text=title
 
                     Glide.with(this@GroupInfo).load(thumbnailPath).
@@ -111,11 +113,6 @@ class GroupInfo : AppCompatActivity() {
                     binding.groupTagText.text=hashtags
 
                     binding.introText.text = introduction
-                    if(data.data.notifications!= null) {
-                        //binding.rvList.adapter = MyNoticeViewAdapter(data.data.notifications)
-                    }
-
-                    //Toast.makeText(this@GoodsInfo, "업로드 성공!", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -126,6 +123,54 @@ class GroupInfo : AppCompatActivity() {
 
         })
     }
+
+    private fun getNotice(id: Int){
+        RetrofitBuilder.api.getClubNotice(id).enqueue(object :
+            Callback<MyNotice> {
+            override fun onResponse(
+
+                call: Call<MyNotice>,
+                response: Response<MyNotice>
+            ) {
+                if (response.isSuccessful) {
+                    //Log.d("test", response.body().toString())
+                    var data = response.body()!! // GsonConverter를 사용해 데이터매핑
+                    Log.d("test", data.toString())
+
+
+                    binding.rvList.adapter= MyNoticeViewAdapter(data.data).apply{
+                        setItemClickListener(
+                            object : MyNoticeViewAdapter.ItemClickListener {
+                                override fun onClick(view: View, position: Int) {
+                                    val notice_id=noticeList[position].id
+
+                                    //setFragmentResult("requestKey", bundleOf("projid" to projid))
+
+                                    val intent = Intent(this@GroupInfo,
+                                        NoticeInfo::class.java)
+
+                                    intent.apply {
+                                        this.putExtra("club_id",getExtra())
+                                        this.putExtra("notice_id",notice_id)// 데이터 넣기
+                                    }
+                                    startActivity(intent)
+                                    onStop()
+                                    //replaceFragment(GoodsInfoFragment())
+                                }
+                            })
+                    }
+                    //Toast.makeText(this@GoodsInfo, "업로드 성공!", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<MyNotice>, t: Throwable) {
+                Log.d("test", "실패$t")
+                //Toast.makeText(this@GoodsInfo, "업로드 실패 ..", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
     private fun getGroupPermission(id: Int){
         RetrofitBuilder.api.getMyClubRole(id).enqueue(object :
             Callback<MyRole> {

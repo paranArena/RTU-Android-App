@@ -1,11 +1,21 @@
 package com.rtu.management
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
+import com.bumptech.glide.Glide
 import com.rtu.R
 import com.rtu.databinding.ActivityManageBinding
+import com.rtu.model.BasicResponse
+import com.rtu.model.ClubDetail
+import com.rtu.retrofit.RetrofitBuilder
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ManageActivity : AppCompatActivity() {
     private var _binding: ActivityManageBinding?=null
@@ -38,6 +48,10 @@ class ManageActivity : AppCompatActivity() {
 
         val id=getExtra()
 
+        binding.toolbarOption.setOnClickListener {
+            showDialog()
+        }
+
         binding.notices.setOnClickListener {
             val intent = Intent(this, ManageNotice::class.java)
             intent.apply {
@@ -64,5 +78,40 @@ class ManageActivity : AppCompatActivity() {
 
         val view=binding.root
         setContentView(view)
+    }
+
+    fun showDialog(){
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("그룹 삭제")
+                .setMessage("정말로 삭제하시겠습니까?")
+                .setPositiveButton("확인",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        deleteClub(getExtra())
+                    }).setNegativeButton("취소",
+                    DialogInterface.OnClickListener { dialog, id ->
+                })
+            // 다이얼로그를 띄워주기
+            builder.show()
+    }
+
+    private fun deleteClub(id: Int){
+        RetrofitBuilder.api.deleteClub(id).enqueue(object :
+            Callback<BasicResponse> {
+            override fun onResponse(
+
+                call: Call<BasicResponse>,
+                response: Response<BasicResponse>
+            ) {
+                if (response.isSuccessful) {
+                    finish()
+                }
+            }
+
+            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+                Log.d("test", "실패$t")
+                //Toast.makeText(this@GoodsInfo, "업로드 실패 ..", Toast.LENGTH_SHORT).show()
+            }
+
+        })
     }
 }

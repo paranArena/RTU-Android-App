@@ -27,7 +27,7 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_add_product4.xml" value="0.264" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_add_product5.xml" value="0.2" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_conditions.xml" value="0.2099187687045746" />
-        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_group_info.xml" value="0.33" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_group_info.xml" value="0.2" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_mail.xml" value="0.38645833333333335" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_main_page.xml" value="0.152" />
@@ -36,7 +36,7 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_manage_notice.xml" value="0.264" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_manage_product.xml" value="0.176" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_my_info.xml" value="0.25" />
-        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_notice_info.xml" value="0.33" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_notice_info.xml" value="0.264" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_product_info.xml" value="0.33" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/activity_rent_complete.xml" value="0.33" />
@@ -55,6 +55,7 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/fragment_manage_rented_list.xml" value="0.18554938007695596" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/fragment_manage_return_list.xml" value="0.1735784523300556" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/fragment_maps.xml" value="0.15416666666666667" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/fragment_member_info.xml" value="0.4" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/fragment_member_join.xml" value="0.264" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/fragment_member_list.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/fragment_mypage.xml" value="0.33" />
@@ -68,7 +69,7 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/item_list.xml" value="0.33" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/join_list.xml" value="0.5" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/manage_reserve_list.xml" value="0.5" />
-        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/member_list.xml" value="0.2" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/member_list.xml" value="0.264" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/my_group_list.xml" value="0.1625" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/my_notice_list.xml" value="0.4" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/product_list.xml" value="0.25" />

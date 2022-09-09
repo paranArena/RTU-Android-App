@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.rtu.adapter.MemberListAdapter
 
 import com.rtu.databinding.FragmentMemberListBinding
+import com.rtu.management.member.MemberInfoFragment
 import com.rtu.model.MemberListModel
 import com.rtu.model.MemberModel
 import com.rtu.retrofit.RetrofitBuilder
@@ -24,6 +25,12 @@ class MemberListFragment : Fragment() {
 
     //lateinit var groupViewAdapter: GroupViewAdapter
     val data_ = mutableListOf<MemberModel>()
+
+    override fun onResume() {
+        val id= arguments?.getInt("id", 1)
+        initRecycler(id!!)
+        super.onResume()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,7 +72,29 @@ class MemberListFragment : Fragment() {
                         setItemClickListener(
                             object : MemberListAdapter.ItemClickListener {
                                 override fun onClick(view: View, position: Int) {
-                                    val id = memberList[position].id
+                                    val email = memberList[position].email
+                                    val number = memberList[position].phoneNumber
+                                    val major = memberList[position].major
+                                    val name = memberList[position].name
+                                    val clubRole = memberList[position].clubRole
+                                    val studentId = memberList[position].studentId
+                                    val memberId = memberList[position].id
+
+                                    val dialog=MemberInfoFragment()
+
+                                    val bundle=Bundle()
+
+                                    bundle.putString("email", email)
+                                    bundle.putString("number", number)
+                                    bundle.putString("major", major)
+                                    bundle.putString("name", name)
+                                    bundle.putString("clubRole", clubRole)
+                                    bundle.putString("studentId", studentId)
+                                    bundle.putInt("memberId", memberId)
+                                    bundle.putInt("clubId", id)
+                                    dialog.arguments=bundle
+
+                                    dialog.show(childFragmentManager, "MemberInfoFragment")
 
                                     //setFragmentResult("requestKey", bundleOf("projid" to projid))
 

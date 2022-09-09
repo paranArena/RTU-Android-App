@@ -33,6 +33,8 @@ class ProductInfo : AppCompatActivity() {
     private var selectedItemId=0
     private var moveInfo: String?=null
 
+
+
     private fun getClubId(): Int {
         return intent.getIntExtra("clubId", 0)
     }
@@ -242,6 +244,7 @@ class ProductInfo : AppCompatActivity() {
         if(moveInfo!=null) {
             removeFragment(selectProductFragment)
             binding.rentButton.setImageResource(R.drawable.ic_rent_button)
+            buttonStatus=0
             val clubId=getClubId()
             val productId=getProductId()
 
@@ -319,4 +322,6 @@ class ProductInfo : AppCompatActivity() {
             builder.show()
         }
     }
+
+
 }

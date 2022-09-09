@@ -30,6 +30,12 @@ data class ClubList(
     val id: Int
 ): Parcelable
 
+data class MemberInfoModel(
+    val statusCode: Int,
+    val responseMessage: String,
+    val data: MemberInfo
+)
+
 @Parcelize
 data class MemberInfo(
     val id: Int,
@@ -37,7 +43,9 @@ data class MemberInfo(
     val name: String,
     val phoneNumber: String,
     val studentId: String,
-    val major: String
+    val major: String,
+    val activated: Boolean,
+    val authorities: List<Authority>
 ): Parcelable
 
 data class MyRole(

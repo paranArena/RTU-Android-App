@@ -52,8 +52,11 @@
 
             <ImageView
                 android:id="@+id/noticeImage"
-                android:layout_width="match_parent"
+                android:background="@drawable/round_button"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="40dp"
+                android:layout_below="@id/createdAt"
                 android:scaleType="centerCrop"
                 android:src="@drawable/change"></ImageView>
 
@@ -61,18 +64,35 @@
                 android:id="@+id/titleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/noticeImage"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="30dp"
                 android:text="소개글"
-                android:textColor="@color/darkGray"
-                android:textSize="16dp"></TextView>
+                android:textColor="@color/black"
+                android:textSize="18dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/titleText"
+                android:layout_marginHorizontal="20dp"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_marginRight="20dp"
+                android:id="@+id/createdAt"
+                android:text="2000.00.00"
+                android:layout_below="@id/titleText">
+            </TextView>
 
             <TextView
                 android:id="@+id/contentText"
+                android:layout_marginTop="10dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/titleText"
+                android:layout_below="@id/noticeImage"
                 android:layout_marginHorizontal="20dp"
                 android:text="클럽을 소개하는 글"
                 android:textColor="@color/black"></TextView>

@@ -23,7 +23,16 @@
             android:layout_gravity="center"
             android:textColor="@color/black"
             android:textStyle="bold">
+        </TextView>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar_option"
+            android:text="삭제"
+            android:layout_marginRight="15dp"
+            android:layout_gravity="right"
+            android:textColor="@color/black">
         </TextView>
     </androidx.appcompat.widget.Toolbar>
 
@@ -94,29 +103,6 @@
                 android:layout_marginLeft="10dp"
                 android:text="대여목록 활성화">
             </TextView>
-            <com.google.android.material.button.MaterialButtonToggleGroup
-                android:id="@+id/toggleButton"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginLeft="30dp"
-                app:singleSelection="true"
-                app:selectionRequired="true">
-
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="활성"
-                style="?attr/materialButtonOutlinedStyle"
-                />
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="비활성"
-                style="?attr/materialButtonOutlinedStyle"
-                />
-            </com.google.android.material.button.MaterialButtonToggleGroup>
         </LinearLayout>
 
 
