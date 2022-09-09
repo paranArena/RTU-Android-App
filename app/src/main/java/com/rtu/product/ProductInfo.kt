@@ -3,6 +3,7 @@ package com.rtu.product
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -194,6 +195,7 @@ class ProductInfo : AppCompatActivity() {
     }
 
     private fun applyRent(clubId: Int, itemId: Int){
+
         RetrofitBuilder.api.applyRent(clubId, itemId).enqueue(object :
             Callback<RentResponse> {
             override fun onResponse(

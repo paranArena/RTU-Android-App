@@ -31,6 +31,7 @@ data class RegisterResponse(
     val data: RegisterData
 )
 
+@Parcelize
 data class RegisterData(
     val id: Int,
     val email: String,
@@ -42,7 +43,7 @@ data class RegisterData(
     val clubList: List<Club>?,
     val rentals: List<Rental>?,
     val authorityDtoSet: List<Authority>
-)
+): Parcelable
 
 data class MailModel(
     val email: String

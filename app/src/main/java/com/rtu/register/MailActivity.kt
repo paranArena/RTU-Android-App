@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import com.rtu.R
 import com.rtu.databinding.ActivityMailBinding
 import com.rtu.model.*
@@ -116,7 +117,8 @@ class MailActivity : AppCompatActivity() {
                     var data = response.body()!!
 
                     if(data.statusCode==200){
-                        success() //인증번호 전송
+                        Toast.makeText(applicationContext, "인증번호가 전송되었습니다.",
+                            Toast.LENGTH_SHORT).show()
                     }
                 }
                 else {

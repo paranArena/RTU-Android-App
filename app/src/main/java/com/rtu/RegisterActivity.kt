@@ -223,7 +223,8 @@ class RegisterActivity : AppCompatActivity() {
                     }
                 }
                 else {
-                    Log.d("fail", response.body().toString())
+                    Log.d("fail", response.code().toString())
+                    Log.d("fail", registerRequest.toString())
                     failed() //회원가입 실패
                 }
             }

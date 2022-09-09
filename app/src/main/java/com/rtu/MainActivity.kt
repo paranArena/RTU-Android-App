@@ -11,6 +11,7 @@ import android.view.View
 import com.rtu.databinding.ActivityMainBinding
 import com.rtu.model.LoginRequest
 import com.rtu.model.LoginResponse
+import com.rtu.register.MailActivity
 import com.rtu.retrofit.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
@@ -85,7 +86,20 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 else {
-                    Log.d("fail", response.body().toString())
+                    Log.d("fail", response.code().toString())
+
+                    if(response.code()==403){
+                        val email=loginRequest.email
+
+                        val intent = Intent(this@MainActivity, MailActivity::class.java)
+
+                        intent.apply {
+                            this.putExtra("email", email)
+                        }
+                        startActivity(intent)
+
+                    }
+
                     failed() //로그인 실패
                 }
             }
