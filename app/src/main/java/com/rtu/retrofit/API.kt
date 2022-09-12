@@ -66,7 +66,7 @@ interface API {
     @GET("/clubs/search")
     fun groupSearchNameRequest(
         @Query("name") name:String
-    ): Call<SearchNameModel>
+    ): Call<GetSearchGroup>
 
     @GET("/members/my/clubs")
     fun myGroupRequest(

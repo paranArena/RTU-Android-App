@@ -48,8 +48,13 @@ class SearchGroup : AppCompatActivity() {
         })
     }
 
+    override fun onResume() {
+        super.onResume()
+        initView()
+    }
+
     private fun searchName(query: String?){
-        if(query==null){
+        if(query==null || query==""){
             initView()
         } else{
             val recyclerView = findViewById<View>(R.id.rv_list) as RecyclerView
@@ -57,10 +62,10 @@ class SearchGroup : AppCompatActivity() {
 
             val data_ = mutableListOf<ClubSearchDetail>()
             RetrofitBuilder.api.groupSearchNameRequest(query).enqueue(object :
-                Callback<SearchNameModel> {
+                Callback<GetSearchGroup> {
                 override fun onResponse(
-                    call: Call<SearchNameModel>,
-                    response: Response<SearchNameModel>
+                    call: Call<GetSearchGroup>,
+                    response: Response<GetSearchGroup>
                 ) {
                     if (response.isSuccessful) {
                         data_.clear()
@@ -68,7 +73,9 @@ class SearchGroup : AppCompatActivity() {
                         var data = response.body()!! // GsonConverter를 사용해 데이터매핑
                         Log.d("test", query + data.toString())
 
-                        data_.add(data.data)
+                        for (item in data.data) {
+                            data_.add(item)
+                        }
 
                         mAdapter= GroupViewAdapter(data_)
 
@@ -97,7 +104,7 @@ class SearchGroup : AppCompatActivity() {
                     }
                 }
 
-                override fun onFailure(call: Call<SearchNameModel>, t: Throwable) {
+                override fun onFailure(call: Call<GetSearchGroup>, t: Throwable) {
                     Log.d("test", "실패$t")
                     //Toast.makeText(getActivity(), "업로드 실패 ..", Toast.LENGTH_SHORT).show()
                 }
