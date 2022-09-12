@@ -15,8 +15,8 @@ import android.util.Log
 import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
-import com.ren2u.R
-import com.ren2u.databinding.ActivityAddProductBinding
+import ren2u.R
+import ren2u.databinding.ActivityAddProductBinding
 
 class AddProduct : AppCompatActivity() {
     private var _binding: ActivityAddProductBinding?=null

@@ -2,8 +2,8 @@ package com.ren2u.register
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.ren2u.R
-import com.ren2u.databinding.ActivityWelcomeBinding
+import ren2u.R
+import ren2u.databinding.ActivityWelcomeBinding
 
 class WelcomeActivity : AppCompatActivity() {
     private var _binding: ActivityWelcomeBinding?=null

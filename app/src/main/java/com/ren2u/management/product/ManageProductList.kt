@@ -10,7 +10,7 @@ import android.view.ViewGroup
 
 import com.ren2u.adapter.MyProductAdapter
 
-import com.ren2u.databinding.FragmentManageProductListBinding
+import ren2u.databinding.FragmentManageProductListBinding
 
 import com.ren2u.management.product.add.AddProduct
 import com.ren2u.model.GetProductModel

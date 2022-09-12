@@ -17,8 +17,8 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
-import com.ren2u.R
-import com.ren2u.databinding.ActivityAddNoticeBinding
+import ren2u.R
+import ren2u.databinding.ActivityAddNoticeBinding
 import com.ren2u.model.CreateNoticeResponse
 import com.ren2u.retrofit.RetrofitBuilder
 import okhttp3.MediaType

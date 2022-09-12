@@ -7,8 +7,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
-import com.ren2u.R
-import com.ren2u.databinding.ActivityManageBinding
+import ren2u.R
+import ren2u.databinding.ActivityManageBinding
 import com.ren2u.model.BasicResponse
 import com.ren2u.retrofit.RetrofitBuilder
 import retrofit2.Call

@@ -24,7 +24,7 @@ import com.bumptech.glide.Glide
 import com.google.android.gms.location.*
 import com.ren2u.MainPageActivity
 import com.ren2u.adapter.ItemListAdapter
-import com.ren2u.databinding.ActivityProductInfoBinding
+import ren2u.databinding.ActivityProductInfoBinding
 import com.ren2u.model.*
 import com.ren2u.renttab.RentComplete
 import com.ren2u.retrofit.RetrofitBuilder

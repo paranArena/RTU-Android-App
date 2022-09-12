@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.ren2u.R
+import ren2u.R
 import com.ren2u.model.NoticeModel
 
 class MyNoticeViewAdapter internal constructor(var noticeList: List<NoticeModel>)

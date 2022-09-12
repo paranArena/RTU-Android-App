@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import com.ren2u.MainPageActivity
-import com.ren2u.databinding.FragmentMypageBinding
+import ren2u.databinding.FragmentMypageBinding
 import com.ren2u.model.BasicResponse
 import com.ren2u.model.MyInfoModel
 import com.ren2u.mypagetab.ConditionsActivity

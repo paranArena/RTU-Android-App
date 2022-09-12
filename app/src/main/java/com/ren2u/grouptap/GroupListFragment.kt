@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ren2u.adapter.MyGroupViewAdapter
-import com.ren2u.databinding.FragmentGroupListBinding
+import ren2u.databinding.FragmentGroupListBinding
 import com.ren2u.model.*
 import com.ren2u.retrofit.RetrofitBuilder
 import retrofit2.Call

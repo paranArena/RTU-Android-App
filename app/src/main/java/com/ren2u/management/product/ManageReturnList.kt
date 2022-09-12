@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ren2u.adapter.ReturnLogAdapter
-import com.ren2u.databinding.FragmentManageRentedListBinding
+import ren2u.databinding.FragmentManageRentedListBinding
 import com.ren2u.model.ReturnLog
 import com.ren2u.model.ReturnModel
 import com.ren2u.retrofit.RetrofitBuilder

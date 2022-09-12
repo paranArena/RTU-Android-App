@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.google.android.material.tabs.TabLayout
-import com.ren2u.R
-import com.ren2u.databinding.FragmentManageRentBinding
+import ren2u.R
+import ren2u.databinding.FragmentManageRentBinding
 
 class ManageRentFragment : Fragment() {
     private var _binding: FragmentManageRentBinding? = null

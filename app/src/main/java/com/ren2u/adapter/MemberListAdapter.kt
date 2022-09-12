@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.ren2u.R
+import ren2u.R
 import com.ren2u.model.MemberModel
 
 class MemberListAdapter internal constructor(var memberList: List<MemberModel>)

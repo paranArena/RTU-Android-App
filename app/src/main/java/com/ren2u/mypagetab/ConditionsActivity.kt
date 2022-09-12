@@ -3,8 +3,8 @@ package com.ren2u.mypagetab
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import com.ren2u.R
-import com.ren2u.databinding.ActivityConditionsBinding
+import ren2u.R
+import ren2u.databinding.ActivityConditionsBinding
 class ConditionsActivity : AppCompatActivity() {
     private var _binding: ActivityConditionsBinding? = null
 

@@ -6,8 +6,8 @@ import android.view.MenuItem
 
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
-import com.ren2u.R
-import com.ren2u.databinding.ActivityManageProductBinding
+import ren2u.R
+import ren2u.databinding.ActivityManageProductBinding
 import com.ren2u.management.product.ManageProductList
 import com.ren2u.management.product.ManageRentFragment
 

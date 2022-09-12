@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import com.ren2u.R
+import ren2u.R
 import com.ren2u.adapter.MyNoticeViewAdapter
-import com.ren2u.databinding.ActivityManageNoticeBinding
+import ren2u.databinding.ActivityManageNoticeBinding
 
 import com.ren2u.grouptap.NoticeInfo
 import com.ren2u.model.MyNotice

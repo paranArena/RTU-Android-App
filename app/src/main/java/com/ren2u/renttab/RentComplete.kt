@@ -3,8 +3,8 @@ package com.ren2u.renttab
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.ren2u.R
-import com.ren2u.databinding.ActivityRentCompleteBinding
+import ren2u.R
+import ren2u.databinding.ActivityRentCompleteBinding
 import com.ren2u.model.GetProductResponse
 import com.ren2u.retrofit.RetrofitBuilder
 import net.daum.mf.map.api.MapPOIItem

@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import com.ren2u.R
-import com.ren2u.databinding.ActivitySetLocationBinding
+import ren2u.R
+import ren2u.databinding.ActivitySetLocationBinding
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
 

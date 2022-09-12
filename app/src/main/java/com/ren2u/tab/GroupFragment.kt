@@ -11,6 +11,7 @@ import com.google.android.material.tabs.TabLayout
 import com.ren2u.grouptap.GroupListFragment
 import com.ren2u.grouptap.NoticeFragment
 import com.ren2u.grouptap.SearchGroup
+import ren2u.R
 import ren2u.databinding.FragmentGroupBinding
 
 class GroupFragment : Fragment() {

@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
-import com.ren2u.R
-import com.ren2u.databinding.ActivityAddProduct5Binding
+import ren2u.R
+import ren2u.databinding.ActivityAddProduct5Binding
 import com.ren2u.model.CreateProductResponse
 import com.ren2u.retrofit.RetrofitBuilder
 import okhttp3.MediaType

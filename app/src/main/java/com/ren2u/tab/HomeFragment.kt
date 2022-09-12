@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.ren2u.databinding.FragmentHomeBinding
+import ren2u.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {

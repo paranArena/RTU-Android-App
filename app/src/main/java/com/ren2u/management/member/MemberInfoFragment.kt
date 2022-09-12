@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.ren2u.databinding.FragmentMemberInfoBinding
+import ren2u.databinding.FragmentMemberInfoBinding
 import com.ren2u.model.BasicResponse
 import com.ren2u.model.MemberInfoModel
 import com.ren2u.retrofit.RetrofitBuilder
