@@ -32,16 +32,16 @@ class MainPageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main_page)
 
         // 애플리케이션 실행 후 첫 화면 설정
-        supportFragmentManager.beginTransaction().add(frame.id, HomeFragment()).commit()
+        supportFragmentManager.beginTransaction().add(frame.id, GroupFragment()).commit()
 
 
         // 하단 네비게이션 바 클릭 이벤트 설정
         bottomNagivationView.setOnItemSelectedListener {item ->
             when(item.itemId) {
-                R.id.nav_home -> {
+                /*R.id.nav_home -> {
                     replaceFragment(HomeFragment())
                     true
-                }
+                }*/
                 R.id.nav_group -> {
                     replaceFragment(GroupFragment())
                     true

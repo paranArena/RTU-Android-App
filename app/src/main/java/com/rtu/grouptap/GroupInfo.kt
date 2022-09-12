@@ -11,12 +11,12 @@ import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
 import com.rtu.R
 import com.rtu.adapter.MyNoticeViewAdapter
+import com.rtu.adapter.MyProductAdapter
+import com.rtu.adapter.ProductHorizonAdapter
 import com.rtu.databinding.ActivityGroupInfoBinding
 import com.rtu.management.ManageActivity
-import com.rtu.model.ClubDetail
-import com.rtu.model.JoinResponse
-import com.rtu.model.MyNotice
-import com.rtu.model.MyRole
+import com.rtu.model.*
+import com.rtu.product.ProductInfo
 import com.rtu.retrofit.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
@@ -56,6 +56,7 @@ class GroupInfo : AppCompatActivity() {
         getGroupInfo(id)
         getGroupPermission(id)
         getNotice(id)
+        getProducts(id)
 
         binding.toolbarOption.setOnClickListener{
             when (binding.toolbarOption.text) {
@@ -167,6 +168,61 @@ class GroupInfo : AppCompatActivity() {
             override fun onFailure(call: Call<MyNotice>, t: Throwable) {
                 Log.d("test", "실패$t")
                 //Toast.makeText(this@GoodsInfo, "업로드 실패 ..", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    private fun getProducts(id: Int){
+        val data_ = mutableListOf<ProductDetail>()
+
+        RetrofitBuilder.api.searchClubProductsAll(id).enqueue(object :
+            Callback<GetProductModel> {
+            override fun onResponse(
+                call: Call<GetProductModel>,
+                response: Response<GetProductModel>
+            ) {
+                if (response.isSuccessful) {
+                    data_.clear()
+                    //Log.d("test", response.body().toString())
+                    var data = response.body()!! // GsonConverter를 사용해 데이터매핑
+                    Log.d("test", data.toString())
+
+                    for (item in data.data) {
+                        data_.add(item)
+                    }
+
+                    binding.rvListHorizon.adapter= ProductHorizonAdapter(data_).apply{
+                        setItemClickListener(
+                            object : ProductHorizonAdapter.ItemClickListener {
+                                override fun onClick(view: View, position: Int) {
+                                    /*val id=productList[position].id
+                                    val clubId=productList[position].clubId
+
+                                    //setFragmentResult("requestKey", bundleOf("projid" to projid))
+
+                                    val intent = Intent(this@GroupInfo, ProductInfo::class.java)
+
+                                    intent.apply {
+                                        this.putExtra("clubId",clubId)
+                                        this.putExtra("productId",id) // 데이터 넣기
+                                    }
+                                    startActivity(intent)*/
+
+                                }
+                            })
+                    }
+                }
+
+                else{
+                    Log.d("test", "error")
+
+                }
+            }
+
+            override fun onFailure(call: Call<GetProductModel>, t: Throwable) {
+                Log.d("test", "실패$t")
+                //Toast.makeText(getActivity(), "업로드 실패 ..", Toast.LENGTH_SHORT).show()
             }
 
         })
