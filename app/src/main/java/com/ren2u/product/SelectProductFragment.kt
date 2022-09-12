@@ -9,10 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 
-import ren2u.R
+import com.ren2u.R
 import com.ren2u.adapter.ItemListAdapter
 
-import ren2u.databinding.FragmentSelectProductBinding
+import com.ren2u.databinding.FragmentSelectProductBinding
 
 import com.ren2u.model.*
 import com.ren2u.retrofit.RetrofitBuilder

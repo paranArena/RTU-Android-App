@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import com.ren2u.MainPageActivity
-import ren2u.databinding.FragmentMypageBinding
+import com.ren2u.databinding.FragmentMypageBinding
 import com.ren2u.model.BasicResponse
 import com.ren2u.model.MyInfoModel
 import com.ren2u.mypagetab.ConditionsActivity
@@ -41,7 +41,6 @@ class MypageFragment : Fragment() {
 
         binding.deleteUser.setOnClickListener {
             dialog()
-            activity?.finish()
         }
 
         binding.promise.setOnClickListener {
@@ -95,6 +94,8 @@ class MypageFragment : Fragment() {
             .setMessage("정말로 탈퇴하시겠습니까?")
             .setPositiveButton("확인",
                 DialogInterface.OnClickListener { dialog, id ->
+                    quitService()
+                    activity?.finish()
                 }).setNegativeButton("취소",
                 DialogInterface.OnClickListener { dialog, id ->
                 })

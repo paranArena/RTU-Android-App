@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.ren2u.adapter.MemberListAdapter
 
-import ren2u.databinding.FragmentMemberListBinding
+import com.ren2u.databinding.FragmentMemberListBinding
 import com.ren2u.management.member.MemberInfoFragment
 import com.ren2u.model.MemberListModel
 import com.ren2u.model.MemberModel

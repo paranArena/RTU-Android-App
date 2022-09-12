@@ -4,8 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import ren2u.R
-import ren2u.databinding.ActivityMyInfoBinding
+import com.ren2u.R
+import com.ren2u.databinding.ActivityMyInfoBinding
 import com.ren2u.model.MyInfoModel
 import com.ren2u.retrofit.RetrofitBuilder
 import retrofit2.Call

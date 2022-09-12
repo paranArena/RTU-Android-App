@@ -54,7 +54,7 @@ interface API {
         @Path("id") id:Int
     ): Call<CreateProductResponse>
 
-    @GET("/members/{email}/exists")
+    @GET("/members/email/{email}/exists")
     fun checkEmailRequest(
         @Path("email") email:String
     ): Call<Boolean>

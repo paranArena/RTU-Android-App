@@ -10,12 +10,12 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
-import ren2u.databinding.ActivityRegisterBinding
+import com.ren2u.databinding.ActivityRegisterBinding
 import com.ren2u.model.RegisterRequest
 import com.ren2u.model.RegisterResponse
 import com.ren2u.register.MailActivity
 import com.ren2u.retrofit.RetrofitBuilder
-import ren2u.R
+import com.ren2u.R
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

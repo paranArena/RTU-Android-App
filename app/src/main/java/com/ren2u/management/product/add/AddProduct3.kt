@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
-import ren2u.R
-import ren2u.databinding.ActivityAddProduct3Binding
+import com.ren2u.R
+import com.ren2u.databinding.ActivityAddProduct3Binding
 
 class AddProduct3 : AppCompatActivity() {
     private var _binding: ActivityAddProduct3Binding?=null

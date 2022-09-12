@@ -10,6 +10,7 @@ import com.google.android.gms.maps.*
 
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.ren2u.R
 
 class LocationFragment : Fragment(), OnMapReadyCallback {
 

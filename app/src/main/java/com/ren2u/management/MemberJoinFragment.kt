@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.ren2u.adapter.JoinListAdapter
-import ren2u.databinding.FragmentMemberJoinBinding
+import com.ren2u.databinding.FragmentMemberJoinBinding
 
 import com.ren2u.model.MemberListModel
 import com.ren2u.model.MemberModel

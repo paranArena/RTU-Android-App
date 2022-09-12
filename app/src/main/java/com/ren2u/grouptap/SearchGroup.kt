@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ren2u.R
+import com.ren2u.R
 import com.ren2u.adapter.GroupViewAdapter
 import com.ren2u.model.ClubSearchDetail
 import com.ren2u.model.GetSearchGroup

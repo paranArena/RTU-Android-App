@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ren2u.adapter.ManageRentAdapter
-import ren2u.databinding.FragmentManageBookListBinding
+import com.ren2u.databinding.FragmentManageBookListBinding
 import com.ren2u.model.ManageRentData
 import com.ren2u.model.ManageRentModel
 import com.ren2u.retrofit.RetrofitBuilder

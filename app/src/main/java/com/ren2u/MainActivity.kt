@@ -13,8 +13,7 @@ import com.ren2u.model.LoginRequest
 import com.ren2u.model.LoginResponse
 import com.ren2u.register.MailActivity
 import com.ren2u.retrofit.RetrofitBuilder
-import ren2u.R
-import ren2u.databinding.ActivityMainBinding
+import com.ren2u.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

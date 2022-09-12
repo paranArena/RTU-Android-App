@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
-import ren2u.R
-import ren2u.databinding.ActivityManageMemberBinding
+import com.ren2u.R
+import com.ren2u.databinding.ActivityManageMemberBinding
 
 class ManageMember : AppCompatActivity() {
 

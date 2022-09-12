@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ren2u.adapter.MyRentalAdapter
-import ren2u.databinding.FragmentRentListBinding
+import com.ren2u.databinding.FragmentRentListBinding
 
 import com.ren2u.model.*
 import com.ren2u.retrofit.RetrofitBuilder

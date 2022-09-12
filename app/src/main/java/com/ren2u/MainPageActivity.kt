@@ -14,7 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.ren2u.tab.GroupFragment
 import com.ren2u.tab.MypageFragment
 import com.ren2u.tab.RentFragment
-import ren2u.R
+import com.ren2u.R
 import java.security.MessageDigest
 
 @Suppress("DEPRECATION")

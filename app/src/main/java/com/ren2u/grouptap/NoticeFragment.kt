@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ren2u.adapter.MyNoticeViewAdapter
-import ren2u.databinding.FragmentNoticeBinding
+import com.ren2u.databinding.FragmentNoticeBinding
 import com.ren2u.model.MyNotice
 import com.ren2u.model.NoticeModel
 import com.ren2u.retrofit.RetrofitBuilder

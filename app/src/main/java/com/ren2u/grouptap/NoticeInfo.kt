@@ -6,8 +6,8 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import com.bumptech.glide.Glide
-import ren2u.R
-import ren2u.databinding.ActivityNoticeInfoBinding
+import com.ren2u.R
+import com.ren2u.databinding.ActivityNoticeInfoBinding
 import com.ren2u.model.NoticeInfoModel
 import com.ren2u.retrofit.RetrofitBuilder
 import retrofit2.Call

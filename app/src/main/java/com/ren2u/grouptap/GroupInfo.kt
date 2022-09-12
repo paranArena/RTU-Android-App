@@ -9,10 +9,10 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
-import ren2u.R
+import com.ren2u.R
 import com.ren2u.adapter.MyNoticeViewAdapter
 import com.ren2u.adapter.ProductHorizonAdapter
-import ren2u.databinding.ActivityGroupInfoBinding
+import com.ren2u.databinding.ActivityGroupInfoBinding
 import com.ren2u.management.ManageActivity
 import com.ren2u.model.*
 import com.ren2u.retrofit.RetrofitBuilder
