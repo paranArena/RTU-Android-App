@@ -14,7 +14,7 @@
 
 
     <application
-        android:name="rtu.MainActivity$GlobalApplication"
+        android:name="com.ren2u.MainActivity$GlobalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_ren2u"
         android:label="@string/app_name"
@@ -23,31 +23,31 @@
         android:theme="@style/Theme.Rtu"
         android:usesCleartextTraffic="true">
         <activity
-            android:name="rtu.mypagetab.ConditionsActivity"
+            android:name="com.ren2u.mypagetab.ConditionsActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.mypagetab.MyInfoActivity"
+            android:name="com.ren2u.mypagetab.MyInfoActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.renttab.RentComplete"
+            android:name="com.ren2u.renttab.RentComplete"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.product.ProductInfo"
+            android:name="com.ren2u.product.ProductInfo"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.register.WelcomeActivity"
+            android:name="com.ren2u.register.WelcomeActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.register.MailActivity"
+            android:name="com.ren2u.register.MailActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.management.product.add.AddProduct5"
+            android:name="com.ren2u.management.product.add.AddProduct5"
             android:exported="false"
             android:screenOrientation="portrait"/>
 
@@ -56,71 +56,71 @@
             android:value="@string/key" />
 
         <activity
-            android:name="rtu.management.product.add.SetLocation"
+            android:name="com.ren2u.management.product.add.SetLocation"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.management.product.add.AddProduct4"
+            android:name="com.ren2u.management.product.add.AddProduct4"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.management.product.add.AddProduct3"
+            android:name="com.ren2u.management.product.add.AddProduct3"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.management.product.add.AddProduct2"
+            android:name="com.ren2u.management.product.add.AddProduct2"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.management.product.add.AddProduct"
+            android:name="com.ren2u.management.product.add.AddProduct"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.management.ManageProduct"
+            android:name="com.ren2u.management.ManageProduct"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.management.ManageMember"
+            android:name="com.ren2u.management.ManageMember"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.management.AddNotice"
+            android:name="com.ren2u.management.AddNotice"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.grouptap.NoticeInfo"
+            android:name="com.ren2u.grouptap.NoticeInfo"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.management.ManageNotice"
+            android:name="com.ren2u.management.ManageNotice"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.management.ManageActivity"
+            android:name="com.ren2u.management.ManageActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.grouptap.GroupInfo"
+            android:name="com.ren2u.grouptap.GroupInfo"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.grouptap.SearchGroup"
+            android:name="com.ren2u.grouptap.SearchGroup"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.grouptap.AddGroup"
+            android:name="com.ren2u.grouptap.AddGroup"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.MainPageActivity"
+            android:name="com.ren2u.MainPageActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.RegisterActivity"
+            android:name="com.ren2u.RegisterActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="rtu.MainActivity"
+            android:name="com.ren2u.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

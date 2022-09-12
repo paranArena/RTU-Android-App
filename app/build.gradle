@@ -14,7 +14,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.rtu"
+        applicationId "com.ren2u"
         minSdk 29
         targetSdk 32
         versionCode 1
