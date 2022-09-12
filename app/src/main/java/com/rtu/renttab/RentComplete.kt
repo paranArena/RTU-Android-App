@@ -1,15 +1,19 @@
 package com.rtu.renttab
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.rtu.R
 import com.rtu.databinding.ActivityRentCompleteBinding
 import com.rtu.model.GetProductResponse
 import com.rtu.retrofit.RetrofitBuilder
+import net.daum.mf.map.api.MapPOIItem
+import net.daum.mf.map.api.MapPoint
+import net.daum.mf.map.api.MapView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class RentComplete : AppCompatActivity() {
     private var _binding: ActivityRentCompleteBinding?=null
@@ -72,7 +76,29 @@ class RentComplete : AppCompatActivity() {
 
                     locationFragment.arguments=bundle
 
-                    supportFragmentManager.beginTransaction().add(R.id.frame, LocationFragment()).commit()
+                    val mapView = MapView(this@RentComplete)
+
+                    mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(latitude, longitude), true);
+                    mapView.setZoomLevel(1, true);
+
+                    val mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude)
+
+                    val marker = MapPOIItem()
+                    marker.itemName = "대여 위치"
+                    marker.tag = 0
+                    marker.mapPoint = mapPoint
+                    marker.markerType = MapPOIItem.MarkerType.BluePin // 기본으로 제공하는 BluePin 마커 모양.
+
+                    marker.selectedMarkerType =
+                        MapPOIItem.MarkerType.RedPin // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+
+
+                    mapView.addPOIItem(marker)
+
+                    binding.frame.addView(mapView)
+
+
+                    //supportFragmentManager.beginTransaction().add(R.id.frame, LocationFragment()).commit()
 
                 }
             }

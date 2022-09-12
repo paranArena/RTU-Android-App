@@ -11,6 +11,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+
+
     <application
         android:name=".MainActivity$GlobalApplication"
         android:allowBackup="true"
@@ -127,6 +129,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data android:name="com.kakao.sdk.AppKey" android:value="b17afd6966d1fa342ab2b8c0009419eb"/>
     </application>
 
 </manifest>

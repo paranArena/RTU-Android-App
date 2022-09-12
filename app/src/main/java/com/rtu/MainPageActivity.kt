@@ -1,7 +1,9 @@
 package com.rtu
 
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Base64
 import android.util.Log
 
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -17,6 +19,7 @@ import com.rtu.tab.RentFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.security.MessageDigest
 
 class MainPageActivity : AppCompatActivity() {
     private val frame: ConstraintLayout by lazy {
@@ -32,7 +35,7 @@ class MainPageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main_page)
 
         // 애플리케이션 실행 후 첫 화면 설정
-        supportFragmentManager.beginTransaction().add(frame.id, GroupFragment()).commit()
+        supportFragmentManager.beginTransaction().replace(frame.id, GroupFragment()).commit()
 
 
         // 하단 네비게이션 바 클릭 이벤트 설정
@@ -58,6 +61,8 @@ class MainPageActivity : AppCompatActivity() {
             }
         }
 
+        getAppKeyHash()
+
     }
 
     // 화면 전환 구현 메소드
@@ -80,5 +85,22 @@ class MainPageActivity : AppCompatActivity() {
 
     fun deleteToken(){
         MainActivity.GlobalApplication.prefs.removeString("token")
+    }
+
+    fun getAppKeyHash() {
+        try {
+            val info =
+                packageManager.getPackageInfo(packageName, PackageManager.GET_SIGNATURES)
+            for (signature in info.signatures) {
+                var md: MessageDigest
+                md = MessageDigest.getInstance("SHA")
+                md.update(signature.toByteArray())
+                val something = String(Base64.encode(md.digest(), 0))
+                Log.e("Hash key", something)
+            }
+        } catch (e: Exception) {
+
+            Log.e("name not found", e.toString())
+        }
     }
 }

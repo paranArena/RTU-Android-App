@@ -61,7 +61,7 @@ class AddProduct3 : AppCompatActivity() {
             val number=binding.numberEditText.text.toString()
             val period=binding.periodEditText.text.toString()
 
-            if(number==null || period==null){
+            if(number=="" || period==""){
                 showDialogFailed()
             }
             else {

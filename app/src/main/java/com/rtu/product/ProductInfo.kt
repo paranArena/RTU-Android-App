@@ -95,10 +95,6 @@ class ProductInfo : AppCompatActivity() {
 
         }
 
-        if (checkPermissionForLocation(this)) {
-            startLocationUpdates()
-        }
-
 
         binding.rentButton.setOnClickListener {
             val selectProductFragment=SelectProductFragment()
@@ -154,6 +150,10 @@ class ProductInfo : AppCompatActivity() {
 
                     latitude=data.data.location.latitude
                     longitude=data.data.location.longitude
+
+                    if (checkPermissionForLocation(this@ProductInfo)) {
+                        startLocationUpdates()
+                    }
 
                     binding.productNameText.text=name
                     binding.category.text=category
@@ -377,8 +377,6 @@ class ProductInfo : AppCompatActivity() {
             // 시스템에서 받은 location 정보를 onLocationChanged()에 전달
             locationResult.lastLocation
             onLocationChanged(locationResult.lastLocation)
-
-
         }
     }
 
@@ -388,6 +386,8 @@ class ProductInfo : AppCompatActivity() {
         mLastLocation = location
 
         var distance=getDistance(mLastLocation.latitude,mLastLocation.longitude,latitude,longitude)
+
+        Log.d("test",mLastLocation.latitude.toString() + ","+ mLastLocation.longitude.toString())
 
         Log.d("test", distance.toString())
 
@@ -430,12 +430,25 @@ class ProductInfo : AppCompatActivity() {
         }
     }
 
-    fun getDistance(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Int {
+    /*fun getDistance(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {
         val dLat = Math.toRadians(lat2 - lat1)
         val dLon = Math.toRadians(lon2 - lon1)
         val a = sin(dLat / 2).pow(2.0) + sin(dLon / 2).pow(2.0) * cos(Math.toRadians(lat1)) * cos(Math.toRadians(lat2))
         val c = 2 * asin(sqrt(a))
-        return (r * c).toInt()
+        return (r * c)
+    }*/
+
+    private fun getDistance(lat1: Double, lng1:Double, lat2:Double, lng2:Double) : Float{
+
+        val myLoc = Location(LocationManager.NETWORK_PROVIDER)
+        val targetLoc = Location(LocationManager.NETWORK_PROVIDER)
+        myLoc.latitude= lat1
+        myLoc.longitude = lng1
+
+        targetLoc.latitude= lat2
+        targetLoc.longitude = lng2
+
+        return myLoc.distanceTo(targetLoc)
     }
 
 }

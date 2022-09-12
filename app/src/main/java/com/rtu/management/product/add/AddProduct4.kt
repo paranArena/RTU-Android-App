@@ -44,6 +44,14 @@ class AddProduct4 : AppCompatActivity() {
         return intent.getStringExtra("period")
     }
 
+    private fun getLatitude(): Double? {
+        return intent.getDoubleExtra("latitude", 0.0)
+    }
+
+    private fun getLongitude(): Double? {
+        return intent.getDoubleExtra("longitude", 0.0)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             android.R.id.home -> {
@@ -66,14 +74,34 @@ class AddProduct4 : AppCompatActivity() {
 
         binding.locationEditButton.setOnClickListener {
             val intent = Intent(this@AddProduct4, SetLocation::class.java)
+
+            val id = getId()
+            val filePath = getFilePath()
+            val name = getName()
+            val category = getCategory()
+            val price = getPrice()
+            val number = getNumber()
+            val period = getPeriod()
+
+            intent.apply {
+                this.putExtra("id", id)
+                this.putExtra("filePath", filePath) // 데이터 넣기
+                this.putExtra("name", name)
+                this.putExtra("category", category)
+                this.putExtra("price", price)
+                this.putExtra("number", number)
+                this.putExtra("period", period)
+            }
+
             startActivity(intent)
+            finish()
             //onStop()
         }
 
         binding.nextButton.setOnClickListener {
             val detail=binding.detailEditText.text.toString()
 
-            if(detail==null){
+            if(detail=="" || getLatitude()==0.0){
                 showDialogFailed()
             }
             else {
@@ -86,6 +114,8 @@ class AddProduct4 : AppCompatActivity() {
                 val price = getPrice()
                 val number = getNumber()
                 val period = getPeriod()
+                val latitude = getLatitude()
+                val longitude = getLongitude()
 
                 intent.apply {
                     this.putExtra("id", id)
@@ -96,7 +126,11 @@ class AddProduct4 : AppCompatActivity() {
                     this.putExtra("number", number)
                     this.putExtra("period", period)
                     this.putExtra("detail", detail)
+                    this.putExtra("latitude", latitude)
+                    this.putExtra("longitude", longitude)
                 }
+                Log.d("test", latitude.toString() +","+ longitude.toString())
+
                 startActivity(intent)
                 finish()
             }

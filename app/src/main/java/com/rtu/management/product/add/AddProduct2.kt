@@ -52,7 +52,7 @@ class AddProduct2 : AppCompatActivity() {
             val category=binding.categoryEditButton.text.toString()
             val price=binding.priceEditText.text.toString()
 
-            if(name==null || category==null || price==null){
+            if(name=="" || category=="" || price==""){
                 showDialogFailed()
             }
             else {

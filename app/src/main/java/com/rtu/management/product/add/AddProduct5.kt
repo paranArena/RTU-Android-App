@@ -57,6 +57,14 @@ class AddProduct5 : AppCompatActivity() {
         return intent.getStringExtra("detail")
     }
 
+    private fun getLatitude(): Double? {
+        return intent.getDoubleExtra("latitude", 0.0)
+    }
+
+    private fun getLongitude(): Double? {
+        return intent.getDoubleExtra("longitude", 0.0)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             android.R.id.home -> {
@@ -89,6 +97,8 @@ class AddProduct5 : AppCompatActivity() {
             val period = getPeriod()
             val detail = getDetail()
             val caution=binding.cautionEditText.text.toString()
+            val latitude = getLatitude()
+            val longitude = getLongitude()
 
             var rentalList=mutableListOf<MultipartBody.Part>()
 
@@ -104,8 +114,8 @@ class AddProduct5 : AppCompatActivity() {
             val fifoRequest = RequestBody.create(MediaType.parse("text/plain"), period)
             val reserveRequest = RequestBody.create(MediaType.parse("text/plain"), "0")
             val locationRequest = RequestBody.create(MediaType.parse("text/plain"), detail)
-            val longitudeRequest = RequestBody.create(MediaType.parse("text/plain"), "127.045295")
-            val latitudeRequest = RequestBody.create(MediaType.parse("text/plain"), "37.283672")
+            val longitudeRequest = RequestBody.create(MediaType.parse("text/plain"), longitude.toString())
+            val latitudeRequest = RequestBody.create(MediaType.parse("text/plain"), latitude.toString())
             val cautionRequest = RequestBody.create(MediaType.parse("text/plain"), caution)
 
             var file = File(filePath)
