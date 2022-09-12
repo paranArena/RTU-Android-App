@@ -3,14 +3,10 @@ package com.rtu.management
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
 import com.rtu.R
 import com.rtu.databinding.ActivityManageMemberBinding
-import com.rtu.grouptap.NoticeFragment
-import kotlinx.android.synthetic.main.activity_manage_member.*
-import java.lang.reflect.Member
 
 class ManageMember : AppCompatActivity() {
 

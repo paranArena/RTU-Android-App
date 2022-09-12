@@ -1,14 +1,11 @@
 package com.rtu.mypagetab
 
-import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import androidx.appcompat.app.AlertDialog
 import com.rtu.R
 import com.rtu.databinding.ActivityMyInfoBinding
-import com.rtu.model.BasicResponse
 import com.rtu.model.MyInfoModel
 import com.rtu.retrofit.RetrofitBuilder
 import retrofit2.Call

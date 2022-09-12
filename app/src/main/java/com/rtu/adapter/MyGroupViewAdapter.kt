@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.rtu.R
 import com.rtu.model.ClubInfo
-import com.rtu.model.ClubSearchDetail
 
 class MyGroupViewAdapter internal constructor(var groupList: List<ClubInfo>)
     : RecyclerView.Adapter<MyGroupViewAdapter.ListViewHolder>() {

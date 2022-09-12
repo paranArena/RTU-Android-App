@@ -3,12 +3,9 @@ package com.rtu.management.product.add
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
-import com.rtu.MainActivity
 import com.rtu.R
 import com.rtu.databinding.ActivitySetLocationBinding
-import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
 

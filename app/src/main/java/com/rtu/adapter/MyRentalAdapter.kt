@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.rtu.R
-import com.rtu.model.ProductDetail
 import com.rtu.model.RentDetail
 
 class MyRentalAdapter internal constructor(var productList: List<RentDetail>)

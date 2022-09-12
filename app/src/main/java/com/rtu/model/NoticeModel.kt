@@ -31,6 +31,7 @@ data class NoticeModel(
     val clubId: Int?,
     val title: String,
     val imagePath: String,
+    val clubName: String,
     val isPublic: Boolean,
     val createdAt: String,
     val updatedAt: String

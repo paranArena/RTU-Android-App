@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
-import com.rtu.MainActivity
 import com.rtu.R
 import com.rtu.databinding.ActivityAddProduct4Binding
 

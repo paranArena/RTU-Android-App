@@ -3,7 +3,6 @@ package com.rtu.register
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.rtu.R
-import com.rtu.databinding.ActivitySetLocationBinding
 import com.rtu.databinding.ActivityWelcomeBinding
 
 class WelcomeActivity : AppCompatActivity() {

@@ -5,10 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.rtu.R
 import com.rtu.databinding.FragmentHomeBinding
-import com.rtu.databinding.FragmentNoticeBinding
-import com.rtu.model.NoticeModel
 
 
 class HomeFragment : Fragment() {

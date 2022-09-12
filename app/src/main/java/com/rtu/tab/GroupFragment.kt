@@ -7,9 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import androidx.appcompat.widget.SearchView
 import com.google.android.material.tabs.TabLayout
-import com.rtu.MainPageActivity
 import com.rtu.R
 import com.rtu.databinding.FragmentGroupBinding
 import com.rtu.grouptap.GroupListFragment

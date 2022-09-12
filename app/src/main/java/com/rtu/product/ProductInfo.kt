@@ -2,6 +2,7 @@ package com.rtu.product
 
 
 import android.Manifest
+import android.app.Activity
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
@@ -21,11 +22,9 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.android.gms.location.*
-import com.rtu.R
+import com.rtu.MainPageActivity
 import com.rtu.adapter.ItemListAdapter
-import com.rtu.adapter.MyNoticeViewAdapter
 import com.rtu.databinding.ActivityProductInfoBinding
-import com.rtu.management.AddNotice
 import com.rtu.model.*
 import com.rtu.renttab.RentComplete
 import com.rtu.retrofit.RetrofitBuilder
@@ -33,6 +32,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import kotlin.math.*
+import kotlin.properties.Delegates
 
 
 class ProductInfo : AppCompatActivity() {
@@ -51,7 +51,7 @@ class ProductInfo : AppCompatActivity() {
 
     private var longitude: Double=0.0
     private var latitude: Double=0.0
-
+    var distanceFrom by Delegates.notNull<Float>()
 
 
     private fun getClubId(): Int {
@@ -65,6 +65,8 @@ class ProductInfo : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             android.R.id.home -> {
+                val intent = Intent(this@ProductInfo, MainPageActivity::class.java)
+                setResult(Activity.RESULT_OK, intent)
                 finish()
                 true
             }
@@ -117,12 +119,20 @@ class ProductInfo : AppCompatActivity() {
             }
 
             if(buttonStatus==2){//대여 확정
-                applyRent(clubId,selectedItemId)
+                if(distanceFrom>30){
+                    Toast.makeText(this@ProductInfo, "위치가 너무 멉니다.", Toast.LENGTH_SHORT).show()
+                }else {
+                    applyRent(clubId, selectedItemId)
+                }
                 buttonStatus=0
             }
 
             if(buttonStatus==3){//반납 하기
-                returnRent(clubId,selectedItemId)
+                if(distanceFrom>30){
+                    Toast.makeText(this@ProductInfo, "위치가 너무 멉니다.", Toast.LENGTH_SHORT).show()
+                }else {
+                    returnRent(clubId, selectedItemId)
+                }
                 buttonStatus=0
             }
         }
@@ -285,7 +295,9 @@ class ProductInfo : AppCompatActivity() {
             getProductInfo(clubId, productId)
         }
         else{
-            super.onBackPressed()
+            val intent = Intent(this@ProductInfo, MainPageActivity::class.java)
+            setResult(Activity.RESULT_OK, intent)
+            finish()
         }
     }
 
@@ -391,9 +403,7 @@ class ProductInfo : AppCompatActivity() {
 
         Log.d("test", distance.toString())
 
-        if(distance>30){
-            Toast.makeText(this@ProductInfo, "위치가 너무 멉니다.", Toast.LENGTH_SHORT).show()
-        }
+        distanceFrom=distance
         //mLastLocation.latitude // 갱신 된 위도
         //mLastLocation.longitude // 갱신 된 경도
 

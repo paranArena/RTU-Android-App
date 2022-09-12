@@ -8,8 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.rtu.R
-import com.rtu.model.ClubSearchDetail
-import com.rtu.model.NoticeDetailModel
 import com.rtu.model.NoticeModel
 
 class MyNoticeViewAdapter internal constructor(var noticeList: List<NoticeModel>)
@@ -25,6 +23,8 @@ class MyNoticeViewAdapter internal constructor(var noticeList: List<NoticeModel>
                     .override(60, 60).into(imageView)
             }
             itemView.findViewById<ImageView>(R.id.iv_image).clipToOutline=true
+
+            itemView.findViewById<TextView>(R.id.iv_group).text = _list.clubName
 
             itemView.findViewById<TextView>(R.id.iv_name).text = _list.title
             //itemView.findViewById<TextView>(R.id.iv_category).text = _list.category

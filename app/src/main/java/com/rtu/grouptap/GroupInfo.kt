@@ -11,12 +11,10 @@ import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
 import com.rtu.R
 import com.rtu.adapter.MyNoticeViewAdapter
-import com.rtu.adapter.MyProductAdapter
 import com.rtu.adapter.ProductHorizonAdapter
 import com.rtu.databinding.ActivityGroupInfoBinding
 import com.rtu.management.ManageActivity
 import com.rtu.model.*
-import com.rtu.product.ProductInfo
 import com.rtu.retrofit.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback

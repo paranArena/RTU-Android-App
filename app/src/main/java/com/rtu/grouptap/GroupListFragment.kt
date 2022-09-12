@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.rtu.adapter.GroupViewAdapter
 import com.rtu.adapter.MyGroupViewAdapter
 import com.rtu.databinding.FragmentGroupListBinding
 import com.rtu.model.*
@@ -81,7 +80,7 @@ class GroupListFragment : Fragment() {
                     }
 
                     else{
-                        Log.d("test", "error")
+                        Log.d("test", response.code().toString())
 
                     }
                 }

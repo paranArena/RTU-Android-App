@@ -8,18 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.rtu.R
 import com.rtu.databinding.FragmentMemberInfoBinding
 import com.rtu.model.BasicResponse
 import com.rtu.model.MemberInfoModel
-import com.rtu.model.MyInfoModel
-import com.rtu.model.RegisterResponse
 import com.rtu.retrofit.RetrofitBuilder
-import kotlinx.android.synthetic.main.fragment_mypage.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.properties.Delegates
 
 class MemberInfoFragment : DialogFragment() {
     private var _binding: FragmentMemberInfoBinding? = null

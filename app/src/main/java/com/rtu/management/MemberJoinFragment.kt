@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.rtu.adapter.JoinListAdapter
-import com.rtu.adapter.MemberListAdapter
 import com.rtu.databinding.FragmentMemberJoinBinding
-import com.rtu.model.JoinResponse
 
 import com.rtu.model.MemberListModel
 import com.rtu.model.MemberModel
@@ -19,7 +17,6 @@ import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.coroutines.CoroutineContext
 
 class MemberJoinFragment : Fragment() {
     private var _binding: FragmentMemberJoinBinding? = null

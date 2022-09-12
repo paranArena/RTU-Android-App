@@ -1,20 +1,14 @@
 package com.rtu.tab
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import androidx.appcompat.widget.SearchView
 import com.google.android.material.tabs.TabLayout
-import com.rtu.MainPageActivity
 import com.rtu.R
 import com.rtu.databinding.FragmentRentBinding
-import com.rtu.grouptap.GroupListFragment
-import com.rtu.grouptap.NoticeFragment
-import com.rtu.grouptap.SearchGroup
 import com.rtu.renttab.RentList
 import com.rtu.renttab.RentProducts
 
@@ -41,7 +35,7 @@ class RentFragment : Fragment() {
 
         //binding.searchView.isSubmitButtonEnabled=true
 
-        binding.searchView.setOnClickListener {
+        /*binding.searchView.setOnClickListener {
             val intent = Intent(activity, SearchGroup::class.java)
             startActivity(intent)
         }
@@ -49,9 +43,9 @@ class RentFragment : Fragment() {
         binding.searchView.setOnSearchClickListener {
             val intent = Intent(activity, SearchGroup::class.java)
             startActivity(intent)
-        }
+        }*/
 
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        /*binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
 
                 // 검색 버튼 누를 때 호출
@@ -63,7 +57,7 @@ class RentFragment : Fragment() {
 
                 return true
             }
-        })
+        })*/
 
         tabLayout = binding.tabLayout
 

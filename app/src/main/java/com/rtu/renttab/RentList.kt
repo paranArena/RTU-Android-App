@@ -1,18 +1,14 @@
 package com.rtu.renttab
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.rtu.R.layout.fragment_rent_list
-import com.rtu.adapter.MyGroupViewAdapter
 import com.rtu.adapter.MyRentalAdapter
 import com.rtu.databinding.FragmentRentListBinding
 
-import com.rtu.grouptap.GroupInfo
 import com.rtu.model.*
 import com.rtu.retrofit.RetrofitBuilder
 import retrofit2.Call

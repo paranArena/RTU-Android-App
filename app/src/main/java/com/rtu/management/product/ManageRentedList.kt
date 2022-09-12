@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.rtu.R
 import com.rtu.adapter.ManageRentAdapter
 import com.rtu.databinding.FragmentManageRentedListBinding
 import com.rtu.model.ManageRentData

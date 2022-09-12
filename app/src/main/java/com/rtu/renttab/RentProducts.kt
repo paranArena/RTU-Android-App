@@ -7,11 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.rtu.R
-import com.rtu.adapter.MyGroupViewAdapter
+import com.rtu.MainPageActivity
 import com.rtu.adapter.MyProductAdapter
 import com.rtu.databinding.FragmentRentProductsBinding
-import com.rtu.grouptap.GroupInfo
 import com.rtu.model.*
 import com.rtu.product.ProductInfo
 import com.rtu.retrofit.RetrofitBuilder
@@ -19,6 +17,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+@Suppress("DEPRECATION")
 class RentProducts : Fragment() {
     private var _binding: FragmentRentProductsBinding?=null
 
@@ -70,7 +69,7 @@ class RentProducts : Fragment() {
                                         this.putExtra("clubId",clubId)
                                         this.putExtra("productId",id) // 데이터 넣기
                                     }
-                                    startActivity(intent)
+                                    (activity as MainPageActivity).startActivityForResult(intent, 1)
 
                                 }
                             })

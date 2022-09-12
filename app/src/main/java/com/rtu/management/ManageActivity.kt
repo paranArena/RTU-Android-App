@@ -7,11 +7,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
-import com.bumptech.glide.Glide
 import com.rtu.R
 import com.rtu.databinding.ActivityManageBinding
 import com.rtu.model.BasicResponse
-import com.rtu.model.ClubDetail
 import com.rtu.retrofit.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback

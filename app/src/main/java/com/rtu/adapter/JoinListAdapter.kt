@@ -6,10 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.rtu.R
 import com.rtu.model.MemberModel
-import kotlinx.android.synthetic.main.join_list.view.*
 
 class JoinListAdapter internal constructor(var memberList: List<MemberModel>)
     : RecyclerView.Adapter<JoinListAdapter.ListViewHolder>() {

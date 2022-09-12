@@ -8,8 +8,6 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
 import com.rtu.R
 import com.rtu.databinding.ActivityManageProductBinding
-import com.rtu.grouptap.GroupListFragment
-import com.rtu.grouptap.NoticeFragment
 import com.rtu.management.product.ManageProductList
 import com.rtu.management.product.ManageRentFragment
 

@@ -1,5 +1,7 @@
 package com.rtu
 
+import android.app.Activity
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,18 +11,12 @@ import android.util.Log
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.rtu.model.LoginResponse
-import com.rtu.model.MyInfoModel
-import com.rtu.retrofit.RetrofitBuilder
 import com.rtu.tab.GroupFragment
-import com.rtu.tab.HomeFragment
 import com.rtu.tab.MypageFragment
 import com.rtu.tab.RentFragment
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.security.MessageDigest
 
+@Suppress("DEPRECATION")
 class MainPageActivity : AppCompatActivity() {
     private val frame: ConstraintLayout by lazy {
         findViewById(R.id.body_container)
@@ -101,6 +97,16 @@ class MainPageActivity : AppCompatActivity() {
         } catch (e: Exception) {
 
             Log.e("name not found", e.toString())
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode==1){
+            if(resultCode== Activity.RESULT_OK){
+                replaceFragment(RentFragment())
+            }
         }
     }
 }

@@ -10,12 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rtu.R
 import com.rtu.adapter.GroupViewAdapter
-import com.rtu.adapter.MyGroupViewAdapter
 import com.rtu.model.ClubSearchDetail
 import com.rtu.model.GetSearchGroup
-import com.rtu.model.SearchNameModel
 import com.rtu.retrofit.RetrofitBuilder
-import kotlinx.android.synthetic.main.activity_search_group.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

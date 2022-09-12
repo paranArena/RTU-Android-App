@@ -19,7 +19,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import com.rtu.R
 import com.rtu.databinding.ActivityAddNoticeBinding
-import com.rtu.model.CreateClubResponse
 import com.rtu.model.CreateNoticeResponse
 import com.rtu.retrofit.RetrofitBuilder
 import okhttp3.MediaType

@@ -1,15 +1,11 @@
 package com.rtu.adapter
 
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.rtu.R
-import com.rtu.model.ItemModel
 import com.rtu.model.ItemsModel
 import java.text.DecimalFormat
 

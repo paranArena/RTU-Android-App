@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.rtu.adapter.MyNoticeViewAdapter
 import com.rtu.databinding.FragmentNoticeBinding
-import com.rtu.model.GroupModel
 import com.rtu.model.MyNotice
 import com.rtu.model.NoticeModel
 import com.rtu.retrofit.RetrofitBuilder

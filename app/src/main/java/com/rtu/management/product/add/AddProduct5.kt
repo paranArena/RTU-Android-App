@@ -6,10 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
-import com.rtu.MainPageActivity
 import com.rtu.R
 import com.rtu.databinding.ActivityAddProduct5Binding
-import com.rtu.model.CreateClubResponse
 import com.rtu.model.CreateProductResponse
 import com.rtu.retrofit.RetrofitBuilder
 import okhttp3.MediaType

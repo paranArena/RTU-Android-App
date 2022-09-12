@@ -1,6 +1,5 @@
 package com.rtu.management
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -92,6 +91,7 @@ class MemberListFragment : Fragment() {
                                     bundle.putString("studentId", studentId)
                                     bundle.putInt("memberId", memberId)
                                     bundle.putInt("clubId", id)
+                                    bundle.putInt("position", position)
                                     dialog.arguments=bundle
 
                                     dialog.show(childFragmentManager, "MemberInfoFragment")
@@ -121,5 +121,12 @@ class MemberListFragment : Fragment() {
             }
 
         })
+    }
+    fun removeItem(position: Int){
+        binding.rvList.adapter = MemberListAdapter(data_).apply {
+            data_.removeAt(position)
+
+            notifyDataSetChanged()
+        }
     }
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".tab.RentFragment">
 
-    <androidx.appcompat.widget.SearchView
+    <!--<androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"
         android:id="@+id/search_view"
         android:layout_height="35dp"
@@ -15,13 +15,12 @@
         android:layout_marginTop="10dp"
         app:iconifiedByDefault="false"
         app:queryHint="I'll Ren 2 U!">
-    </androidx.appcompat.widget.SearchView>
+    </androidx.appcompat.widget.SearchView>-->
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:background="@color/white"
         app:tabIndicatorAnimationMode="fade"
         app:tabMode="fixed"
@@ -42,7 +41,7 @@
 
     <FrameLayout
         android:id="@+id/rent_list"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
