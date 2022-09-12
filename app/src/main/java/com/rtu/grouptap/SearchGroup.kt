@@ -15,6 +15,7 @@ import com.rtu.model.ClubSearchDetail
 import com.rtu.model.GetSearchGroup
 import com.rtu.model.SearchNameModel
 import com.rtu.retrofit.RetrofitBuilder
+import kotlinx.android.synthetic.main.activity_search_group.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,11 +31,11 @@ class SearchGroup : AppCompatActivity() {
         setContentView(R.layout.activity_search_group)
         initView()
 
-        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        val noticeSearchView=findViewById<SearchView>(R.id.notice_search_view)
+
+        noticeSearchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-
                 // 검색 버튼 누를 때 호출
-
                 searchName(query)
 
                 return true
@@ -65,7 +66,7 @@ class SearchGroup : AppCompatActivity() {
                         data_.clear()
                         //Log.d("test", response.body().toString())
                         var data = response.body()!! // GsonConverter를 사용해 데이터매핑
-                        Log.d("test", data.toString())
+                        Log.d("test", query + data.toString())
 
                         data_.add(data.data)
 

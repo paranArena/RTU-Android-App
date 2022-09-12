@@ -35,9 +35,10 @@ class MemberInfoFragment : DialogFragment() {
         val memberId = arguments?.getInt("memberId", 0)
 
         initView()
+        //val email=arguments?.getString("email")
         //getMemberInfo(email!!)
 
-        binding.admin.setOnClickListener {
+        /*binding.admin.setOnClickListener {
             val clubRole=binding.admin.text
 
             if(clubRole=="관리자 권한"){
@@ -45,7 +46,7 @@ class MemberInfoFragment : DialogFragment() {
             } else{
                 grantUser(clubId!!,memberId!!)
             }
-        }
+        }*/
 
         binding.delete.setOnClickListener {
            removeMember(clubId!!,memberId!!)
@@ -76,16 +77,16 @@ class MemberInfoFragment : DialogFragment() {
 
 
         if(clubRole=="ADMIN"){
-            binding.admin.visibility=View.VISIBLE
+            //binding.admin.visibility=View.VISIBLE
             binding.label.visibility=View.VISIBLE
-            binding.admin.text="일반회원 변경"
+            //binding.admin.text="일반회원 변경"
         } else if(clubRole=="OWNER"){
-            binding.admin.visibility=View.INVISIBLE
+            //binding.admin.visibility=View.INVISIBLE
             binding.label.visibility=View.VISIBLE
             binding.delete.visibility=View.INVISIBLE
         }
         else{
-            binding.admin.text="관리자 권한"
+            //binding.admin.text="관리자 권한"
             binding.label.visibility=View.INVISIBLE
         }
     }
@@ -117,10 +118,10 @@ class MemberInfoFragment : DialogFragment() {
                     val clubRole=data.data.authorities[0].authorityName
 
                     if(clubRole=="ROLE_ADMIN" || clubRole=="ROLE_OWNER"){
-                        binding.admin.visibility=View.VISIBLE
+                        //binding.admin.visibility=View.VISIBLE
                         binding.label.visibility=View.VISIBLE
                     } else{
-                        binding.admin.text="관리자 권한"
+                        //binding.admin.text="관리자 권한"
                         binding.label.visibility=View.INVISIBLE
                     }
 
@@ -145,7 +146,7 @@ class MemberInfoFragment : DialogFragment() {
                 response: Response<BasicResponse>
             ) {
                 if(response.isSuccessful) {
-                    binding.admin.text="일반회원 변경"
+                   // binding.admin.text="일반회원 변경"
                     binding.label.visibility=View.VISIBLE
                 }
                 else {
@@ -168,7 +169,7 @@ class MemberInfoFragment : DialogFragment() {
                 response: Response<BasicResponse>
             ) {
                 if(response.isSuccessful) {
-                        binding.admin.text="관리자 권한"
+                   //     binding.admin.text="관리자 권한"
                         binding.label.visibility=View.INVISIBLE
                 }
                 else {

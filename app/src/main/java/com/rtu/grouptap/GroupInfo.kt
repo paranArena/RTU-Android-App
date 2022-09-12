@@ -69,6 +69,7 @@ class GroupInfo : AppCompatActivity() {
                 }
                 "탈퇴하기" -> {
                     requestLeave(id)
+                    finish()
                 }
                 "가입하기" -> {
                     requestJoin(id)
@@ -274,11 +275,15 @@ class GroupInfo : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     val data=response.body()!!
+                    Log.d("test", data.toString())
 
                     if(data.statusCode==200){
                         popUp("leave")
                         binding.toolbarOption.text="가입하기"
                     }
+                }
+                else{
+                    Log.d("test", response.code().toString())
                 }
             }
 

@@ -16,13 +16,15 @@
             android:layout_height="wrap_content"
             android:text="삭제"
             android:textColor="@color/red"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginRight="20dp"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
         </TextView>
 
-       <TextView
+       <!--<TextView
            android:id="@+id/admin"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
@@ -34,7 +36,7 @@
            app:layout_constraintEnd_toEndOf="parent"
            app:layout_constraintStart_toStartOf="parent">
 
-       </TextView>
+       </TextView>-->
 
         <ImageView
             android:id="@+id/profileImage"

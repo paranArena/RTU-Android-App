@@ -63,9 +63,9 @@ interface API {
     fun groupSearchRequest(
     ): Call<GetSearchGroup>
 
-    @GET("/clubs/search?name={word}")
+    @GET("/clubs/search")
     fun groupSearchNameRequest(
-        @Path("word") word:String
+        @Query("name") name:String
     ): Call<SearchNameModel>
 
     @GET("/members/my/clubs")
@@ -111,7 +111,7 @@ interface API {
         @Path("id") id: Int
     ): Call<JoinResponse>
 
-    @DELETE("/clubs/{id}/requests/join/cancel") //가입 신청 취소
+    @DELETE("/clubs/{id}/requests/leave") //가입 신청 취소
     fun getLeaveClub(
         @Path("id") id: Int
     ): Call<JoinResponse>
@@ -220,4 +220,5 @@ interface API {
         @Path("clubId") clubId: Int,
         @Path("memberId") memberId: Int
     ): Call<BasicResponse>
+
 }

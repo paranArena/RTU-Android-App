@@ -58,6 +58,10 @@ class MemberJoinFragment : Fragment() {
                                 val id = memberList[position].id
 
                                 getAccept(clubId!!, id)
+
+                                data_.removeAt(position)
+
+                                notifyDataSetChanged()
                             }
                         })
                 }
@@ -140,4 +144,5 @@ class MemberJoinFragment : Fragment() {
 
         })
     }
+
 }

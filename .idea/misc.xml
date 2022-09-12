@@ -7,6 +7,8 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/drawable/circle_button.xml" value="0.3765" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/drawable/ic_add_group.xml" value="0.1375" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/drawable/ic_check_button.xml" value="0.123" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1735" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/drawable/ic_launcher_ren2u_background.xml" value="0.1735" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/drawable/ic_rent.xml" value="0.2495" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/drawable/ic_rent_button.xml" value="0.2495" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/drawable/ic_rent_set_button.xml" value="0.2325" />
@@ -78,6 +80,7 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/layout/solid_button.xml" value="0.16197916666666667" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/menu/bottom_nav_menu.xml" value="0.16197916666666667" />
         <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/menu/menu_bottom_nav.xml" value="0.33645833333333336" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/rtu/app/src/main/res/mipmap-anydpi-v26/ic_launcher_ren2u.xml" value="0.1715" />
       </map>
     </option>
   </component>
