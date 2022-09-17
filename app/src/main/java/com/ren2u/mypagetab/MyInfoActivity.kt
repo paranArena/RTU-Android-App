@@ -38,6 +38,12 @@ class MyInfoActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
+        binding.name.isEnabled = false
+        binding.major.isEnabled =false
+        binding.studentId.isEnabled=false
+        binding.email.isEnabled=false
+        binding.number.isEnabled=false
+
         getMyInfo()
 
         val view = binding.root
