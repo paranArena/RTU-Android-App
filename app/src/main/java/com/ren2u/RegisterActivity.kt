@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import com.ren2u.databinding.ActivityRegisterBinding
@@ -16,6 +17,8 @@ import com.ren2u.model.RegisterResponse
 import com.ren2u.register.MailActivity
 import com.ren2u.retrofit.RetrofitBuilder
 import com.ren2u.R
+import com.ren2u.model.BasicResponse
+import com.ren2u.model.MailModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -110,14 +113,18 @@ class RegisterActivity : AppCompatActivity() {
             } else if(id.length<6){
                 binding.idHelp.visibility=View.VISIBLE
                 failed()
-            } else {
+            } else if(major.length<2){
+                binding.majorHelp.visibility=View.VISIBLE
+                failed()
+            } else if(phoneNumber.length<10){
+                binding.numberHelp.visibility=View.VISIBLE
+                failed()
+            }
+            else {
 
-                val registerData = RegisterRequest(
-                    email = email!!, password = password!!, name = name!!, major = major!!,
-                    phoneNumber = phoneNumber!!, studentId = id!!
-                )
+                val request=MailModel(email=email)
 
-                signUp(registerData)
+                requestCode(request)
             }
 
         }
@@ -143,10 +150,21 @@ class RegisterActivity : AppCompatActivity() {
             append("@ajou.ac.kr")
         }
 
+        val password=binding.passwordEditText.text.toString()
+        val name=binding.nameEditText.text.toString()
+        val major=binding.majorEditText.text.toString()
+        val phoneNumber=binding.numberEditText.text.toString()
+        val id=binding.idEditText.text.toString()
+
         val intent = Intent(this@RegisterActivity, MailActivity::class.java)
 
         intent.apply {
             this.putExtra("email", email)
+            this.putExtra("password", password)
+            this.putExtra("name", name)
+            this.putExtra("major",major)
+            this.putExtra("phoneNumber", phoneNumber)
+            this.putExtra("studentId", id)
         }
         startActivity(intent)
         finish()
@@ -198,6 +216,39 @@ class RegisterActivity : AppCompatActivity() {
             override fun onFailure(call: Call<Boolean>, t: Throwable) {
                 Log.d("test", "실패$t")
             }
+        })
+    }
+
+    private fun requestCode(requestMail: MailModel){
+        RetrofitBuilder.api.getRequestCode(requestMail).enqueue(object :
+            Callback<BasicResponse> {
+            override fun onResponse(
+                call: Call<BasicResponse>,
+                response: Response<BasicResponse>
+            ) {
+                if(response.isSuccessful) {
+                    Log.d("test", response.body().toString())
+
+                    var data = response.body()!!
+
+                    if(data.statusCode==200){
+                        Toast.makeText(applicationContext, "인증번호가 전송되었습니다.",
+                            Toast.LENGTH_SHORT).show()
+                    }
+
+                    success()
+                }
+                else {
+                    Log.d("fail", response.body().toString())
+                    failed() //회원가입 실패
+                    //success()
+                }
+            }
+
+            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+                Log.d("test", "실패$t")
+            }
+
         })
     }
 

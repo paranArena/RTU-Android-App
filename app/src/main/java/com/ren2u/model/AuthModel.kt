@@ -22,7 +22,8 @@ data class RegisterRequest(
     val name: String,
     val phoneNumber: String,
     val studentId: String,
-    val major: String
+    val major: String,
+    val verificationCode: String
 )
 
 data class RegisterResponse(
