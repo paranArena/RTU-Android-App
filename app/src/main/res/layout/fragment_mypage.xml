@@ -27,7 +27,7 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="로그아웃 해주세요"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="28dp"
             android:textStyle="bold"

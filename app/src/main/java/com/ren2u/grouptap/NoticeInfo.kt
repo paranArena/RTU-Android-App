@@ -80,7 +80,7 @@ class NoticeInfo : AppCompatActivity() {
                     val title = data.data.title
                     val content = data.data.content
                     val imagePath = data.data.imagePath
-                    val createdAt = data.data.createdAt
+                    val createdAt = data.data.createdAt.substring(0 until 10).replace("-",". ")
 
                     Glide.with(this@NoticeInfo).load(imagePath).
                     placeholder(R.drawable.ic_launcher_foreground).into(binding.noticeImage)

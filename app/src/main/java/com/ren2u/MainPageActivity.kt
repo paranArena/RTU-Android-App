@@ -63,8 +63,6 @@ class MainPageActivity : AppCompatActivity() {
             }
         }
 
-        getAppKeyHash()
-
     }
 
     // 화면 전환 구현 메소드
@@ -94,23 +92,6 @@ class MainPageActivity : AppCompatActivity() {
 
     fun deleteToken(){
         MainActivity.GlobalApplication.prefs.removeString("token")
-    }
-
-    fun getAppKeyHash() {
-        try {
-            val info =
-                packageManager.getPackageInfo(packageName, PackageManager.GET_SIGNATURES)
-            for (signature in info.signatures) {
-                var md: MessageDigest
-                md = MessageDigest.getInstance("SHA")
-                md.update(signature.toByteArray())
-                val something = String(Base64.encode(md.digest(), 0))
-                Log.e("Hash key", something)
-            }
-        } catch (e: Exception) {
-
-            Log.e("name not found", e.toString())
-        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

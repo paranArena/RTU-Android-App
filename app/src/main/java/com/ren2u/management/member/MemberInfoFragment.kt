@@ -66,7 +66,7 @@ class MemberInfoFragment : DialogFragment() {
         binding.name.text=name
         binding.numberText.text=phoneNumber
         binding.emailText.text=email
-        val majorId="$major $studentId 학번"
+        val majorId="$major $studentId"
         binding.majorId.text=majorId
 
 

@@ -70,7 +70,7 @@ class MypageFragment : Fragment() {
 
                     val name=data!!.data.name
                     val major=data!!.data.major
-                    val studentId=data!!.data.studentId.substring(0..1)
+                    val studentId=data!!.data.studentId.substring(2..3)
 
                     binding.name.text=name
                     binding.info.text="$major  $studentId 학번"

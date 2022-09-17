@@ -45,7 +45,8 @@ data class RentDetail(
     val clubName: String,
     val imagePath: String,
     val rentalPolicy: String,
-    val rentalInfo: RentalInfo
+    val rentalInfo: RentalInfo,
+    val location: LocationModel
 ): Parcelable
 
 data class ManageRentModel(

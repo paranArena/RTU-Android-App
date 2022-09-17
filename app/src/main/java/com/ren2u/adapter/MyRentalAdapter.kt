@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ren2u.R
 import com.ren2u.model.RentDetail
+import java.text.DecimalFormat
 
 class MyRentalAdapter internal constructor(var productList: List<RentDetail>)
     : RecyclerView.Adapter<MyRentalAdapter.ListViewHolder>() {
@@ -25,7 +26,11 @@ class MyRentalAdapter internal constructor(var productList: List<RentDetail>)
             }
             itemView.findViewById<ImageView>(R.id.iv_image).clipToOutline=true
 
-            itemView.findViewById<TextView>(R.id.iv_name).text = _list.name
+            val name=_list.name
+            val df= DecimalFormat("000")
+            val dn=df.format(_list.numbering)
+
+            itemView.findViewById<TextView>(R.id.iv_name).text = "$name-$dn"
             itemView.findViewById<TextView>(R.id.iv_group).text = _list.clubName
 
             if(_list.rentalInfo==null){
