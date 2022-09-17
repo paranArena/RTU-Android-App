@@ -60,6 +60,12 @@ data class BasicResponse(
     val data: String?
 )
 
+data class VerifyModel(
+    val email: String,
+    val code: String,
+    val password: String
+)
+
 @Parcelize
 data class Club(
     val item: String

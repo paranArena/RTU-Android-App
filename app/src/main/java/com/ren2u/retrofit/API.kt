@@ -221,4 +221,9 @@ interface API {
         @Path("memberId") memberId: Int
     ): Call<BasicResponse>
 
+    @PUT("/password/reset/verify")
+    fun passwordResetWithVerificationCode(
+        @Body verifyModel: VerifyModel
+    ):Call<BasicResponse>
+
 }

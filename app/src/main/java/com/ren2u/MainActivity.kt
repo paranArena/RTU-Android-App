@@ -14,6 +14,7 @@ import com.ren2u.model.LoginResponse
 import com.ren2u.register.MailActivity
 import com.ren2u.retrofit.RetrofitBuilder
 import com.ren2u.databinding.ActivityMainBinding
+import com.ren2u.register.ResetPasswordActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -55,6 +56,11 @@ class MainActivity : AppCompatActivity() {
             val loginData=LoginRequest(email=id, password = pw)
 
             login(loginData)
+        }
+
+        binding.passwordLost.setOnClickListener {
+            val intent = Intent(this, ResetPasswordActivity::class.java)
+            startActivity(intent)
         }
     }
 

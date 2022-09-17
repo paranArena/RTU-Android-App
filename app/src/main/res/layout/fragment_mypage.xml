@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="미디어학과 20학번"
+            android:text=""
             android:textColor="@color/darkGray"
             android:layout_marginRight="20dp"
             android:layout_marginTop="40dp"
@@ -27,7 +27,7 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="김현지"
+            android:text="로그아웃 해주세요"
             android:textColor="@color/black"
             android:textSize="28dp"
             android:textStyle="bold"

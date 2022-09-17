@@ -34,6 +34,8 @@ class MainPageActivity : AppCompatActivity() {
         // 애플리케이션 실행 후 첫 화면 설정
         supportFragmentManager.beginTransaction().replace(frame.id, GroupFragment()).commit()
 
+        tokenCheck()
+
 
         // 하단 네비게이션 바 클릭 이벤트 설정
         bottomNagivationView.setOnItemSelectedListener {item ->
@@ -44,14 +46,17 @@ class MainPageActivity : AppCompatActivity() {
                 }*/
                 R.id.nav_group -> {
                     replaceFragment(GroupFragment())
+                    tokenCheck()
                     true
                 }
                 R.id.nav_rent -> {
                     replaceFragment(RentFragment())
+                    tokenCheck()
                     true
                 }
                 R.id.nav_mypage -> {
                     replaceFragment(MypageFragment())
+                    tokenCheck()
                     true
                 }
                 else -> false
@@ -77,6 +82,13 @@ class MainPageActivity : AppCompatActivity() {
 
         else{
             finishAffinity()
+        }
+    }
+
+    private fun tokenCheck(){
+        val tokenCheck= MainActivity.GlobalApplication.prefs.getString("token","x")
+        if(tokenCheck=="x"){
+            finish()
         }
     }
 
