@@ -55,7 +55,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
-                android:src="@drawable/change"></ImageView>
+                android:adjustViewBounds="true"
+                android:src="@drawable/circle_button"></ImageView>
 
             <TextView
                 android:id="@+id/groupTagText"

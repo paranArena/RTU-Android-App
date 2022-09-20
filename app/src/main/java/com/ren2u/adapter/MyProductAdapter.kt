@@ -20,7 +20,7 @@ class MyProductAdapter internal constructor(var productList: List<ProductDetail>
             if(_list.imagePath!=null) {
                 val newUrl=_list.imagePath
                 Glide.with(itemView).load(newUrl).placeholder(R.drawable.ic_launcher_foreground)
-                    .override(60, 60).into(imageView)
+                    .into(imageView)
             }
             itemView.findViewById<ImageView>(R.id.iv_image).clipToOutline=true
 

@@ -21,7 +21,7 @@ class GroupViewAdapter internal constructor(var groupList: List<ClubSearchDetail
             if(_list.thumbnailPath!=null) {
                 val newUrl=_list.thumbnailPath
                 Glide.with(itemView).load(newUrl).placeholder(R.drawable.ic_launcher_foreground)
-                    .override(60, 60).into(imageView)
+                    .into(imageView)
             }
             itemView.findViewById<ImageView>(R.id.iv_image).clipToOutline=true
 

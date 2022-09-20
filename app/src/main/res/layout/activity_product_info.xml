@@ -38,8 +38,9 @@
                 android:id="@+id/productImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/change"></ImageView>
+                android:src="@drawable/circle_button"></ImageView>
 
             <TextView
                 android:id="@+id/groupNameText"
@@ -124,9 +125,8 @@
                 android:id="@+id/productListText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/price"
+                android:layout_below="@id/caution"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="15dp"
                 android:text="물품목록"
                 android:textColor="@color/darkGray"
                 android:textSize="12dp"></TextView>
@@ -138,13 +138,14 @@
                 android:layout_below="@id/productListText"
                 android:layout_marginHorizontal="10dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_list" />
+                tools:listitem="@layout/item_list"
+                android:layout_marginBottom="60dp"/>
 
             <TextView
                 android:id="@+id/cautionText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/rv_list"
+                android:layout_below="@id/price"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="15dp"
                 android:text="사용시 주의사항"
@@ -164,7 +165,7 @@
                 android:foregroundGravity="center"
                 android:background="@drawable/round_button"
                 android:backgroundTint="@color/lightGray"
-                android:layout_marginBottom="60dp"
+                android:layout_marginBottom="15dp"
                 android:textSize="12dp" />
 
 
