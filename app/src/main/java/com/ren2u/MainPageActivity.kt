@@ -106,7 +106,7 @@ class MainPageActivity : AppCompatActivity() {
 
         if(requestCode==2){
             if(resultCode== Activity.RESULT_OK){
-                replaceFragment(RentList())
+                replaceFragment(RentFragment())
             }
         }
     }

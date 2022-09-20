@@ -30,6 +30,10 @@ import net.daum.mf.map.api.MapView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
+import java.util.*
 import kotlin.properties.Delegates
 
 class LocationInfoActivity : AppCompatActivity() {
@@ -42,6 +46,9 @@ class LocationInfoActivity : AppCompatActivity() {
     lateinit var mLastLocation: Location // 위치 값을 가지고 있는 객체
     internal lateinit var mLocationRequest: LocationRequest // 위치 정보 요청의 매개변수를 저장하는
     private val REQUEST_PERMISSION_LOCATION = 10
+
+    private var timerTask: Timer? = null
+    private var time=600
 
     private var longitude: Double=0.0
     private var latitude: Double=0.0
@@ -120,8 +127,27 @@ class LocationInfoActivity : AppCompatActivity() {
         binding.name.text=name
 
         if(status=="WAIT"){
+
+            val compTime = rentDate!!.substring(0..22)
+            val now = LocalDateTime.now() // 현재 시간
+            val convertTime = LocalDateTime.parse(compTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME)
+
+            val compareTime = ChronoUnit.SECONDS.between(now, convertTime) + (3600*9) //분단위 비교
+
+            Log.d("time", "$compareTime / $now / $compTime")
+
+            time+=compareTime.toInt()
+
+            timeStart()
+
+            if(time<0){
+                timePause()
+            }
+
             binding.returnButton.visibility= View.INVISIBLE
         } else if(status=="RENT"){
+            val expDateText=expDate!!.substring(0 until 10).replace("-",". ")
+            binding.time.text="반납일: $expDateText"
             binding.reserveCancel.visibility=View.INVISIBLE
             binding.reserveSet.visibility=View.INVISIBLE
         }
@@ -176,6 +202,24 @@ class LocationInfoActivity : AppCompatActivity() {
 
         val view=binding.root
         setContentView(view)
+    }
+
+    private fun timeStart(){
+
+        timerTask = kotlin.concurrent.timer(period = 1000) {	// timer() 호출
+            time--	// period=10, 0.01초마다 time를 1씩 증가
+            val sec = time % 60	// time/100, 나눗셈의 몫 (초 부분)
+            val min = time / 60	// time%100, 나눗셈의 나머지 (밀리초 부분)
+
+            // UI조작을 위한 메서드
+            runOnUiThread {
+                binding.time.text="$min : $sec"	// Textview 세팅
+            }
+        }
+    }
+
+    private fun timePause(){
+        timerTask?.cancel()
     }
 
     private fun applyRent(clubId: Int, itemId: Int){

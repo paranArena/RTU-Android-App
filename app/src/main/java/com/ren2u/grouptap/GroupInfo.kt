@@ -143,20 +143,26 @@ class GroupInfo : AppCompatActivity() {
                         setItemClickListener(
                             object : MyNoticeViewAdapter.ItemClickListener {
                                 override fun onClick(view: View, position: Int) {
-                                    val notice_id=noticeList[position].id
+                                    val status=binding.toolbarOption.text.toString()
 
-                                    //setFragmentResult("requestKey", bundleOf("projid" to projid))
+                                    if(status=="관리자" || status=="탈퇴하기") {
+                                        val notice_id = noticeList[position].id
 
-                                    val intent = Intent(this@GroupInfo,
-                                        NoticeInfo::class.java)
+                                        //setFragmentResult("requestKey", bundleOf("projid" to projid))
 
-                                    intent.apply {
-                                        this.putExtra("club_id",getExtra())
-                                        this.putExtra("notice_id",notice_id)// 데이터 넣기
+                                        val intent = Intent(
+                                            this@GroupInfo,
+                                            NoticeInfo::class.java
+                                        )
+
+                                        intent.apply {
+                                            this.putExtra("club_id", getExtra())
+                                            this.putExtra("notice_id", notice_id)// 데이터 넣기
+                                        }
+                                        startActivity(intent)
+                                        onStop()
+                                        //replaceFragment(GoodsInfoFragment())
                                     }
-                                    startActivity(intent)
-                                    onStop()
-                                    //replaceFragment(GoodsInfoFragment())
                                 }
                             })
                     }
@@ -195,19 +201,23 @@ class GroupInfo : AppCompatActivity() {
                         setItemClickListener(
                             object : ProductHorizonAdapter.ItemClickListener {
                                 override fun onClick(view: View, position: Int) {
-                                    val id=productList[position].id
-                                    val clubId=productList[position].clubId
+                                    val status=binding.toolbarOption.text.toString()
 
-                                    //setFragmentResult("requestKey", bundleOf("projid" to projid))
+                                    if(status=="관리자" || status=="탈퇴하기") {
+                                        val id = productList[position].id
+                                        val clubId = productList[position].clubId
 
-                                    val intent = Intent(this@GroupInfo, ProductInfo::class.java)
+                                        //setFragmentResult("requestKey", bundleOf("projid" to projid))
 
-                                    intent.apply {
-                                        this.putExtra("clubId",clubId)
-                                        this.putExtra("productId",id) // 데이터 넣기
+                                        val intent = Intent(this@GroupInfo, ProductInfo::class.java)
+
+                                        intent.apply {
+                                            this.putExtra("clubId", clubId)
+                                            this.putExtra("productId", id) // 데이터 넣기
+                                        }
+
+                                        startActivity(intent)
                                     }
-
-                                    startActivity(intent)
                                 }
                             })
                     }
