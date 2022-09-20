@@ -2,6 +2,7 @@ package com.ren2u.management.product.add
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -70,6 +71,10 @@ class AddProduct4 : AppCompatActivity() {
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
+
+        if(getLatitude()!=0.0){
+            binding.locationEditButton.text="표시 완료"
+        }
 
         binding.locationEditButton.setOnClickListener {
             val intent = Intent(this@AddProduct4, SetLocation::class.java)

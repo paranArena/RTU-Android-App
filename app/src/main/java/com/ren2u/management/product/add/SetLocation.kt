@@ -72,7 +72,7 @@ class SetLocation : AppCompatActivity(){
 
         //supportFragmentManager.beginTransaction().add(R.id.frame, MapsFragment()).commit()
 
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        //supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
         binding.nextButton.setOnClickListener {
