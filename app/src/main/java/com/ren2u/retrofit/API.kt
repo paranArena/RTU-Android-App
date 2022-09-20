@@ -170,6 +170,12 @@ interface API {
         @Path("item_id") itemId: Int
     ): Call<RentResponse>
 
+    @DELETE("clubs/{club_id}/rentals/{item_id}/cancel")
+    fun cancelRent(
+        @Path("club_id") clubId: Int,
+        @Path("item_id") itemId: Int
+    ): Call<RentResponse>
+
     @GET("/members/my/rentals")
     fun getMyRentals(
     ): Call<MyRentalResponse>

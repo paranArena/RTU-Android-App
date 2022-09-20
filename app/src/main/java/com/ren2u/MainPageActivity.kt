@@ -15,6 +15,7 @@ import com.ren2u.tab.GroupFragment
 import com.ren2u.tab.MypageFragment
 import com.ren2u.tab.RentFragment
 import com.ren2u.R
+import com.ren2u.renttab.RentList
 import java.security.MessageDigest
 
 @Suppress("DEPRECATION")
@@ -100,6 +101,12 @@ class MainPageActivity : AppCompatActivity() {
         if(requestCode==1){
             if(resultCode== Activity.RESULT_OK){
                 replaceFragment(RentFragment())
+            }
+        }
+
+        if(requestCode==2){
+            if(resultCode== Activity.RESULT_OK){
+                replaceFragment(RentList())
             }
         }
     }

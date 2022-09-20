@@ -4,9 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/drawable/circle_button.xml" value="0.122" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/drawable/ic_reserve_cancel.xml" value="0.201" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_add_group.xml" value="0.12099187687045745" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_add_notice.xml" value="0.12099187687045745" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_group_info.xml" value="0.12099187687045745" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_location_info.xml" value="0.2" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_mail.xml" value="0.30782385634886705" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_my_info.xml" value="0.32920051303976056" />
@@ -17,7 +19,7 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_reset_password2.xml" value="0.33" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_set_location.xml" value="0.32920051303976056" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_location.xml" value="0.1453612654980761" />
-        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_location_info.xml" value="0.32920051303976056" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_location_info.xml" value="0.264" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_maps.xml" value="0.1453612654980761" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_member_info.xml" value="0.32920051303976056" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_mypage.xml" value="0.32492518170158186" />

@@ -5,6 +5,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
@@ -15,9 +16,19 @@ import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
 
-class LocationInfoFragment : DialogFragment() {
+class LocationInfoFragment : Fragment() {
     private var _binding: FragmentLocationInfoBinding? = null
     private val binding get() = _binding!!
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            android.R.id.home -> {
+                parentFragmentManager.popBackStack()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,7 +38,6 @@ class LocationInfoFragment : DialogFragment() {
         _binding = FragmentLocationInfoBinding.inflate(inflater, container, false)
         val view = binding.root
         // 레이아웃 배경을 투명하게 해줌, 필수 아님
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         val name = arguments?.getString("name")
         val latitude = arguments?.getDouble("latitude")

@@ -19,6 +19,9 @@
         android:theme="@style/Theme.Rtu"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".renttab.LocationInfoActivity"
+            android:exported="false" />
+        <activity
             android:name=".register.ResetPassword2"
             android:exported="false" />
         <activity

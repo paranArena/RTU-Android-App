@@ -15,6 +15,7 @@ import com.ren2u.adapter.ProductHorizonAdapter
 import com.ren2u.databinding.ActivityGroupInfoBinding
 import com.ren2u.management.ManageActivity
 import com.ren2u.model.*
+import com.ren2u.product.ProductInfo
 import com.ren2u.retrofit.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
@@ -194,7 +195,7 @@ class GroupInfo : AppCompatActivity() {
                         setItemClickListener(
                             object : ProductHorizonAdapter.ItemClickListener {
                                 override fun onClick(view: View, position: Int) {
-                                    /*val id=productList[position].id
+                                    val id=productList[position].id
                                     val clubId=productList[position].clubId
 
                                     //setFragmentResult("requestKey", bundleOf("projid" to projid))
@@ -205,8 +206,8 @@ class GroupInfo : AppCompatActivity() {
                                         this.putExtra("clubId",clubId)
                                         this.putExtra("productId",id) // 데이터 넣기
                                     }
-                                    startActivity(intent)*/
 
+                                    startActivity(intent)
                                 }
                             })
                     }
