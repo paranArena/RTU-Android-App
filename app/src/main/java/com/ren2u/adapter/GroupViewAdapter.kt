@@ -34,6 +34,10 @@ class GroupViewAdapter internal constructor(var groupList: List<ClubSearchDetail
                 hashtags += " "
             }
 
+            if(hashtags.length>15) {
+                hashtags = hashtags.substring(0..15) + "..."
+            }
+
             itemView.findViewById<TextView>(R.id.iv_tag).text = hashtags
 
             val role=_list.clubRole
