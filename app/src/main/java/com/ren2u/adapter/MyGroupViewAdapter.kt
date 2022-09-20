@@ -33,6 +33,12 @@ class MyGroupViewAdapter internal constructor(var groupList: List<ClubInfo>)
                 hashtags += " "
             }
 
+            if(hashtags.length>25) {
+                hashtags = hashtags.substring(0..25) + "..."
+            }
+
+            itemView.findViewById<TextView>(R.id.iv_tag).text = hashtags
+
             itemView.findViewById<TextView>(R.id.iv_tag).text = hashtags
 
             //itemView.findViewById<TextView>(R.id.iv_tag).text = _list.introduction
