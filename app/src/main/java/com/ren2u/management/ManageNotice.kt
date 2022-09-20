@@ -1,11 +1,16 @@
 package com.ren2u.management
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import androidx.annotation.ColorInt
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
+import com.ren2u.CustomDecoration
 import com.ren2u.R
 import com.ren2u.adapter.MyNoticeViewAdapter
 import com.ren2u.databinding.ActivityManageNoticeBinding
@@ -74,6 +79,10 @@ class ManageNotice : AppCompatActivity() {
     }
 
     private fun getNotice(id: Int){
+
+        binding.rvList.setDivider(3f,10f, getColor(R.color.lightGray))
+
+
         RetrofitBuilder.api.getClubNotice(id).enqueue(object :
             Callback<MyNotice> {
             override fun onResponse(
@@ -122,5 +131,15 @@ class ManageNotice : AppCompatActivity() {
             }
 
         })
+    }
+
+    fun RecyclerView.setDivider(dividerHeight: Float, dividerPadding: Float, @ColorInt dividerColor: Int?) {
+        val decoration = CustomDecoration(
+            height = dividerHeight ?: 0f,
+            padding = dividerPadding ?: 0f,
+            color = dividerColor ?: Color.TRANSPARENT
+        )
+
+        addItemDecoration(decoration)
     }
 }

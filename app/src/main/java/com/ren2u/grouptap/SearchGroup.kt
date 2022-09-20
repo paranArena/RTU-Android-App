@@ -1,13 +1,18 @@
 package com.ren2u.grouptap
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ren2u.CustomDecoration
 import com.ren2u.R
 import com.ren2u.adapter.GroupViewAdapter
 import com.ren2u.model.ClubSearchDetail
@@ -29,6 +34,8 @@ class SearchGroup : AppCompatActivity() {
         initView()
 
         val noticeSearchView=findViewById<SearchView>(R.id.notice_search_view)
+
+
 
         noticeSearchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -114,6 +121,11 @@ class SearchGroup : AppCompatActivity() {
         val recyclerView = findViewById<View>(R.id.rv_list) as RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+
+        recyclerView.setDivider(3f,10f,getColor(R.color.lightGray))
+
+        //recyclerView.addItemDecoration(VerticalSpaceItemDecoration(10))
+
         val data_ = mutableListOf<ClubSearchDetail>()
         RetrofitBuilder.api.groupSearchRequest().enqueue(object :
             Callback<GetSearchGroup> {
@@ -164,5 +176,30 @@ class SearchGroup : AppCompatActivity() {
             }
 
         })
+    }
+
+    inner class VerticalSpaceItemDecoration(private val verticalSpaceHeight: Int) :
+        RecyclerView.ItemDecoration() {
+
+        override fun getItemOffsets(
+            outRect: Rect, view: View, parent: RecyclerView,
+            state: RecyclerView.State
+        ) {
+            outRect.set(0,verticalSpaceHeight,0,verticalSpaceHeight)
+        }
+    }
+
+    @BindingAdapter(
+        value = ["dividerHeight", "dividerPadding", "dividerColor"],
+        requireAll = false
+    )
+    fun RecyclerView.setDivider(dividerHeight: Float, dividerPadding: Float, @ColorInt dividerColor: Int?) {
+        val decoration = CustomDecoration(
+            height = dividerHeight ?: 0f,
+            padding = dividerPadding ?: 0f,
+            color = dividerColor ?: Color.TRANSPARENT
+        )
+
+        addItemDecoration(decoration)
     }
 }

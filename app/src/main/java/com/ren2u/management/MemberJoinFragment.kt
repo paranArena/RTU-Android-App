@@ -1,11 +1,17 @@
 package com.ren2u.management
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.ColorInt
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
+import com.ren2u.CustomDecoration
+import com.ren2u.R
 import com.ren2u.adapter.JoinListAdapter
 import com.ren2u.databinding.FragmentMemberJoinBinding
 
@@ -71,6 +77,13 @@ class MemberJoinFragment : Fragment() {
     }
 
     private fun initRecycler(id: Int) {
+        binding.rvList.setDivider(3f,10f, context?.let {
+            ContextCompat.getColor(
+                it,
+                R.color.lightGray
+            )
+        })
+
         RetrofitBuilder.api.getJoinRequest(id).enqueue(object :
             Callback<MemberListModel> {
             override fun onResponse(
@@ -140,6 +153,16 @@ class MemberJoinFragment : Fragment() {
             }
 
         })
+    }
+
+    fun RecyclerView.setDivider(dividerHeight: Float, dividerPadding: Float, @ColorInt dividerColor: Int?) {
+        val decoration = CustomDecoration(
+            height = dividerHeight ?: 0f,
+            padding = dividerPadding ?: 0f,
+            color = dividerColor ?: Color.TRANSPARENT
+        )
+
+        addItemDecoration(decoration)
     }
 
 }

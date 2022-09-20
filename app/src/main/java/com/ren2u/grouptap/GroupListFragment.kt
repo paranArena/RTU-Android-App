@@ -1,12 +1,18 @@
 package com.ren2u.grouptap
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.ColorInt
+import androidx.core.content.ContextCompat.getColor
+import androidx.recyclerview.widget.RecyclerView
+import com.ren2u.CustomDecoration
+import com.ren2u.R
 import com.ren2u.adapter.MyGroupViewAdapter
 import com.ren2u.databinding.FragmentGroupListBinding
 import com.ren2u.model.*
@@ -42,6 +48,9 @@ class GroupListFragment : Fragment() {
     }
 
     private fun initRecycler(){
+
+        binding.rvList.setDivider(3f,10f, context?.let { getColor(it, R.color.lightGray) })
+
         RetrofitBuilder.api.myGroupRequest().enqueue(object :
                 Callback<GetGroupModel> {
                 override fun onResponse(
@@ -127,5 +136,15 @@ class GroupListFragment : Fragment() {
             groupViewAdapter.notifyDataSetChanged()
         }*/
 
+    }
+
+    fun RecyclerView.setDivider(dividerHeight: Float, dividerPadding: Float, @ColorInt dividerColor: Int?) {
+        val decoration = CustomDecoration(
+            height = dividerHeight ?: 0f,
+            padding = dividerPadding ?: 0f,
+            color = dividerColor ?: Color.TRANSPARENT
+        )
+
+        addItemDecoration(decoration)
     }
 }

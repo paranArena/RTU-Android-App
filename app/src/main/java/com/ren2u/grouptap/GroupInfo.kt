@@ -2,13 +2,17 @@ package com.ren2u.grouptap
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import androidx.annotation.ColorInt
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.ren2u.CustomDecoration
 import com.ren2u.R
 import com.ren2u.adapter.MyNoticeViewAdapter
 import com.ren2u.adapter.ProductHorizonAdapter
@@ -126,6 +130,8 @@ class GroupInfo : AppCompatActivity() {
     }
 
     private fun getNotice(id: Int){
+        binding.rvList.setDivider(3f,10f, getColor(R.color.lightGray))
+
         RetrofitBuilder.api.getClubNotice(id).enqueue(object :
             Callback<MyNotice> {
             override fun onResponse(
@@ -392,5 +398,15 @@ class GroupInfo : AppCompatActivity() {
             // 다이얼로그를 띄워주기
             builder.show()
         }
+    }
+
+    fun RecyclerView.setDivider(dividerHeight: Float, dividerPadding: Float, @ColorInt dividerColor: Int?) {
+        val decoration = CustomDecoration(
+            height = dividerHeight ?: 0f,
+            padding = dividerPadding ?: 0f,
+            color = dividerColor ?: Color.TRANSPARENT
+        )
+
+        addItemDecoration(decoration)
     }
 }

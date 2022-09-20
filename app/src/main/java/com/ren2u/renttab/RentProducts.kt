@@ -1,13 +1,19 @@
 package com.ren2u.renttab
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.ColorInt
+import androidx.core.content.ContextCompat.getColor
+import androidx.recyclerview.widget.RecyclerView
+import com.ren2u.CustomDecoration
 import com.ren2u.MainPageActivity
+import com.ren2u.R
 import com.ren2u.adapter.MyProductAdapter
 import com.ren2u.databinding.FragmentRentProductsBinding
 import com.ren2u.model.*
@@ -38,6 +44,8 @@ class RentProducts : Fragment() {
     }
 
     private fun initRecycler(){
+        binding.rvList.setDivider(3f,10f, context?.let { getColor(it, R.color.lightGray) })
+
         RetrofitBuilder.api.getMyProducts().enqueue(object :
             Callback<GetProductModel> {
             override fun onResponse(
@@ -88,5 +96,15 @@ class RentProducts : Fragment() {
             }
 
         })
+    }
+
+    fun RecyclerView.setDivider(dividerHeight: Float, dividerPadding: Float, @ColorInt dividerColor: Int?) {
+        val decoration = CustomDecoration(
+            height = dividerHeight ?: 0f,
+            padding = dividerPadding ?: 0f,
+            color = dividerColor ?: Color.TRANSPARENT
+        )
+
+        addItemDecoration(decoration)
     }
 }
