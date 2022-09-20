@@ -82,6 +82,10 @@ class GroupListFragment : Fragment() {
                     else{
                         Log.d("test", response.code().toString())
 
+                        if(response.code()==401){
+                            activity?.finish()
+                        }
+
                     }
                 }
 
