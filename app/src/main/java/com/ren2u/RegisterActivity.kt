@@ -68,7 +68,7 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.mailButton.setOnClickListener {
             val temp=binding.mailEditText.text.toString()
-            if(temp.length<=5){
+            if(temp.length<4){
                 binding.mailHelp.visibility= View.VISIBLE
             }
             else {
@@ -110,7 +110,7 @@ class RegisterActivity : AppCompatActivity() {
             } else if(name.length<2){
                 binding.nameHelp.visibility=View.VISIBLE
                 failed()
-            } else if(id.length<6){
+            } else if(id.length<4){
                 binding.idHelp.visibility=View.VISIBLE
                 failed()
             } else if(major.length<2){

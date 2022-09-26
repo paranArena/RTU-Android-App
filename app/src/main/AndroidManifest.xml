@@ -20,12 +20,15 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".renttab.LocationInfoActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".register.ResetPassword2"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".register.ResetPasswordActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".mypagetab.ConditionsActivity"

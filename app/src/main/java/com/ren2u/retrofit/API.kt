@@ -232,4 +232,15 @@ interface API {
         @Body verifyModel: VerifyModel
     ):Call<BasicResponse>
 
+    @Multipart
+    @POST("/image/upload")
+    fun upload(
+        @Part image: MultipartBody.Part?
+    ): Call<ImageResponse>
+
+    @POST
+    fun createCouponAdmin(
+        @Body couponModel: CouponModel
+    ): Call<BasicResponse>
+
 }
