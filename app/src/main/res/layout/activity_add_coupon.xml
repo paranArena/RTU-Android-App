@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".grouptap.AddGroup" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:outlineAmbientShadowColor="@color/white"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="쿠폰 등록"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="bold">
+        </TextView>
+
+        <TextView
+            android:id="@+id/completeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="완료"
+            android:layout_gravity="right"
+            android:layout_marginRight="15dp"
+            android:textColor="@color/black">
+        </TextView>
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/groupImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/change"></ImageView>
+
+            <TextView
+                android:id="@+id/groupNameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="20dp"
+                android:textSize="16dp"
+                android:layout_below="@id/groupImage"
+                android:text="쿠폰 이름"
+                android:layout_marginTop="20dp">
+            </TextView>
+
+            <EditText
+                android:id="@+id/groupNameEditText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/groupNameText"
+                android:layout_marginHorizontal="20dp"></EditText>
+
+            <TextView
+                android:id="@+id/dateText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="20dp"
+                android:textSize="16dp"
+                android:text="사용가능 기한"
+                android:layout_below="@id/groupNameEditText"
+                android:layout_marginTop="20dp">
+            </TextView>
+
+           <DatePicker
+               android:id="@+id/calendar"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/dateText"
+               android:layout_centerHorizontal="true"
+               android:datePickerMode="calendar">
+
+           </DatePicker>
+
+            <TextView
+                android:id="@+id/introText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/calendar"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:text="세부 정보"
+                android:textColor="@color/black"
+                android:textSize="16dp"></TextView>
+
+            <EditText
+                android:id="@+id/introEditText"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@id/introText"
+                android:paddingHorizontal="20dp"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/round_box"></EditText>
+
+            <!--<TextView
+                android:id="@+id/memberText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="20dp"
+                android:textSize="16dp"
+                android:layout_below="@id/introEditText"
+                android:layout_marginTop="20dp"
+                android:text="멤버">
+            </TextView>
+
+            <EditText
+                android:id="@+id/memberEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/memberText"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toLeftOf="@+id/registerButton"></EditText>
+
+
+            <ImageButton
+                android:id="@+id/registerButton"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/memberText"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/ic_register_button"
+
+                android:background="@color/white"
+                android:layout_alignParentRight="true">
+
+            </ImageButton>-->
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</LinearLayout>

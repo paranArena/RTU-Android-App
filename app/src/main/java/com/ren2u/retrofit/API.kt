@@ -243,4 +243,11 @@ interface API {
         @Body couponModel: CouponModel
     ): Call<BasicResponse>
 
+    @GET("/members/my/coupons/all")
+    fun getMyCouponsAll(
+    ): Call<CouponListResponse>
+
+    @GET("/members/my/couponHistories/all")
+    fun getMyCouponHistoriesAll(
+    ): Call<CouponListResponse>
 }

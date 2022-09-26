@@ -19,17 +19,23 @@
         android:theme="@style/Theme.Rtu"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".renttab.LocationInfoActivity"
-            android:screenOrientation="portrait"
+            android:name=".coupon.CouponListActivity"
             android:exported="false" />
+        <activity
+            android:name=".coupon.AddCoupon"
+            android:exported="false" />
+        <activity
+            android:name=".renttab.LocationInfoActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".register.ResetPassword2"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".register.ResetPasswordActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".mypagetab.ConditionsActivity"
             android:exported="false"

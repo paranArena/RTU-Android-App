@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import com.ren2u.MainPageActivity
+import com.ren2u.coupon.CouponListActivity
 import com.ren2u.databinding.FragmentMypageBinding
 import com.ren2u.model.BasicResponse
 import com.ren2u.model.MyInfoModel
@@ -41,6 +42,11 @@ class MypageFragment : Fragment() {
 
         binding.deleteUser.setOnClickListener {
             dialog()
+        }
+
+        binding.coupon.setOnClickListener {
+            val intent = Intent(context, CouponListActivity::class.java)
+            startActivity(intent)
         }
 
         binding.promise.setOnClickListener {
