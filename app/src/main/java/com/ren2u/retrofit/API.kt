@@ -256,4 +256,10 @@ interface API {
         @Path("clubId") clubId: Int,
         @Path("couponId") couponId: Int
     ): Call<CouponInfoResponse>
+
+    @PUT("/clubs/{clubId}/coupons/{couponId}/user")
+    fun useCouponUser(
+        @Path("clubId") clubId: Int,
+        @Path("couponId") couponId: Int
+    ): Call<UseCouponResponse>
 }

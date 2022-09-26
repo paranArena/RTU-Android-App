@@ -57,3 +57,8 @@ data class CouponInfoModel(
 data class ImageModel(
     val url: String
 )
+
+data class UseCouponResponse(
+    val code: String,
+    val message: String
+)

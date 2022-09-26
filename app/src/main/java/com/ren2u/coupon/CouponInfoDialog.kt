@@ -34,6 +34,21 @@ class CouponInfoDialog  : DialogFragment() {
 
         initView(clubId!!, couponId!!)
 
+        binding.info.setOnClickListener {
+
+        }
+
+        binding.use.setOnClickListener {
+            val dialog= CheckCouponDialog()
+
+            val bundle=Bundle()
+            bundle.putInt("clubId", clubId)
+            bundle.putInt("couponId", couponId)
+            dialog.arguments=bundle
+
+            dialog.show(childFragmentManager, "CheckCouponDialog")
+        }
+
         return view
     }
 
