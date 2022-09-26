@@ -250,4 +250,10 @@ interface API {
     @GET("/members/my/couponHistories/all")
     fun getMyCouponHistoriesAll(
     ): Call<CouponListResponse>
+
+    @GET("/clubs/{clubId}/coupons/{couponId}/user")
+    fun getCouponUser(
+        @Path("clubId") clubId: Int,
+        @Path("couponId") couponId: Int
+    ): Call<CouponInfoResponse>
 }

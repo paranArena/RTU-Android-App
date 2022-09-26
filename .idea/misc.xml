@@ -5,6 +5,9 @@
       <map>
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/drawable/circle_button.xml" value="0.122" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/drawable/ic_reserve_cancel.xml" value="0.201" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/drawable/round_button.xml" value="0.4245" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/drawable/round_button_deep_blue.xml" value="0.4245" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/drawable/solid_button.xml" value="0.4245" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_add_coupon.xml" value="0.4" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_add_group.xml" value="0.12099187687045745" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_add_notice.xml" value="0.12099187687045745" />
@@ -24,6 +27,7 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_search_group.xml" value="0.4510474561778538" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_set_location.xml" value="0.32920051303976056" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/coupon_list.xml" value="0.67" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_coupon_info_dialog.xml" value="0.67" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_group_list.xml" value="0.4510474561778538" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_location.xml" value="0.1453612654980761" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_location_info.xml" value="0.264" />

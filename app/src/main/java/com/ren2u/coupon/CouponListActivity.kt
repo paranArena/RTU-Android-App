@@ -15,6 +15,7 @@ import com.ren2u.adapter.CouponListAdapter
 import com.ren2u.adapter.MyNoticeViewAdapter
 import com.ren2u.databinding.ActivityCouponListBinding
 import com.ren2u.grouptap.NoticeInfo
+import com.ren2u.management.member.MemberInfoFragment
 import com.ren2u.model.CouponListModel
 import com.ren2u.model.CouponListResponse
 import com.ren2u.model.MyNotice
@@ -91,17 +92,16 @@ class CouponListActivity : AppCompatActivity() {
                             object : CouponListAdapter.ItemClickListener {
                                 override fun onClick(view: View, position: Int) {
                                     val couponId=couponList[position].id
+                                    val clubId=couponList[position].clubId
 
-                                    //setFragmentResult("requestKey", bundleOf("projid" to projid))
+                                    val dialog= CouponInfoDialog()
 
-                                    val intent = Intent(this@CouponListActivity,
-                                        NoticeInfo::class.java)
+                                    val bundle=Bundle()
+                                    bundle.putInt("clubId", clubId)
+                                    bundle.putInt("couponId", couponId)
+                                    dialog.arguments=bundle
 
-                                    intent.apply {
-                                        this.putExtra("notice_id",couponId)// 데이터 넣기
-                                    }
-                                    startActivity(intent)
-                                    onStop()
+                                    dialog.show(supportFragmentManager, "CouponInfoDialog")
                                     //replaceFragment(GoodsInfoFragment())
                                 }
                             })
