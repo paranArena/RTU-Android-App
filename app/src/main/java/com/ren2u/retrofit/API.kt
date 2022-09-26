@@ -238,8 +238,9 @@ interface API {
         @Part image: MultipartBody.Part?
     ): Call<ImageResponse>
 
-    @POST
+    @POST("/clubs/{clubId}/coupons/admin")
     fun createCouponAdmin(
+        @Path("clubId") clubId: Int,
         @Body couponModel: CouponModel
     ): Call<BasicResponse>
 

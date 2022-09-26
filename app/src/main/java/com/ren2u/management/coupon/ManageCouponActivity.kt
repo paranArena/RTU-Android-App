@@ -1,5 +1,6 @@
 package com.ren2u.management.coupon
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,8 +13,10 @@ import com.ren2u.CustomDecoration
 import com.ren2u.R
 import com.ren2u.adapter.CouponListAdapter
 import com.ren2u.adapter.ManageCouponListAdapter
+import com.ren2u.coupon.AddCoupon
 import com.ren2u.coupon.CouponInfoDialog
 import com.ren2u.databinding.ActivityManageCouponBinding
+import com.ren2u.management.ManageProduct
 import com.ren2u.model.CouponListModel
 import com.ren2u.model.CouponListResponse
 import com.ren2u.retrofit.RetrofitBuilder
@@ -43,6 +46,8 @@ class ManageCouponActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        val clubId=getExtra()
+        getCoupons(clubId)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +63,18 @@ class ManageCouponActivity : AppCompatActivity() {
 
         val clubId=getExtra()
 
+        binding.addCoupon.setOnClickListener {
+            val intent = Intent(this, AddCoupon::class.java)
+            intent.apply {
+                this.putExtra("id",clubId) // 데이터 넣기
+            }
+            startActivity(intent)
+            onStop()
+        }
+
         getCoupons(clubId)
+
+
 
         val view = binding.root
         setContentView(view)

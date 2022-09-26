@@ -34,7 +34,7 @@ data class CouponListResponse(
 data class ImageResponse(
     val statusCode: Int,
     val responseMessage: String,
-    val data: ImageModel
+    val data: String
 )
 
 data class CouponInfoResponse(
