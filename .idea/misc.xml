@@ -17,6 +17,8 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_location_info.xml" value="0.2" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_mail.xml" value="0.30782385634886705" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_manage.xml" value="0.30782385634886705" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_manage_coupon.xml" value="0.30782385634886705" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_manage_notice.xml" value="0.32920051303976056" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_my_info.xml" value="0.32920051303976056" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_notice_info.xml" value="0.12099187687045745" />
@@ -39,6 +41,7 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/group_list.xml" value="0.6" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/item_list.xml" value="0.4510474561778538" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/join_list.xml" value="0.32920051303976056" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/manage_coupon_list.xml" value="0.67" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/member_list.xml" value="0.32920051303976056" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/my_group_list.xml" value="0.32920051303976056" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/my_notice_list.xml" value="0.32920051303976056" />

@@ -9,6 +9,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import com.ren2u.R
 import com.ren2u.databinding.ActivityManageBinding
+import com.ren2u.management.coupon.ManageCouponActivity
 import com.ren2u.model.BasicResponse
 import com.ren2u.retrofit.RetrofitBuilder
 import retrofit2.Call
@@ -68,6 +69,14 @@ class ManageActivity : AppCompatActivity() {
 
         binding.products.setOnClickListener {
             val intent = Intent(this, ManageProduct::class.java)
+            intent.apply {
+                this.putExtra("id",id) // 데이터 넣기
+            }
+            startActivity(intent)
+        }
+
+        binding.coupon.setOnClickListener {
+            val intent = Intent(this, ManageCouponActivity::class.java)
             intent.apply {
                 this.putExtra("id",id) // 데이터 넣기
             }

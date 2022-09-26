@@ -1,4 +1,4 @@
-package com.ren2u.coupon
+package com.ren2u.management.coupon
 
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ren2u.CustomDecoration
 import com.ren2u.R
 import com.ren2u.adapter.CouponListAdapter
-import com.ren2u.databinding.ActivityCouponListBinding
+import com.ren2u.adapter.ManageCouponListAdapter
+import com.ren2u.coupon.CouponInfoDialog
+import com.ren2u.databinding.ActivityManageCouponBinding
 import com.ren2u.model.CouponListModel
 import com.ren2u.model.CouponListResponse
 import com.ren2u.retrofit.RetrofitBuilder
@@ -19,14 +21,18 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CouponListActivity : AppCompatActivity() {
+class ManageCouponActivity : AppCompatActivity() {
 
-    private var _binding: ActivityCouponListBinding?=null
+    private var _binding: ActivityManageCouponBinding? = null
 
     private val binding get() = _binding!!
 
+    private fun getExtra(): Int {
+        return intent.getIntExtra("id", 0)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId){
+        return when (item.itemId) {
             android.R.id.home -> {
                 finish()
                 true
@@ -36,8 +42,6 @@ class CouponListActivity : AppCompatActivity() {
     }
 
     override fun onResume() {
-        getCoupon()
-        getUsedCoupon()
         super.onResume()
     }
 
@@ -45,26 +49,26 @@ class CouponListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coupon_list)
 
-        _binding= ActivityCouponListBinding.inflate(layoutInflater)
+        _binding = ActivityManageCouponBinding.inflate(layoutInflater)
 
         setSupportActionBar(binding.toolbar)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
-        getCoupon()
-        getUsedCoupon()
+        val clubId=getExtra()
 
-        val view=binding.root
+        getCoupons(clubId)
+
+        val view = binding.root
         setContentView(view)
     }
 
-    private fun getCoupon(){
+    private fun getCoupons(clubId: Int){
+        binding.rvList.setDivider(3f,10f, getColor(R.color.lightGray))
 
-        binding.rvList1.setDivider(3f,10f, getColor(R.color.lightGray))
 
-
-        RetrofitBuilder.api.getMyCouponsAll().enqueue(object :
+        RetrofitBuilder.api.getClubCouponAdmin(clubId).enqueue(object :
             Callback<CouponListResponse> {
             override fun onResponse(
 
@@ -82,9 +86,9 @@ class CouponListActivity : AppCompatActivity() {
                         data_.add(item)
                     }
 
-                    binding.rvList1.adapter= CouponListAdapter(data_, 1).apply{
+                    binding.rvList.adapter= ManageCouponListAdapter(data_).apply{
                         setItemClickListener(
-                            object : CouponListAdapter.ItemClickListener {
+                            object : ManageCouponListAdapter.ItemClickListener {
                                 override fun onClick(view: View, position: Int) {
                                     val couponId=couponList[position].id
                                     val clubId=couponList[position].clubId
@@ -110,47 +114,6 @@ class CouponListActivity : AppCompatActivity() {
                 //Toast.makeText(this@GoodsInfo, "업로드 실패 ..", Toast.LENGTH_SHORT).show()
             }
 
-        })
-    }
-
-    private fun getUsedCoupon(){
-
-        binding.rvList2.setDivider(3f,10f, getColor(R.color.lightGray))
-
-
-        RetrofitBuilder.api.getMyCouponHistoriesAll().enqueue(object :
-            Callback<CouponListResponse> {
-            override fun onResponse(
-
-                call: Call<CouponListResponse>,
-                response: Response<CouponListResponse>
-            ) {
-                if (response.isSuccessful) {
-                    val data_ = mutableListOf<CouponListModel>()
-                    data_.clear()
-                    //Log.d("test", response.body().toString())
-                    var data = response.body()!! // GsonConverter를 사용해 데이터매핑
-                    Log.d("test", data.toString())
-
-                    for (item in data.data) {
-                        data_.add(item)
-                    }
-
-                    binding.rvList2.adapter= CouponListAdapter(data_, 2).apply{
-                        setItemClickListener(
-                            object : CouponListAdapter.ItemClickListener {
-                                override fun onClick(view: View, position: Int) {
-                                }
-                            })
-                    }
-                    //Toast.makeText(this@GoodsInfo, "업로드 성공!", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<CouponListResponse>, t: Throwable) {
-                Log.d("test", "실패$t")
-                //Toast.makeText(this@GoodsInfo, "업로드 실패 ..", Toast.LENGTH_SHORT).show()
-            }
         })
     }
 
