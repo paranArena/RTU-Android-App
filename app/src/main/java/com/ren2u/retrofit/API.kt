@@ -280,4 +280,10 @@ interface API {
         @Path("clubId") clubId: Int,
         @Path("couponId") couponId: Int
     ): Call<CouponMemberResponse>
+
+    @GET("/clubs/{clubId}/coupons/{couponId}/histories/admin")
+    fun getCouponMembersHistoriesAdmin(
+        @Path("clubId") clubId: Int,
+        @Path("couponId") couponId: Int
+    ): Call<CouponMemberResponse>
 }

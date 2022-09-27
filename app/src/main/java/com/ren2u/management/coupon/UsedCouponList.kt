@@ -51,7 +51,7 @@ class UsedCouponList : Fragment() {
             )
         })
 
-        RetrofitBuilder.api.getCouponMembersAdmin(clubId, couponId).enqueue(object :
+        RetrofitBuilder.api.getCouponMembersHistoriesAdmin(clubId, couponId).enqueue(object :
             Callback<CouponMemberResponse> {
             override fun onResponse(
                 call: Call<CouponMemberResponse>,
