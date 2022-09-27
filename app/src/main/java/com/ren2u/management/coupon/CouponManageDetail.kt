@@ -12,6 +12,7 @@ import com.ren2u.R
 import com.ren2u.databinding.ActivityCouponManageDetailBinding
 import com.ren2u.grouptap.NoticeInfo
 import com.ren2u.model.AdminCouponResponse
+import com.ren2u.model.BasicResponse
 import com.ren2u.renttab.RentList
 import com.ren2u.renttab.RentProducts
 import com.ren2u.retrofit.RetrofitBuilder
@@ -102,8 +103,34 @@ class CouponManageDetail : AppCompatActivity() {
             onStop()
         }
 
+        binding.delete.setOnClickListener {
+            deleteCoupon(clubId, couponId)
+        }
+
         val view = binding.root
         setContentView(view)
+    }
+
+    private fun deleteCoupon(clubId: Int, couponId: Int){
+        RetrofitBuilder.api.deleteCouponAdmin(clubId, couponId).enqueue(object :
+            Callback<BasicResponse> {
+            override fun onResponse(
+
+                call: Call<BasicResponse>,
+                response: Response<BasicResponse>
+            ) {
+                if (response.isSuccessful) {
+                    Log.d("test", response.body().toString())
+                    finish()
+                }
+            }
+
+            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+                Log.d("test", "실패$t")
+                //Toast.makeText(this@GoodsInfo, "업로드 실패 ..", Toast.LENGTH_SHORT).show()
+            }
+
+        })
     }
 
     private fun getCoupon(clubId: Int, couponId: Int){

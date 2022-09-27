@@ -1,5 +1,6 @@
 package com.ren2u.coupon
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -12,6 +13,7 @@ import androidx.fragment.app.DialogFragment
 import com.bumptech.glide.Glide
 import com.ren2u.R
 import com.ren2u.databinding.FragmentCouponInfoDialogBinding
+import com.ren2u.management.product.add.AddProduct4
 import com.ren2u.model.CouponInfoResponse
 import com.ren2u.model.MemberInfoModel
 import com.ren2u.retrofit.RetrofitBuilder
@@ -22,6 +24,9 @@ import retrofit2.Response
 class CouponInfoDialog  : DialogFragment() {
     private var _binding: FragmentCouponInfoDialogBinding? = null
     private val binding get() = _binding!!
+
+    private var latitude: Double=0.0
+    private var longitude: Double=0.0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentCouponInfoDialogBinding.inflate(inflater, container, false)
@@ -49,6 +54,17 @@ class CouponInfoDialog  : DialogFragment() {
             dialog.show(childFragmentManager, "CheckCouponDialog")
         }
 
+        binding.locationButton.setOnClickListener {
+            val intent = Intent(context, CouponLocationActivity::class.java)
+
+            intent.apply {
+                this.putExtra("latitude", latitude)
+                this.putExtra("longitude", longitude) // 데이터 넣기
+            }
+
+            startActivity(intent)
+        }
+
         return view
     }
 
@@ -70,6 +86,9 @@ class CouponInfoDialog  : DialogFragment() {
                     val location=data!!.data.location.name
                     val actDate=data!!.data.actDate.substring(0 until 10).replace("-",". ")
                     val expDate=data!!.data.expDate.substring(0 until 10).replace("-",". ")
+
+                    latitude=data!!.data.location.latitude
+                    longitude=data!!.data.location.longitude
 
                     Glide.with(this@CouponInfoDialog).load(imagePath).
                     placeholder(R.drawable.ic_launcher_foreground).into(binding.image)

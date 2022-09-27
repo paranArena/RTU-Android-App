@@ -293,4 +293,10 @@ interface API {
         @Path("couponId") couponId: Int,
         @Body request: CouponGrantRequest
     ): Call<BasicResponse>
+
+    @DELETE("/clubs/{clubId}/coupons/{couponId}/admin")
+    fun deleteCouponAdmin(
+        @Path("clubId") clubId: Int,
+        @Path("couponId") couponId: Int
+    ): Call<BasicResponse>
 }

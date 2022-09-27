@@ -41,6 +41,9 @@ class AddCoupon : AppCompatActivity() {
 
     private var imagePath: String?=null
 
+    private var mLatitude: Double=37.283672
+    private var mLongitude: Double=127.045295
+
     private fun getExtra(): Int {
         return intent.getIntExtra("id", 0)
     }
@@ -65,6 +68,13 @@ class AddCoupon : AppCompatActivity() {
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
+
+        binding.locationEditButton.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                .add(R.id.frame, CouponLocationFragment())
+                .addToBackStack(null) // replace 다음에 적어준다.
+                .commit()
+        }
 
         val clubId=getExtra()
 
@@ -165,8 +175,8 @@ class AddCoupon : AppCompatActivity() {
                 imagePath = imagePath!!,
                 actDate = actDate,
                 expDate = expDate,
-                longitude = 37.135,
-                latitude = 37.248
+                longitude = mLatitude,
+                latitude = mLongitude
             )
 
             Log.d("test", request.toString())
@@ -297,5 +307,11 @@ class AddCoupon : AppCompatActivity() {
                 })
         // 다이얼로그를 띄워주기
         builder.show()
+    }
+
+    fun setLocation(latitude: Double, longitude: Double){
+        binding.locationEditButton.text="설정됨"
+        mLatitude=latitude
+        mLongitude=longitude
     }
 }

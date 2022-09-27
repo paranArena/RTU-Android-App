@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".grouptap.AddGroup" android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:orientation="vertical">
+    tools:context=".grouptap.AddGroup"
+    android:id="@+id/frame"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -158,16 +163,15 @@
                 android:id="@+id/locationEditButton"
                 android:layout_width="100dp"
                 android:layout_height="30dp"
-                android:textColor="@color/black"
-                android:textSize="10dp"
-                android:text="지도에서 장소 표시"
-                android:textStyle="bold"
-                android:background="@drawable/round_button"
-                android:backgroundTint="@color/lightGray"
+                android:layout_below="@id/locationEditText"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_below="@id/locationEditText">
-            </androidx.appcompat.widget.AppCompatButton>
+                android:background="@drawable/round_button"
+                android:backgroundTint="@color/lightGray"
+                android:text="지도에서 장소 표시"
+                android:textColor="@color/black"
+                android:textSize="10dp"
+                android:textStyle="bold"></androidx.appcompat.widget.AppCompatButton>
 
             <TextView
                 android:id="@+id/introText"
@@ -230,5 +234,6 @@
         </RelativeLayout>
 
     </ScrollView>
+    </LinearLayout>
 
-</LinearLayout>
+</FrameLayout>

@@ -19,6 +19,9 @@
         android:theme="@style/Theme.Rtu"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".coupon.CouponLocationActivity"
+            android:exported="false" />
+        <activity
             android:name=".management.coupon.SelectMemberActivity"
             android:exported="false" />
         <activity
