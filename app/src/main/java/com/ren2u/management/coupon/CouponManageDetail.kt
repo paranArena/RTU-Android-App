@@ -4,10 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.google.android.material.tabs.TabLayout
 import com.ren2u.R
 import com.ren2u.databinding.ActivityCouponManageDetailBinding
 import com.ren2u.model.AdminCouponResponse
+import com.ren2u.renttab.RentList
+import com.ren2u.renttab.RentProducts
 import com.ren2u.retrofit.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
@@ -18,6 +22,8 @@ class CouponManageDetail : AppCompatActivity() {
     private var _binding: ActivityCouponManageDetailBinding? = null
 
     private val binding get() = _binding!!
+
+    private lateinit var tabLayout: TabLayout
 
     private fun getClubId(): Int {
         return intent.getIntExtra("clubId", 0)
@@ -47,6 +53,25 @@ class CouponManageDetail : AppCompatActivity() {
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
+
+        tabLayout = binding.tabLayout
+
+        replaceFragment(UnusedCouponList())
+
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when (tab!!.position) {
+                    0 -> replaceFragment(UnusedCouponList())
+                    1 -> replaceFragment(UsedCouponList())
+                }
+            }
+        })
 
         val clubId=getClubId()
         val couponId=getCouponId()
@@ -97,5 +122,17 @@ class CouponManageDetail : AppCompatActivity() {
             }
 
         })
+    }
+
+    fun replaceFragment(fragment: Fragment) {
+
+        val clubId=getClubId()
+        val couponId=getCouponId()
+        val bundle=Bundle()
+        bundle.putInt("clubId", clubId)
+        bundle.putInt("couponId", couponId)
+
+        fragment.arguments=bundle
+        supportFragmentManager.beginTransaction().replace(R.id.frame, fragment).commit()
     }
 }

@@ -77,6 +77,26 @@ data class AdminCouponModel(
     val expDate: String
 ): Parcelable
 
+data class CouponMemberResponse(
+    val statusCode: Int,
+    val responseMessage: String,
+    val data: List<CouponMemberModel>
+)
+
+@Parcelize
+data class CouponMemberModel(
+    val id: Int,
+    val memberPreviewDto: MemberPreviewDto
+): Parcelable
+
+@Parcelize
+data class MemberPreviewDto(
+    val id: Int,
+    val name: String,
+    val major: String,
+    val studentId: String
+): Parcelable
+
 data class UseCouponResponse(
     val code: String,
     val message: String

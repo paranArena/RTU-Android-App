@@ -30,10 +30,11 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_search_group.xml" value="0.4510474561778538" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_set_location.xml" value="0.32920051303976056" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/coupon_list.xml" value="0.67" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/coupon_list_unused.xml" value="0.4" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_check_coupon_dialog.xml" value="0.75" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_coupon_info_dialog.xml" value="0.67" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_group.xml" value="0.20478837109876016" />
-        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_group_list.xml" value="0.4510474561778538" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_group_list.xml" value="0.2682464454976303" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_location.xml" value="0.1453612654980761" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_location_info.xml" value="0.264" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_maps.xml" value="0.1453612654980761" />
@@ -41,6 +42,8 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_mypage.xml" value="0.5" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_notice.xml" value="0.32920051303976056" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_rent.xml" value="0.4" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_unused_coupon_list.xml" value="0.12099187687045745" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_used_coupon_list.xml" value="0.12099187687045745" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/group_list.xml" value="0.6" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/item_list.xml" value="0.4510474561778538" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/join_list.xml" value="0.32920051303976056" />

@@ -274,4 +274,10 @@ interface API {
         @Path("clubId") clubId: Int,
         @Path("couponId") couponId: Int
     ): Call<AdminCouponResponse>
+
+    @GET("/clubs/{clubId}/coupons/{couponId}/couponMembers/admin")
+    fun getCouponMembersAdmin(
+        @Path("clubId") clubId: Int,
+        @Path("couponId") couponId: Int
+    ): Call<CouponMemberResponse>
 }
