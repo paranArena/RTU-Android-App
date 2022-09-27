@@ -1,5 +1,6 @@
 package com.ren2u.management.coupon
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import com.ren2u.R
 import com.ren2u.databinding.ActivityCouponManageDetailBinding
+import com.ren2u.grouptap.NoticeInfo
 import com.ren2u.model.AdminCouponResponse
 import com.ren2u.renttab.RentList
 import com.ren2u.renttab.RentProducts
@@ -41,6 +43,16 @@ class CouponManageDetail : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val clubId=getClubId()
+        val couponId=getCouponId()
+
+        replaceFragment(UnusedCouponList())
+
+        getCoupon(clubId, couponId)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,6 +89,18 @@ class CouponManageDetail : AppCompatActivity() {
         val couponId=getCouponId()
 
         getCoupon(clubId, couponId)
+
+        binding.selectMember.setOnClickListener {
+            val intent = Intent(this@CouponManageDetail,
+                SelectMemberActivity::class.java)
+
+            intent.apply {
+                this.putExtra("clubId",clubId)
+                this.putExtra("couponId",couponId)// 데이터 넣기
+            }
+            startActivity(intent)
+            onStop()
+        }
 
         val view = binding.root
         setContentView(view)

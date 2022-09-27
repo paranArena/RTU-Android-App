@@ -97,6 +97,10 @@ data class MemberPreviewDto(
     val studentId: String
 ): Parcelable
 
+data class CouponGrantRequest(
+    val memberIds: List<Int>
+)
+
 data class UseCouponResponse(
     val code: String,
     val message: String

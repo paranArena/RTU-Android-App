@@ -3,19 +3,19 @@ package com.ren2u.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ren2u.R
-import com.ren2u.model.CouponMemberModel
 import com.ren2u.model.MemberModel
 
-class UnusedCouponAdapter internal constructor(var memberList: List<CouponMemberModel>)
-    : RecyclerView.Adapter<UnusedCouponAdapter.ListViewHolder>() {
+class MemberSelectAdapter internal constructor(var memberList: List<MemberModel>,val all: Boolean)
+    : RecyclerView.Adapter<MemberSelectAdapter.ListViewHolder>() {
 
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(_list: CouponMemberModel) {
+        fun bind(_list: MemberModel) {
             val imageView: ImageView = itemView.findViewById<ImageView>(R.id.iv_image)
             /*if(_list.thumbnailPath!=null) {
                 val newUrl=_list.thumbnailPath
@@ -28,10 +28,17 @@ class UnusedCouponAdapter internal constructor(var memberList: List<CouponMember
 
             itemView.findViewById<ImageView>(R.id.iv_image).clipToOutline=true
 
-            itemView.findViewById<TextView>(R.id.iv_name).text = _list.memberPreviewDto.name
+            itemView.findViewById<TextView>(R.id.iv_name).text = _list.name
             //itemView.findViewById<TextView>(R.id.iv_category).text = _list.category
-            itemView.findViewById<TextView>(R.id.iv_tag).text =
-                (_list.memberPreviewDto.major + " " + _list.memberPreviewDto.studentId.substring(2 until 4))
+            itemView.findViewById<TextView>(R.id.iv_tag).text = (_list.major + " " + _list.studentId.substring(2 until 4))
+
+            if(all){
+                itemView.findViewById<ImageButton>(R.id.check)
+                    .setBackgroundResource(R.drawable.ic_check_button)
+            } else{
+                itemView.findViewById<ImageButton>(R.id.check)
+                    .setBackgroundResource(R.drawable.solid_button)
+            }
         }
     }
     override fun getItemCount(): Int = memberList.size
@@ -44,13 +51,16 @@ class UnusedCouponAdapter internal constructor(var memberList: List<CouponMember
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         return ListViewHolder(
             // 새로운 뷰를 생성해 뷰홀더에 인자로 넣어준다.
-            LayoutInflater.from(parent.context).inflate(R.layout.coupon_list_unused, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.select_member_list, parent, false)
         )
     }
 
     // 반환된 ViewHolder에 데이터를 연결한다.
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.bind(memberList[position])
+        holder.itemView.setOnClickListener{
+            itemClickListner.onClick(it,position)
+        }
 
 
         /*val layoutParams = holder.itemView.layoutParams

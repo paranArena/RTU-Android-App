@@ -286,4 +286,11 @@ interface API {
         @Path("clubId") clubId: Int,
         @Path("couponId") couponId: Int
     ): Call<CouponMemberResponse>
+
+    @POST("/clubs/{clubId}/coupons/{couponId}/admin")
+    fun grantCouponAdmin(
+        @Path("clubId") clubId: Int,
+        @Path("couponId") couponId: Int,
+        @Body request: CouponGrantRequest
+    ): Call<BasicResponse>
 }
