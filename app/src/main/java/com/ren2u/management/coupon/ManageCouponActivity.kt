@@ -16,6 +16,7 @@ import com.ren2u.adapter.ManageCouponListAdapter
 import com.ren2u.coupon.AddCoupon
 import com.ren2u.coupon.CouponInfoDialog
 import com.ren2u.databinding.ActivityManageCouponBinding
+import com.ren2u.grouptap.NoticeInfo
 import com.ren2u.management.ManageProduct
 import com.ren2u.model.CouponListModel
 import com.ren2u.model.CouponListResponse
@@ -109,14 +110,15 @@ class ManageCouponActivity : AppCompatActivity() {
                                     val couponId=couponList[position].id
                                     val clubId=couponList[position].clubId
 
-                                    val dialog= CouponInfoDialog()
+                                    val intent = Intent(this@ManageCouponActivity,
+                                        CouponManageDetail::class.java)
 
-                                    val bundle=Bundle()
-                                    bundle.putInt("clubId", clubId)
-                                    bundle.putInt("couponId", couponId)
-                                    dialog.arguments=bundle
-
-                                    dialog.show(supportFragmentManager, "CouponInfoDialog")
+                                    intent.apply {
+                                        this.putExtra("clubId",clubId)
+                                        this.putExtra("couponId",couponId)// 데이터 넣기
+                                    }
+                                    startActivity(intent)
+                                    onStop()
                                     //replaceFragment(GoodsInfoFragment())
                                 }
                             })

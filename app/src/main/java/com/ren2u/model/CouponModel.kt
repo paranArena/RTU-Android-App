@@ -58,6 +58,25 @@ data class ImageModel(
     val url: String
 )
 
+data class AdminCouponResponse(
+    val statusCode: Int,
+    val responseMessage: String,
+    val data: AdminCouponModel
+)
+
+@Parcelize
+data class AdminCouponModel(
+    val id: Int,
+    val name: String,
+    val information: String,
+    val allCouponCount: Int,
+    val leftCouponCount: Int,
+    val imagePath: String,
+    val location: LocationModel,
+    val actDate: String,
+    val expDate: String
+): Parcelable
+
 data class UseCouponResponse(
     val code: String,
     val message: String
