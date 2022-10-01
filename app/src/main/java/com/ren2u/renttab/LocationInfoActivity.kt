@@ -132,7 +132,7 @@ class LocationInfoActivity : AppCompatActivity() {
             val now = LocalDateTime.now() // 현재 시간
             val convertTime = LocalDateTime.parse(compTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME)
 
-            val compareTime = ChronoUnit.SECONDS.between(now, convertTime) + (3600*9) //분단위 비교
+            val compareTime = ChronoUnit.SECONDS.between(now, convertTime)//분단위 비교
 
             Log.d("time", "$compareTime / $now / $compTime")
 
