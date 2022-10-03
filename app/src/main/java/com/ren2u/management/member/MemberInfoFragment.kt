@@ -11,6 +11,7 @@ import androidx.fragment.app.DialogFragment
 import com.ren2u.databinding.FragmentMemberInfoBinding
 import com.ren2u.model.BasicResponse
 import com.ren2u.model.MemberInfoModel
+import com.ren2u.model.MyRole
 import com.ren2u.retrofit.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
@@ -42,6 +43,8 @@ class MemberInfoFragment : DialogFragment() {
                 grantUser(clubId!!,memberId!!)
             }
         }*/
+
+        getGroupPermission(clubId!!)
 
         binding.delete.setOnClickListener {
            removeMember(clubId!!,memberId!!)
@@ -179,6 +182,35 @@ class MemberInfoFragment : DialogFragment() {
         })
     }
 
+    private fun getGroupPermission(id: Int){
+        RetrofitBuilder.api.getMyClubRole(id).enqueue(object :
+            Callback<MyRole> {
+            override fun onResponse(
+
+                call: Call<MyRole>,
+                response: Response<MyRole>
+            ) {
+                if (response.isSuccessful) {
+
+                    val data=response.body()!!
+                    val role=data.data.clubRole
+                    Log.d("test", role)
+                    if(role=="ADMIN") {
+                        binding.delete.visibility=View.INVISIBLE
+                    }
+                }
+
+            }
+
+            override fun onFailure(call: Call<MyRole>, t: Throwable) {
+                Log.d("test", "실패$t")
+
+                //Toast.makeText(this@GoodsInfo, "업로드 실패 ..", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
     private fun removeMember(clubId: Int, memberId: Int){
         RetrofitBuilder.api.removeMember(clubId, memberId).enqueue(object :
             Callback<BasicResponse> {
@@ -190,7 +222,7 @@ class MemberInfoFragment : DialogFragment() {
                     activity?.onBackPressed()
                 }
                 else {
-                    Log.d("fail", response.body().toString())
+                    Log.d("fail", response.code().toString())
                 }
             }
 

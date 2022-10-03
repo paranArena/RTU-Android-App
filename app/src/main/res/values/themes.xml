@@ -21,7 +21,17 @@
         <item name="android:checkboxStyle">@style/customCheckboxFontStyle</item>
         <item name="android:datePickerStyle">@style/CustomDatePicker</item>
     </style>
+
     <style name="CustomDatePicker">
         <item name="android:datePickerMode">spinner</item>
     </style>
+
+    <style name="Theme.Rtu.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Rtu.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Rtu.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

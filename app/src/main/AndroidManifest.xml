@@ -19,6 +19,11 @@
         android:theme="@style/Theme.Rtu"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".management.notice.ChangeNoticeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_change_notice"
+            android:theme="@style/Theme.Rtu.NoActionBar" />
+        <activity
             android:name=".coupon.CouponLocationActivity"
             android:exported="false"
             android:screenOrientation="portrait" />

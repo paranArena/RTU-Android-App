@@ -51,7 +51,7 @@ class MemberJoinFragment : Fragment() {
 
 
         GlobalScope.launch {
-            delay(1000)
+            delay(100)
 
             activity?.runOnUiThread {
                 binding.rvList.adapter = JoinListAdapter(data_).apply {

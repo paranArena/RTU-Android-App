@@ -114,6 +114,7 @@ class ManageNotice : AppCompatActivity() {
                                     intent.apply {
                                         this.putExtra("club_id",getExtra())
                                         this.putExtra("notice_id",notice_id)// 데이터 넣기
+                                        this.putExtra("permission",1)
                                     }
                                     startActivity(intent)
                                     onStop()

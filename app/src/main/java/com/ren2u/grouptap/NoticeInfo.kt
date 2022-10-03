@@ -1,5 +1,6 @@
 package com.ren2u.grouptap
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.ren2u.R
 import com.ren2u.databinding.ActivityNoticeInfoBinding
+import com.ren2u.management.notice.ChangeNoticeActivity
 import com.ren2u.model.NoticeInfoModel
 import com.ren2u.retrofit.RetrofitBuilder
 import retrofit2.Call
@@ -26,6 +28,10 @@ class NoticeInfo : AppCompatActivity() {
 
     private fun getNoticeExtra(): Int {
         return intent.getIntExtra("notice_id", 0)
+    }
+
+    private fun getPermissionExtra(): Int {
+        return intent.getIntExtra("permission", 0)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -53,6 +59,23 @@ class NoticeInfo : AppCompatActivity() {
         getNoticeInfo(club_id, notice_id)
 
         binding.toolbarOption.visibility= View.INVISIBLE
+
+        val permission=getPermissionExtra()
+        if(permission==1){
+            binding.toolbarOption.visibility= View.VISIBLE
+        }
+
+        binding.toolbarOption.setOnClickListener {
+            val intent = Intent(this@NoticeInfo,
+                ChangeNoticeActivity::class.java)
+
+            intent.apply {
+                this.putExtra("club_id", club_id)
+                this.putExtra("notice_id",notice_id)// 데이터 넣기
+            }
+            startActivity(intent)
+            finish()
+        }
 
         /*binding.toolbarOption.setOnClickListener{
             val intent = Intent(this@NoticeInfo, ManageActivity::class.java)

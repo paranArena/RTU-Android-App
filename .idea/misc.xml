@@ -10,8 +10,9 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/drawable/solid_button.xml" value="0.4245" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_add_coupon.xml" value="0.2264" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_add_group.xml" value="0.12099187687045745" />
-        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_add_notice.xml" value="0.12099187687045745" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_add_notice.xml" value="0.5" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_add_product4.xml" value="0.4510474561778538" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_change_notice.xml" value="0.33" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_coupon_list.xml" value="0.5" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_coupon_location.xml" value="0.1333903377511757" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_coupon_manage_detail.xml" value="0.2697807435653003" />
@@ -23,7 +24,7 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_manage_coupon.xml" value="0.30782385634886705" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_manage_notice.xml" value="0.32920051303976056" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_my_info.xml" value="0.32920051303976056" />
-        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_notice_info.xml" value="0.12099187687045745" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_notice_info.xml" value="0.5" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_product_info.xml" value="0.30235042735042733" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_register.xml" value="0.67" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_reset_password.xml" value="0.33" />
@@ -31,6 +32,7 @@
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_search_group.xml" value="0.4510474561778538" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_select_member.xml" value="0.265531914893617" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/activity_set_location.xml" value="0.32920051303976056" />
+        <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/content_change_notice.xml" value="0.31680205215904234" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/coupon_list.xml" value="0.67" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/coupon_list_unused.xml" value="0.4" />
         <entry key="..\:/Users/white/AndroidStudioProjects/ren2u/app/src/main/res/layout/fragment_check_coupon_dialog.xml" value="0.75" />
