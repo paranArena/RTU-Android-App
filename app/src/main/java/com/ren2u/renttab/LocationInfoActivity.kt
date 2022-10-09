@@ -52,7 +52,7 @@ class LocationInfoActivity : AppCompatActivity() {
 
     private var longitude: Double=0.0
     private var latitude: Double=0.0
-    var distanceFrom by Delegates.notNull<Float>()
+    var distanceFrom by Delegates.notNull<Double>()
 
     private fun getName(): String? {
         return intent.getStringExtra("name")
@@ -117,6 +117,8 @@ class LocationInfoActivity : AppCompatActivity() {
         latitude=getLatitude()!!
         longitude=getLongitude()!!
 
+        Log.d("test123", "${latitude}, ${longitude}")
+
         val name=getName()
         val clubId=getClubId()
         val itemId=getItemId()
@@ -154,7 +156,7 @@ class LocationInfoActivity : AppCompatActivity() {
 
         binding.returnButton.setOnClickListener {
             startLocationUpdates()
-            if(distanceFrom<30) {
+            if(distanceFrom<50) {
                 returnRent(clubId!!, itemId!!)
             } else{
                 Toast.makeText(this, "위치가 너무 멉니다.", Toast.LENGTH_SHORT).show()
@@ -163,7 +165,7 @@ class LocationInfoActivity : AppCompatActivity() {
 
         binding.reserveSet.setOnClickListener {
             startLocationUpdates()
-            if(distanceFrom<30) {
+            if(distanceFrom<50) {
                 applyRent(clubId!!, itemId!!)
             } else{
                 Toast.makeText(this, "위치가 너무 멉니다.", Toast.LENGTH_SHORT).show()
@@ -362,7 +364,7 @@ class LocationInfoActivity : AppCompatActivity() {
         return (r * c)
     }*/
 
-    private fun getDistance(lat1: Double, lng1:Double, lat2:Double, lng2:Double) : Float{
+    private fun getDistance(lat1: Double, lng1:Double, lat2:Double, lng2:Double) : Double{
 
         val myLoc = Location(LocationManager.NETWORK_PROVIDER)
         val targetLoc = Location(LocationManager.NETWORK_PROVIDER)
@@ -372,7 +374,7 @@ class LocationInfoActivity : AppCompatActivity() {
         targetLoc.latitude= lat2
         targetLoc.longitude = lng2
 
-        return myLoc.distanceTo(targetLoc)
+        return myLoc.distanceTo(targetLoc).toDouble()
     }
 
     fun showDialog(s: String){

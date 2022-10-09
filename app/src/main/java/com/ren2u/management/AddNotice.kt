@@ -19,7 +19,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import com.ren2u.R
 import com.ren2u.databinding.ActivityAddNoticeBinding
+import com.ren2u.model.CreateNoticeRequest
 import com.ren2u.model.CreateNoticeResponse
+import com.ren2u.model.ImageResponse
 import com.ren2u.retrofit.RetrofitBuilder
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -34,6 +36,8 @@ class AddNotice : AppCompatActivity() {
     private var _binding: ActivityAddNoticeBinding?=null
 
     private val binding get() = _binding!!
+
+    private var imagePath: String?=null
 
     private fun getExtra(): Int {
         return intent.getIntExtra("id", 0)
@@ -92,6 +96,7 @@ class AddNotice : AppCompatActivity() {
                 val bitmap = BitmapFactory.decodeStream(inputStream, null, option)
 
                 filePath=getRealPathFromURI(it.data!!.data!!)
+                uploadImage(filePath!!)
 
                 Log.d("test",filePath!!)
 
@@ -126,18 +131,17 @@ class AddNotice : AppCompatActivity() {
                 val inputTitle = binding.noticeNameEditText.text.toString().replace("'", """\'""")
                 val inputContent = binding.noticeEditText.text.toString().replace("'", """\'""")
 
-                val titleRequest = RequestBody.create(MediaType.parse("text/plain"), inputTitle);
-                val contentRequest = RequestBody.create(MediaType.parse("text/plain"), inputContent);
+                val imagePaths=listOf(filePath)
 
-                Log.d("test", inputTitle)
+                val request=CreateNoticeRequest(
+                    title=inputTitle,
+                    content=inputContent,
+                    imagePaths= imagePaths as List<String>,
+                    isPublic= true
+                )
 
-
-                var file = File(filePath)
-                var requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file)
-                var body = MultipartBody.Part.createFormData("image", file.name, requestFile)
-
-                RetrofitBuilder.api.createNoticeRequest(
-                    titleRequest, contentRequest, body, id
+                RetrofitBuilder.api.createNotification(
+                    request, id
                 ).enqueue(object : Callback<CreateNoticeResponse> {
                     override fun onResponse(
                         call: Call<CreateNoticeResponse>,
@@ -170,6 +174,36 @@ class AddNotice : AppCompatActivity() {
         setContentView(view)
     }
 
+    private fun uploadImage(filePath: String){
+        var file = File(filePath)
+        var requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file)
+        var body = MultipartBody.Part.createFormData("image", file.name, requestFile)
+
+        RetrofitBuilder.api.upload(
+            body
+        ).enqueue(object : Callback<ImageResponse> {
+            override fun onResponse(
+                call: Call<ImageResponse>,
+                response: Response<ImageResponse>
+            ) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@AddNotice, "사진 업로드 완료", Toast.LENGTH_SHORT).show()
+                    imagePath=response.body()!!.data
+                } else {
+                    when (response.code()) {
+                        400 -> Log.d("test", response.body()!!.toString())
+                    }
+                    Log.d("test", response.body()!!.toString())
+                }
+            }
+
+            override fun onFailure(call: Call<ImageResponse>, t: Throwable) {
+                Toast.makeText(this@AddNotice, "실패했습니다.", Toast.LENGTH_SHORT).show()
+                Log.d("test", "실패$t")
+                finish()
+            }
+        })
+    }
 
 
     private fun showDialog(s: String) {

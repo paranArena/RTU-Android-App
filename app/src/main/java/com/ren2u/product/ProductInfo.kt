@@ -121,7 +121,7 @@ class ProductInfo : AppCompatActivity() {
             }
 
             if(buttonStatus==2){//대여 확정
-                if(distanceFrom>30){
+                if(distanceFrom>50){
                     Toast.makeText(this@ProductInfo, "위치가 너무 멉니다.", Toast.LENGTH_SHORT).show()
                 }else {
                     applyRent(clubId, selectedItemId)
@@ -130,7 +130,7 @@ class ProductInfo : AppCompatActivity() {
             }
 
             if(buttonStatus==3){//반납 하기
-                if(distanceFrom>30){
+                if(distanceFrom>50){
                     Toast.makeText(this@ProductInfo, "위치가 너무 멉니다.", Toast.LENGTH_SHORT).show()
                 }else {
                     returnRent(clubId, selectedItemId)

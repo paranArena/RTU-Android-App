@@ -15,6 +15,13 @@ data class CreateNoticeResponse(
     val data: NoticeResponse
 )
 
+data class CreateNoticeRequest(
+    val title: String,
+    val content: String,
+    val imagePaths: List<String>,
+    val isPublic: Boolean
+)
+
 @Parcelize
 data class NoticeResponse(
     val id: Int,

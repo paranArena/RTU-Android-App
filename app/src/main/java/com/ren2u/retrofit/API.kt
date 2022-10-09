@@ -36,6 +36,19 @@ interface API {
         @Path("id") id:Int
     ): Call<CreateNoticeResponse>
 
+    @POST("/clubs/{id}/notifications")
+    fun createNotification(
+        @Body request: CreateNoticeRequest,
+        @Path("id") id:Int
+    ): Call<CreateNoticeResponse>
+
+    @PUT("/clubs/{clubId}/notifications/{notificationId}")
+    fun updateNotification(
+        @Body request: CreateNoticeRequest,
+        @Path("clubId") clubId: Int,
+        @Path("notificationId") notificationId: Int
+    ): Call<CreateNoticeResponse>
+
     @Multipart
     @POST("/clubs/{id}/products")
     fun createProductRequest(
@@ -298,5 +311,11 @@ interface API {
     fun deleteCouponAdmin(
         @Path("clubId") clubId: Int,
         @Path("couponId") couponId: Int
+    ): Call<BasicResponse>
+
+    @DELETE("/clubs/{clubId}/notifications/{notificationId}")
+    fun deleteNotification(
+        @Path("clubId") clubId: Int,
+        @Path("notificationId") notificationId: Int
     ): Call<BasicResponse>
 }

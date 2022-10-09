@@ -21,8 +21,7 @@ import com.bumptech.glide.Glide
 import com.ren2u.R
 import com.ren2u.databinding.ActivityChangeNoticeBinding
 import com.ren2u.management.AddNotice
-import com.ren2u.model.CreateNoticeResponse
-import com.ren2u.model.NoticeInfoModel
+import com.ren2u.model.*
 import com.ren2u.retrofit.RetrofitBuilder
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -37,6 +36,8 @@ class ChangeNoticeActivity : AppCompatActivity() {
     private var _binding: ActivityChangeNoticeBinding?=null
 
     private val binding get() = _binding!!
+
+    private var upImagePath: String?=null
 
     private fun getClubExtra(): Int {
         return intent.getIntExtra("club_id", 0)
@@ -102,6 +103,7 @@ class ChangeNoticeActivity : AppCompatActivity() {
                 val bitmap = BitmapFactory.decodeStream(inputStream, null, option)
 
                 filePath=getRealPathFromURI(it.data!!.data!!)
+                uploadImage(filePath!!)
 
                 Log.d("test",filePath!!)
 
@@ -128,26 +130,24 @@ class ChangeNoticeActivity : AppCompatActivity() {
         }
 
         binding.completeButton.setOnClickListener {
-            val id=getClubExtra()
-            if(filePath==null){
+            if(upImagePath==null){
                 showDialogToGetImg()
             }
             else {
                 val inputTitle = binding.noticeNameEditText.text.toString().replace("'", """\'""")
                 val inputContent = binding.noticeEditText.text.toString().replace("'", """\'""")
 
-                val titleRequest = RequestBody.create(MediaType.parse("text/plain"), inputTitle);
-                val contentRequest = RequestBody.create(MediaType.parse("text/plain"), inputContent);
+                val imagePaths=listOf(upImagePath)
 
-                Log.d("test", inputTitle)
+                val request= CreateNoticeRequest(
+                    title=inputTitle,
+                    content=inputContent,
+                    imagePaths= imagePaths as List<String>,
+                    isPublic= true
+                )
 
-
-                var file = File(filePath)
-                var requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file)
-                var body = MultipartBody.Part.createFormData("image", file.name, requestFile)
-
-                RetrofitBuilder.api.createNoticeRequest(
-                    titleRequest, contentRequest, body, id
+                RetrofitBuilder.api.updateNotification(
+                    request, clubId, noticeId
                 ).enqueue(object : Callback<CreateNoticeResponse> {
                     override fun onResponse(
                         call: Call<CreateNoticeResponse>,
@@ -160,7 +160,7 @@ class ChangeNoticeActivity : AppCompatActivity() {
                             finish()
                         } else {
                             when (response.code()) {
-                                400 -> Log.d("test", response.body()!!.toString())
+                                400 -> Log.d("test", response.code()!!.toString())
                             }
                             Log.d("test", response.code().toString())
                         }
@@ -176,10 +176,68 @@ class ChangeNoticeActivity : AppCompatActivity() {
 
         }
 
+        binding.delete.setOnClickListener {
+            deleteNotice(clubId, noticeId)
+        }
+
         val view=binding.root
         setContentView(view)
     }
 
+    private fun deleteNotice(club_id: Int, notice_id: Int){
+        RetrofitBuilder.api.deleteNotification(club_id, notice_id).enqueue(object :
+            Callback<BasicResponse> {
+            override fun onResponse(
+
+                call: Call<BasicResponse>,
+                response: Response<BasicResponse>
+            ) {
+                if (response.isSuccessful) {
+                    Log.d("test", response.body().toString())
+                    val data = response.body()!! // GsonConverter를 사용해 데이터매핑
+                    showDialogToDelete()
+                }
+            }
+
+            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+                Log.d("test", "실패$t")
+                //Toast.makeText(this@GoodsInfo, "업로드 실패 ..", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+
+    private fun uploadImage(filePath: String){
+        var file = File(filePath)
+        var requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file)
+        var body = MultipartBody.Part.createFormData("image", file.name, requestFile)
+
+        RetrofitBuilder.api.upload(
+            body
+        ).enqueue(object : Callback<ImageResponse> {
+            override fun onResponse(
+                call: Call<ImageResponse>,
+                response: Response<ImageResponse>
+            ) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@ChangeNoticeActivity, "사진 업로드 완료", Toast.LENGTH_SHORT).show()
+                    upImagePath=response.body()!!.data
+                } else {
+                    when (response.code()) {
+                        400 -> Log.d("test", response.body()!!.toString())
+                    }
+                    Log.d("test", response.body()!!.toString())
+                }
+            }
+
+            override fun onFailure(call: Call<ImageResponse>, t: Throwable) {
+                Toast.makeText(this@ChangeNoticeActivity, "실패했습니다.", Toast.LENGTH_SHORT).show()
+                Log.d("test", "실패$t")
+                finish()
+            }
+        })
+    }
 
 
     private fun showDialog(s: String) {
@@ -246,6 +304,18 @@ class ChangeNoticeActivity : AppCompatActivity() {
         builder.show()
     }
 
+    private fun showDialogToDelete(){
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("삭제 성공")
+            .setMessage("공지사항이 삭제되었습니다.")
+            .setPositiveButton("확인",
+                DialogInterface.OnClickListener { dialog, id ->
+                    finish()
+                })
+        // 다이얼로그를 띄워주기
+        builder.show()
+    }
+
     private fun showDialogToGetPermission() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("권한 요청")
@@ -284,6 +354,8 @@ class ChangeNoticeActivity : AppCompatActivity() {
 
                     Glide.with(this@ChangeNoticeActivity).load(imagePath).
                     placeholder(R.drawable.ic_launcher_foreground).into(binding.noticeImage)
+
+                    upImagePath=imagePath
 
                     binding.noticeImage.clipToOutline=true
 
