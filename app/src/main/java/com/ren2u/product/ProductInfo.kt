@@ -44,6 +44,7 @@ class ProductInfo : AppCompatActivity() {
     private var buttonStatus=0
     private var selectedItemId=0
     private var moveInfo: String?=null
+    private var noLocation=false
 
     private var mFusedLocationProviderClient: FusedLocationProviderClient? = null // 현재 위치를 가져오기 위한 변수
     lateinit var mLastLocation: Location // 위치 값을 가지고 있는 객체
@@ -163,8 +164,14 @@ class ProductInfo : AppCompatActivity() {
                     latitude=data.data.location.latitude
                     longitude=data.data.location.longitude
 
-                    if (checkPermissionForLocation(this@ProductInfo)) {
-                        startLocationUpdates()
+                    if(latitude!=null && longitude!=null) {
+                        if (checkPermissionForLocation(this@ProductInfo)) {
+                            startLocationUpdates()
+                        }
+                    }
+
+                    else{
+                        noLocation=true
                     }
 
                     binding.productNameText.text=name
@@ -225,6 +232,8 @@ class ProductInfo : AppCompatActivity() {
                         this.putExtra("id",data.data.id)
                         this.putExtra("clubId",data.data.id)
                         this.putExtra("productId",productId)
+                        this.putExtra("noLocation", true)
+                        this.putExtra("itemId", itemId)
                     }
 
                     startActivity(intent)

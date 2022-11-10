@@ -1,11 +1,14 @@
 package com.ren2u.renttab
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.ren2u.R
 import com.ren2u.databinding.ActivityRentCompleteBinding
 import com.ren2u.model.GetProductResponse
+import com.ren2u.model.RentResponse
 import com.ren2u.retrofit.RetrofitBuilder
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
@@ -24,8 +27,16 @@ class RentComplete : AppCompatActivity() {
         return intent.getIntExtra("clubId", 0)
     }
 
+    private fun getItemId(): Int {
+        return intent.getIntExtra("itemId", 0)
+    }
+
     private fun getProductId(): Int {
         return intent.getIntExtra("productId", 0)
+    }
+
+    private fun getNoLocation(): Boolean {
+        return intent.getBooleanExtra("noLocation", false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,9 +51,15 @@ class RentComplete : AppCompatActivity() {
 
         val clubId=getClubId()
         val productId=getProductId()
+        val noLocation=getNoLocation()
+        val itemId=getItemId()
 
-        getProductInfo(clubId, productId)
-
+        if(noLocation){
+            applyRent(clubId, itemId)
+        }
+        else {
+            getProductInfo(clubId, productId)
+        }
         val view=binding.root
         setContentView(view)
     }
@@ -109,5 +126,41 @@ class RentComplete : AppCompatActivity() {
             }
 
         })
+    }
+
+    private fun applyRent(clubId: Int, itemId: Int){
+
+        RetrofitBuilder.api.applyRent(clubId, itemId).enqueue(object :
+            Callback<RentResponse> {
+            override fun onResponse(
+
+                call: Call<RentResponse>,
+                response: Response<RentResponse>
+            ) {
+                if (response.isSuccessful) {
+                    showDialog("apply")
+                }
+            }
+
+            override fun onFailure(call: Call<RentResponse>, t: Throwable) {
+                Log.d("test", "실패$t")
+                //Toast.makeText(this@GoodsInfo, "업로드 실패 ..", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    fun showDialog(s: String) {
+        if (s == "apply") {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("대여 확정")
+                .setMessage("대여가 확정되었습니다.")
+                .setPositiveButton("확인",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        finish()
+                    })
+            // 다이얼로그를 띄워주기
+            builder.show()
+        }
     }
 }
