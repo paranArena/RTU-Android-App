@@ -164,7 +164,7 @@ class ProductInfo : AppCompatActivity() {
                     latitude=data.data.location.latitude
                     longitude=data.data.location.longitude
 
-                    if(latitude!=null && longitude!=null) {
+                    if(latitude!=200.0 && longitude!=200.0) {
                         if (checkPermissionForLocation(this@ProductInfo)) {
                             startLocationUpdates()
                         }
@@ -232,7 +232,7 @@ class ProductInfo : AppCompatActivity() {
                         this.putExtra("id",data.data.id)
                         this.putExtra("clubId",data.data.id)
                         this.putExtra("productId",productId)
-                        this.putExtra("noLocation", true)
+                        this.putExtra("noLocation", noLocation)
                         this.putExtra("itemId", itemId)
                     }
 

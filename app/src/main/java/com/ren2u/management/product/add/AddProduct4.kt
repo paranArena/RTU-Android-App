@@ -106,37 +106,14 @@ class AddProduct4 : AppCompatActivity() {
             val detail=binding.detailEditText.text.toString()
 
             if(detail=="" || getLatitude()==0.0){
-                showDialogFailed()
+                if(!binding.locationOn.isChecked){
+                    showDialogFailed()
+                } else{
+                    getNext()
+                }
             }
             else {
-                val intent = Intent(this@AddProduct4, AddProduct5::class.java)
-
-                val id = getId()
-                val filePath = getFilePath()
-                val name = getName()
-                val category = getCategory()
-                val price = getPrice()
-                val number = getNumber()
-                val period = getPeriod()
-                val latitude = getLatitude()
-                val longitude = getLongitude()
-
-                intent.apply {
-                    this.putExtra("id", id)
-                    this.putExtra("filePath", filePath) // 데이터 넣기
-                    this.putExtra("name", name)
-                    this.putExtra("category", category)
-                    this.putExtra("price", price)
-                    this.putExtra("number", number)
-                    this.putExtra("period", period)
-                    this.putExtra("detail", detail)
-                    this.putExtra("latitude", latitude)
-                    this.putExtra("longitude", longitude)
-                }
-                Log.d("test", latitude.toString() +","+ longitude.toString())
-
-                startActivity(intent)
-                finish()
+                getNext()
             }
         }
 
@@ -154,6 +131,44 @@ class AddProduct4 : AppCompatActivity() {
                 })
         // 다이얼로그를 띄워주기
         builder.show()
+    }
+
+    private fun getNext(){
+        val intent = Intent(this@AddProduct4, AddProduct5::class.java)
+
+        val id = getId()
+        val filePath = getFilePath()
+        val name = getName()
+        val category = getCategory()
+        val price = getPrice()
+        val number = getNumber()
+        val period = getPeriod()
+        var latitude = getLatitude()
+        var longitude = getLongitude()
+        val detail=binding.detailEditText.text.toString()
+
+        if(latitude==0.0 && longitude==0.0){
+            latitude=200.0
+            longitude=200.0
+        }
+
+
+        intent.apply {
+            this.putExtra("id", id)
+            this.putExtra("filePath", filePath) // 데이터 넣기
+            this.putExtra("name", name)
+            this.putExtra("category", category)
+            this.putExtra("price", price)
+            this.putExtra("number", number)
+            this.putExtra("period", period)
+            this.putExtra("detail", detail)
+            this.putExtra("latitude", latitude)
+            this.putExtra("longitude", longitude)
+        }
+        Log.d("test", latitude.toString() +","+ longitude.toString())
+
+        startActivity(intent)
+        finish()
     }
 
     /*override fun onResume() {

@@ -44,7 +44,7 @@ class MemberInfoFragment : DialogFragment() {
             }
         }*/
 
-        getGroupPermission(clubId!!)
+        //getGroupPermission(clubId!!)
 
         binding.delete.setOnClickListener {
            removeMember(clubId!!,memberId!!)
@@ -77,6 +77,7 @@ class MemberInfoFragment : DialogFragment() {
         if(clubRole=="ADMIN"){
             //binding.admin.visibility=View.VISIBLE
             binding.label.visibility=View.VISIBLE
+            binding.delete.visibility=View.INVISIBLE
             //binding.admin.text="일반회원 변경"
         } else if(clubRole=="OWNER"){
             //binding.admin.visibility=View.INVISIBLE
@@ -194,7 +195,7 @@ class MemberInfoFragment : DialogFragment() {
 
                     val data=response.body()!!
                     val role=data.data.clubRole
-                    Log.d("test", role)
+                    Log.d("test", role + id.toString())
                     if(role=="ADMIN") {
                         binding.delete.visibility=View.INVISIBLE
                     }

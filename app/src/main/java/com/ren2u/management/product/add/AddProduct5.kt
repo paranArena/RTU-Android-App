@@ -98,6 +98,7 @@ class AddProduct5 : AppCompatActivity() {
             val latitude = getLatitude()
             val longitude = getLongitude()
 
+
             var rentalList=mutableListOf<MultipartBody.Part>()
 
             if (number != null) {

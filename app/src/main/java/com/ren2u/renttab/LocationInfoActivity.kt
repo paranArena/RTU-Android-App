@@ -156,7 +156,7 @@ class LocationInfoActivity : AppCompatActivity() {
 
         binding.returnButton.setOnClickListener {
             startLocationUpdates()
-            if(distanceFrom<50) {
+            if(distanceFrom<50 || latitude==200.0) {
                 returnRent(clubId!!, itemId!!)
             } else{
                 Toast.makeText(this, "위치가 너무 멉니다.", Toast.LENGTH_SHORT).show()
@@ -165,7 +165,7 @@ class LocationInfoActivity : AppCompatActivity() {
 
         binding.reserveSet.setOnClickListener {
             startLocationUpdates()
-            if(distanceFrom<50) {
+            if(distanceFrom<50 || latitude==200.0) {
                 applyRent(clubId!!, itemId!!)
             } else{
                 Toast.makeText(this, "위치가 너무 멉니다.", Toast.LENGTH_SHORT).show()

@@ -7,8 +7,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitBuilder {
     var api: API
-    private const val BASE_URL="https://ren2u.shop"
-    //private const val BASE_URL="http://3.37.55.41:8080"
+    //private const val BASE_URL="https://ren2u.shop"
+    private const val BASE_URL="http://15.165.38.225:8080"
 
     init {
         val gson= GsonBuilder()

@@ -124,6 +124,8 @@ class RegisterActivity : AppCompatActivity() {
 
                 val request=MailModel(email=email)
 
+                binding.nextButton.isClickable=false
+
                 requestCode(request)
             }
 
@@ -176,6 +178,7 @@ class RegisterActivity : AppCompatActivity() {
             .setMessage("다시 한 번 확인 후 진행해 주세요")
             .setPositiveButton("확인",
                 DialogInterface.OnClickListener { dialog, id ->
+                    binding.nextButton.isClickable=true
 
                 })
         // 다이얼로그를 띄워주기
