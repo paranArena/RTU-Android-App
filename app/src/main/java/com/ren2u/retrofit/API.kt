@@ -36,13 +36,13 @@ interface API {
         @Path("id") id:Int
     ): Call<CreateNoticeResponse>
 
-    @POST("/clubs/{id}/notifications")
+    @POST("/api/v1/clubs/{id}/notifications")
     fun createNotification(
         @Body request: CreateNoticeRequest,
         @Path("id") id:Int
     ): Call<CreateNoticeResponse>
 
-    @PUT("/clubs/{clubId}/notifications/{notificationId}")
+    @PUT("/api/v1/clubs/{clubId}/notifications/{notificationId}")
     fun updateNotification(
         @Body request: CreateNoticeRequest,
         @Path("clubId") clubId: Int,

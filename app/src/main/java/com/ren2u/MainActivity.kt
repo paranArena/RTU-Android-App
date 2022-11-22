@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import android.view.View
+import com.google.firebase.messaging.FirebaseMessaging
 
 import com.ren2u.model.LoginRequest
 import com.ren2u.model.LoginResponse
@@ -36,6 +37,8 @@ class MainActivity : AppCompatActivity() {
 
         val view=binding.root
         setContentView(view)
+
+        initFirebase()
 
         //binding.loginButton.isEnabled=false
 
@@ -150,6 +153,14 @@ class MainActivity : AppCompatActivity() {
         override fun onCreate() {
             prefs= PreferenceUtil(applicationContext)
             super.onCreate()
+        }
+    }
+
+    private fun initFirebase() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Log.d("token","success")
+            }
         }
     }
 
