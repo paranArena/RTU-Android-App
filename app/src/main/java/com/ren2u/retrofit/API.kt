@@ -27,6 +27,12 @@ interface API {
         //@Part ("hashtags")  hashtag: RequestBody
     ): Call<CreateClubResponse>
 
+    @PUT("/api/v1/clubs/{clubId}/info")
+    fun updateClubInfo(
+        @Path("clubId") clubId: Int,
+        @Body initializeRequest: CreateClubModel
+    ): Call<CreateClubResponse>
+
     @Multipart
     @POST("/clubs/{id}/notifications")
     fun createNoticeRequest(

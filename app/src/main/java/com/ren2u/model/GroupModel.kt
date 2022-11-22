@@ -8,6 +8,15 @@ data class GroupModel(
     val introduction: String
 )
 
+@Parcelize
+data class CreateClubModel(
+    val name: String,
+    val introduction: String,
+    val thumbnailPath: List<String>,
+    val hashtags: List<String>
+): Parcelable
+
+
 data class SearchNameModel(
     val statusCode: Int,
     val responseMessage: String,

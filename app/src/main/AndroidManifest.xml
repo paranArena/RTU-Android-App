@@ -19,6 +19,13 @@
         android:theme="@style/Theme.Rtu"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".management.UpdateClubActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".management.notice.ChangeNoticeActivity"
             android:exported="false"
             android:label="@string/title_activity_change_notice"

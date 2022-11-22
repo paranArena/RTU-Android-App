@@ -51,6 +51,14 @@ class ManageActivity : AppCompatActivity() {
             showDialog()
         }
 
+        binding.profile.setOnClickListener {
+            val intent = Intent(this, UpdateClubActivity::class.java)
+            intent.apply {
+                this.putExtra("id",id) // 데이터 넣기
+            }
+            startActivity(intent)
+        }
+
         binding.notices.setOnClickListener {
             val intent = Intent(this, ManageNotice::class.java)
             intent.apply {
