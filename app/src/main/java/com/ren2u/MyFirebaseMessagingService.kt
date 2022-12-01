@@ -45,7 +45,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         Log.d(TAG, "onMessageReceived() - title : $title")
         Log.d(TAG, "onMessageReceived() - message : $message")
 
-        sendNotification(type, title, message)
+        sendNotification(type, remoteMessage.notification?.title, remoteMessage.notification?.body)
     }
 
 

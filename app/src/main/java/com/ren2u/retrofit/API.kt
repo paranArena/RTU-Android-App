@@ -28,6 +28,11 @@ interface API {
         //@Part ("hashtags")  hashtag: RequestBody
     ): Call<CreateClubResponse>
 
+    @POST("/api/v1/clubs")
+    fun createClubRequestV1(
+        @Body initializeRequest: CreateClubModelV1
+    ): Call<CreateClubResponse>
+
     @PUT("/api/v1/clubs/{clubId}/info")
     fun updateClubInfo(
         @Path("clubId") clubId: Int,

@@ -20,7 +20,9 @@ import androidx.appcompat.app.AlertDialog
 import com.ren2u.MainPageActivity
 import com.ren2u.R
 import com.ren2u.databinding.ActivityAddGroupBinding
+import com.ren2u.model.CreateClubModelV1
 import com.ren2u.model.CreateClubResponse
+import com.ren2u.model.ImageResponse
 import com.ren2u.retrofit.RetrofitBuilder
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -35,6 +37,8 @@ class AddGroup : AppCompatActivity() {
     private var _binding: ActivityAddGroupBinding?=null
 
     private val binding get() = _binding!!
+
+    private var upImagePath: String?=null
 
     companion object {
         const val PERMISSION_REQUEST_CODE = 1001
@@ -92,6 +96,8 @@ class AddGroup : AppCompatActivity() {
 
                 Log.d("test",filePath!!)
 
+                uploadImage(filePath!!)
+
                 inputStream!!.close()
                 inputStream = null
                 bitmap?.let {
@@ -119,7 +125,7 @@ class AddGroup : AppCompatActivity() {
                 showDialogToGetImg()
             }
             else {
-                val inputTitle = binding.groupNameEditText.text.toString().replace("'", """\'""")
+                /*val inputTitle = binding.groupNameEditText.text.toString().replace("'", """\'""")
                 val inputTag =
                     binding.tagEditText.text.toString().replace("'", """\'""").split(" ")
                 val inputIntro = binding.introEditText.text.toString().replace("'", """\'""")
@@ -161,6 +167,50 @@ class AddGroup : AppCompatActivity() {
                                 400 -> Log.d("test", response.body()!!.toString())
                             }
                             Log.d("test", response.body()!!.toString())
+                        }
+                    }
+
+                    override fun onFailure(call: Call<CreateClubResponse>, t: Throwable) {
+                        Toast.makeText(this@AddGroup, "실패했습니다.", Toast.LENGTH_SHORT).show()
+                        Log.d("test", "실패$t")
+                        finish()
+                    }
+                })*/
+
+                val inputName = binding.groupNameEditText.text.toString().replace("'", """\'""")
+                val inputTag = binding.tagEditText.text.toString().replace("#", "").split(" ")
+                val inputIntro = binding.introEditText.text.toString().replace("'", """\'""")
+
+                val imagePaths=listOf(upImagePath)
+
+                val request= CreateClubModelV1(
+                    name=inputName,
+                    intro = inputIntro,
+                    imagePaths = imagePaths as List<String>,
+                    hashtags = inputTag
+                )
+
+                Log.d("testCreate", request.toString())
+
+
+
+                RetrofitBuilder.api.createClubRequestV1(
+                    request
+                ).enqueue(object : Callback<CreateClubResponse> {
+                    override fun onResponse(
+                        call: Call<CreateClubResponse>,
+                        response: Response<CreateClubResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            Toast.makeText(this@AddGroup, "등록되었습니다.", Toast.LENGTH_SHORT).show()
+                            /*val intent = Intent(this@AddNotice, ManageNotice::class.java)
+                            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))*/
+                            finish()
+                        } else {
+                            when (response.code()) {
+                                400 -> Log.d("test", response.code()!!.toString())
+                            }
+                            Log.d("test", response.code().toString())
                         }
                     }
 
@@ -262,6 +312,37 @@ class AddGroup : AppCompatActivity() {
         }
         val dialog = builder.create()
         dialog.show()
+    }
+
+    private fun uploadImage(filePath: String){
+        var file = File(filePath)
+        var requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file)
+        var body = MultipartBody.Part.createFormData("image", file.name, requestFile)
+
+        RetrofitBuilder.api.upload(
+            body
+        ).enqueue(object : Callback<ImageResponse> {
+            override fun onResponse(
+                call: Call<ImageResponse>,
+                response: Response<ImageResponse>
+            ) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@AddGroup, "사진 업로드 완료", Toast.LENGTH_SHORT).show()
+                    upImagePath=response.body()!!.data
+                } else {
+                    when (response.code()) {
+                        400 -> Log.d("test", response.body()!!.toString())
+                    }
+                    Log.d("test", response.body()!!.toString())
+                }
+            }
+
+            override fun onFailure(call: Call<ImageResponse>, t: Throwable) {
+                Toast.makeText(this@AddGroup, "실패했습니다.", Toast.LENGTH_SHORT).show()
+                Log.d("test", "실패$t")
+                finish()
+            }
+        })
     }
 
 }

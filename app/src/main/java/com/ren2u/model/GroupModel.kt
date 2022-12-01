@@ -20,7 +20,7 @@ data class CreateClubModel(
 data class CreateClubModelV1(
     val name: String,
     val intro: String,
-    val thumbnailPath: List<String>,
+    val imagePaths: List<String>,
     val hashtags: List<String>
 ): Parcelable
 
