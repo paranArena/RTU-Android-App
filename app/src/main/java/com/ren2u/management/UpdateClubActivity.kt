@@ -135,9 +135,9 @@ class UpdateClubActivity : AppCompatActivity() {
 
                 val imagePaths=listOf(upImagePath)
 
-                val request= CreateClubModel(
+                val request= CreateClubModelV1(
                     name=inputName,
-                    introduction = inputIntro,
+                    intro = inputIntro,
                     thumbnailPath = imagePaths as List<String>,
                     hashtags = inputTag
                 )

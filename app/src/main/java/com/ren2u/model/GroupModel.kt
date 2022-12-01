@@ -16,6 +16,14 @@ data class CreateClubModel(
     val hashtags: List<String>
 ): Parcelable
 
+@Parcelize
+data class CreateClubModelV1(
+    val name: String,
+    val intro: String,
+    val thumbnailPath: List<String>,
+    val hashtags: List<String>
+): Parcelable
+
 
 data class SearchNameModel(
     val statusCode: Int,

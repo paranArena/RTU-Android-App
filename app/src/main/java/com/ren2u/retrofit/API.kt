@@ -31,7 +31,7 @@ interface API {
     @PUT("/api/v1/clubs/{clubId}/info")
     fun updateClubInfo(
         @Path("clubId") clubId: Int,
-        @Body initializeRequest: CreateClubModel
+        @Body initializeRequest: CreateClubModelV1
     ): Call<CreateClubResponse>
 
     @Multipart
