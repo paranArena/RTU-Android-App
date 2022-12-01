@@ -20,7 +20,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".management.UpdateClubActivity"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

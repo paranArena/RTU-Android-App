@@ -1,12 +1,14 @@
 package com.ren2u
 
 import android.app.Activity
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
 
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
@@ -15,8 +17,15 @@ import com.ren2u.tab.GroupFragment
 import com.ren2u.tab.MypageFragment
 import com.ren2u.tab.RentFragment
 import com.ren2u.R
+import com.ren2u.model.FcmModel
+import com.ren2u.model.MyInfoModel
 import com.ren2u.renttab.RentList
+import com.ren2u.retrofit.RetrofitBuilder
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.security.MessageDigest
+import kotlin.properties.Delegates
 
 @Suppress("DEPRECATION")
 class MainPageActivity : AppCompatActivity() {
@@ -27,6 +36,8 @@ class MainPageActivity : AppCompatActivity() {
         findViewById(R.id.bottom_navigation)
     }
 
+    private var memberId: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -36,6 +47,10 @@ class MainPageActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().replace(frame.id, GroupFragment()).commit()
 
         tokenCheck()
+
+        getMyInfo()
+
+        pushCheck()
 
 
         // 하단 네비게이션 바 클릭 이벤트 설정
@@ -84,11 +99,87 @@ class MainPageActivity : AppCompatActivity() {
         }
     }
 
+    private fun pushCheck(){
+        val fcmToken=MainActivity.GlobalApplication.prefs.getString("fcm","x")
+        if(fcmToken!="x"){
+            val push=MainActivity.GlobalApplication.prefs.getString("push","x")
+            val init=MainActivity.GlobalApplication.prefs.getString("init","x")
+            if(push=="x" && init=="x"){
+                showDialogPush()
+            }
+        }
+    }
+
     private fun tokenCheck(){
         val tokenCheck= MainActivity.GlobalApplication.prefs.getString("token","x")
         if(tokenCheck=="x"){
             finish()
         }
+    }
+
+    private fun getMyInfo(){
+        RetrofitBuilder.api.myInfoRequest().enqueue(object :
+            Callback<MyInfoModel> {
+            override fun onResponse(
+                call: Call<MyInfoModel>,
+                response: Response<MyInfoModel>
+            ) {
+                if(response.isSuccessful) {
+                    Log.d("testToken", response.body().toString())
+
+                    val data=response.body()
+
+                    memberId=data!!.data.id
+                }
+                else {
+                    Log.d("fail", response.body().toString())
+                }
+            }
+
+            override fun onFailure(call: Call<MyInfoModel>, t: Throwable) {
+                Log.d("test", "실패$t")
+            }
+
+        })
+    }
+
+    private fun showDialogPush(){
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Ren2U에서 알림을 보내고자 합니다.")
+            .setMessage("앱 푸시 알림에 수신 혀용하시겠습니까?")
+            .setPositiveButton("허용",
+                DialogInterface.OnClickListener { dialog, id ->
+                    val request=FcmModel(memberId=memberId, fcmToken = MainActivity.GlobalApplication.prefs.getString("fcm", "x"))
+
+                    RetrofitBuilder.api.registerFCMToken(request).enqueue(object :
+                        Callback<Void> {
+                        override fun onResponse(
+                            call: Call<Void>,
+                            response: Response<Void>
+                        ) {
+                            if(response.isSuccessful) {
+                                Log.d("testToken", response.code()!!.toString())
+                            }
+                            else {
+                                Log.d("fail", response.body().toString())
+                            }
+                        }
+
+                        override fun onFailure(call: Call<Void>, t: Throwable) {
+                            Log.d("test", "실패$t")
+                        }
+
+                    })
+
+                    MainActivity.GlobalApplication.prefs.setString("push","o")
+                    MainActivity.GlobalApplication.prefs.getString("init","o")
+                })
+            .setNegativeButton("허용 안 함",
+                DialogInterface.OnClickListener { dialog, id ->
+
+                })
+        // 다이얼로그를 띄워주기
+        builder.show()
     }
 
     fun deleteToken(){

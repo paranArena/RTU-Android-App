@@ -4,6 +4,7 @@ import com.ren2u.model.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 interface API {
@@ -72,6 +73,11 @@ interface API {
         @Part image: MultipartBody.Part?,
         @Path("id") id:Int
     ): Call<CreateProductResponse>
+
+    @POST("/api/fcm/register")
+    fun registerFCMToken(
+        @Body request: FcmModel
+    ): Call<Void>
 
     @GET("/members/email/{email}/exists")
     fun checkEmailRequest(

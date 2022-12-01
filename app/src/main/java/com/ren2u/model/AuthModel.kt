@@ -76,3 +76,8 @@ data class Club(
 data class Rental(
     val item: String
 ): Parcelable
+
+data class FcmModel(
+    val memberId: Int,
+    val fcmToken: String
+)

@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
                 response: Response<LoginResponse>
             ) {
                 if(response.isSuccessful) {
-                    Log.d("test", response.body().toString())
+                    Log.d("testToken", response.body().toString())
 
                     var data = response.body()!!
 
@@ -159,7 +159,8 @@ class MainActivity : AppCompatActivity() {
     private fun initFirebase() {
         FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                Log.d("token","success")
+                Log.d("token", task.result)
+                GlobalApplication.prefs.setString("fcm", task.result!!)
             }
         }
     }
